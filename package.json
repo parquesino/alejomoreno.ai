@@ -2,7 +2,7 @@
   "name": "alejomoreno.ai",
   "private": true,
   "version": "0.0.0",
-  "homepage": "[https://parquesino.github.io/alejomoreno.ai](https://parquesino.github.io/alejomoreno.ai)",
+  "homepage": "https://alejomoreno.ai",
   "type": "module",
   "scripts": {
     "dev": "vite",
