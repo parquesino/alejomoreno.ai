@@ -209,7 +209,7 @@ export default function LandingPage() {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 font-light">
-            Ex-Directivo de grandes multinacionales en España y Colombia, te revela cómo unificar los dos mundos: <strong className="text-white">SEO para Google</strong> y <strong className="text-white">AIO para Gemini & ChatGPT</strong>.
+            Ex-Directivo de multinacionales de Marketing y Comunicación en España y Colombia, te revela cómo unificar los dos mundos: <strong className="text-white">SEO para Google</strong> y <strong className="text-white">AIO para Gemini & ChatGPT</strong>.
           </p>
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
@@ -521,14 +521,14 @@ export default function LandingPage() {
               title="Consultoría AIO"
               subtitle="Dual Search Strategy"
               idealFor="Para Marcas Líderes"
-              description="Auditoría e implementación del protocolo GEO. Fortalecemos tu SEO técnico para Google y estructuramos tus datos semánticos para ser la única respuesta en Gemini."
+              description="Auditoría e implementación del protocolo GEO. Fortalecemos tu SEO y estructuramos tus datos semánticos para ser recomendado por ChatGPT y Gemini."
             />
             <ServiceCard 
               icon={Rocket}
               title='Mentoría "Exit"'
               subtitle="Business Builder"
               idealFor="Para Profesionales Senior"
-              description="No te enseño a ser consultor, sino a ser dueño de negocio. Construye activos digitales escalables en cualquier nicho (como mi ecosistema real) que operen con autonomía gracias a la IA."
+              description="Te enseño a construir y gestionar negocios de nicho (como mi ecosistema real) potenciados con IA. Aprenderás a dominar el tráfico posicionando tus activos en Google, ChatGPT y Gemini."
             />
             <ServiceCard 
               icon={BrainCircuit}
