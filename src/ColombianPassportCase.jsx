@@ -30,7 +30,7 @@ const IMAGES = {
   aiTraffic: "/wix-bots.png",
   
   // Captura de las Reseñas de Google
-  googleReviews: "/evidencia/google-reviews.png"
+  googleReviews: "/google-reviews.png"
 };
 // ------------------------------------------------------------------
 
