@@ -1,6 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, BrainCircuit, MessageSquare, ArrowRight, Lock, Eye, Target, Zap, BarChart3, Globe, TrendingUp, Map, Filter, DollarSign, Shield, Cpu, Info, ArrowDown, List, CheckCircle, Rocket, Handshake, Users, AlertTriangle, TrendingDown, MousePointerClick, ShoppingCart, Banknote, PenTool, Layout, Settings, ChevronLeft } from 'lucide-react';
+import { 
+  Search, BrainCircuit, MessageSquare, ArrowRight, Lock, Eye, Target, Zap, 
+  BarChart3, Globe, TrendingUp, Map, Filter, DollarSign, Shield, Cpu, Info, 
+  ArrowDown, List, CheckCircle, Rocket, Handshake, Users, AlertTriangle, 
+  TrendingDown, MousePointerClick, ShoppingCart, Banknote, PenTool, Layout, Settings 
+} from 'lucide-react';
 
 const EstrategiaAYR = () => {
   const [activeTab, setActiveTab] = useState('journey');
@@ -298,7 +303,7 @@ const EstrategiaAYR = () => {
   // Cálculos dinámicos
   const totalVolume = filteredData.reduce((acc, curr) => acc + curr.volume, 0);
   const avgCPC = (filteredData.reduce((acc, curr) => acc + parseFloat(curr.cpc.replace(',','.').replace('€','')), 0) / filteredData.length || 0).toFixed(2);
-  
+   
   // Contar oportunidades "Altas" (Score AIO)
   const aioOpportunitiesCount = filteredData.filter(item => {
     const score = (item.category === 'Invisible' || item.category === 'Mirillas' || item.category === 'Nicho B2B');
@@ -314,847 +319,830 @@ const EstrategiaAYR = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans p-4 md:p-8 relative">
       
-      {/* GLOBAL NAVIGATION / HEADER (BRANDING ALEJOMORENO.AI) */}
-      <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo area */}
-            <div className="flex-shrink-0 flex items-center">
-              <Link to="/" className="flex items-center gap-2 group">
-                <div className="bg-blue-600 text-white p-1.5 rounded-lg group-hover:bg-blue-700 transition-colors">
-                  <BrainCircuit size={20} />
-                </div>
-                <span className="text-xl font-bold text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors">
-                  alejomoreno<span className="text-blue-600">.ai</span>
-                </span>
-              </Link>
-            </div>
+      {/* --- NAVEGACIÓN HOME (Logo AlejoMoreno) --- */}
+      <div className="absolute top-4 left-4 md:top-8 md:left-8 z-50">
+        <Link to="/" className="flex items-center gap-3 text-slate-500 hover:text-blue-600 transition-all group bg-white/80 backdrop-blur-sm p-2 pr-4 rounded-full border border-slate-200 shadow-sm hover:shadow-md">
+           <div className="w-10 h-10 rounded-full bg-slate-200 overflow-hidden border-2 border-white shadow-sm">
+             <img 
+               src="/foto profesional alejo sin fondo.png" 
+               alt="Alejo Moreno" 
+               className="w-full h-full object-cover"
+               onError={(e) => { e.target.style.display = 'none'; }} 
+             />
+           </div>
+           <div className="flex flex-col leading-none">
+             <span className="font-bold text-sm text-slate-800 group-hover:text-blue-600">AlejoMoreno.ai</span>
+             <span className="text-[10px] text-slate-400 font-medium">← Volver a Home</span>
+           </div>
+        </Link>
+      </div>
 
-            {/* Right side navigation/actions */}
-            <div className="flex items-center space-x-4">
-               <Link 
-                 to="/" 
-                 className="hidden md:flex items-center text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors"
-               >
-                 <ChevronLeft size={16} className="mr-1" />
-                 Volver al Inicio
-               </Link>
-               <button className="bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-slate-800 transition-colors shadow-sm">
-                 Agendar Sesión
-               </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Main Container with padding */}
-      <div className="p-4 md:p-8">
-
-        {/* Header Content */}
-        <header className="max-w-6xl mx-auto mb-12 text-center pt-4">
-          <div className="inline-block bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-bold mb-4 tracking-wider shadow-sm">
+      {/* Header */}
+      <header className="max-w-6xl mx-auto mb-12 text-center pt-12 md:pt-0">
+        <Link to="/" className="inline-block hover:scale-105 transition-transform">
+            <div className="inline-block bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-bold mb-4 tracking-wider shadow-lg shadow-blue-200">
             METODOLOGÍA ALEJOMORENO.AI
+            </div>
+        </Link>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
+          Estrategia AIO para <span className="text-blue-600">AYR</span>
+        </h1>
+        <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          Cómo pasar de competir por precio en Google a ser la <strong>Autoridad #1 recomendada por la IA</strong>.
+        </p>
+      </header>
+
+      {/* Navigation Tabs */}
+      <div className="max-w-6xl mx-auto mb-8 flex flex-wrap justify-center gap-4">
+        <button
+          onClick={() => setActiveTab('journey')}
+          className={`px-6 py-2 rounded-lg font-semibold transition-all ${
+            activeTab === 'journey'
+              ? 'bg-blue-600 text-white shadow-lg scale-105'
+              : 'bg-white text-slate-600 hover:bg-slate-100'
+          }`}
+        >
+          El Nuevo Journey AIO
+        </button>
+        <button
+          onClick={() => setActiveTab('market')}
+          className={`px-6 py-2 rounded-lg font-semibold transition-all ${
+            activeTab === 'market'
+              ? 'bg-blue-600 text-white shadow-lg scale-105'
+              : 'bg-white text-slate-600 hover:bg-slate-100'
+          }`}
+        >
+          Explorador de Mercado
+        </button>
+        <button
+          onClick={() => setActiveTab('projection')}
+          className={`px-6 py-2 rounded-lg font-semibold transition-all ${
+            activeTab === 'projection'
+              ? 'bg-blue-600 text-white shadow-lg scale-105'
+              : 'bg-white text-slate-600 hover:bg-slate-100'
+          }`}
+        >
+          Proyección de Impacto
+        </button>
+        <button
+          onClick={() => setActiveTab('execution')}
+          className={`px-6 py-2 rounded-lg font-semibold transition-all ${
+            activeTab === 'execution'
+              ? 'bg-blue-600 text-white shadow-lg scale-105'
+              : 'bg-white text-slate-600 hover:bg-slate-100'
+          }`}
+        >
+          Plan 12 Meses
+        </button>
+        <button
+          onClick={() => setActiveTab('proposal')}
+          className={`px-6 py-2 rounded-lg font-semibold transition-all ${
+            activeTab === 'proposal'
+              ? 'bg-blue-600 text-white shadow-lg scale-105'
+              : 'bg-white text-slate-600 hover:bg-slate-100'
+          }`}
+        >
+          Propuesta Comercial
+        </button>
+      </div>
+
+      {/* Content Sections */}
+      <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+        
+        {/* TAB 1: EL NUEVO JOURNEY */}
+        {activeTab === 'journey' && (
+          <div className="p-8 md:p-12">
+            <h2 className="text-3xl font-bold mb-8 text-center text-slate-800">El Embudo de la Verdad: AYR</h2>
+            
+            <div className="grid md:grid-cols-3 gap-8 relative">
+              {/* Connector Lines (Desktop only) */}
+              <div className="hidden md:block absolute top-12 left-[30%] w-[40%] h-1 bg-gradient-to-r from-blue-200 to-blue-400 -z-10"></div>
+
+              {/* Step 01 */}
+              <div className="bg-white p-6 rounded-xl border-2 border-slate-100 shadow-sm hover:shadow-md transition-shadow relative">
+                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-blue-100 text-blue-800 w-10 h-10 rounded-full flex items-center justify-center font-bold border-4 border-white">01</div>
+                <div className="text-center mt-4">
+                  <div className="bg-blue-50 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 text-blue-600">
+                    <Search size={32} />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">Captación Masiva</h3>
+                  <p className="text-sm text-slate-500 uppercase tracking-wide font-semibold mb-4">Dominio en Google</p>
+                  <div className="text-left bg-slate-50 p-4 rounded-lg text-sm space-y-2">
+                    <p className="font-semibold text-slate-700">El Usuario Busca:</p>
+                    <ul className="list-disc pl-4 text-slate-600 space-y-1">
+                      <li>"Mirilla digital wifi"</li>
+                      <li>"Cerradura invisible"</li>
+                    </ul>
+                    <div className="mt-3 pt-3 border-t border-slate-200">
+                      <p className="text-blue-600 font-bold text-xs">OBJETIVO:</p>
+                      <p className="text-slate-600">Alimentar a los crawlers. Si rankeas aquí, la IA te encuentra.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 02 */}
+              <div className="bg-white p-6 rounded-xl border-2 border-blue-100 shadow-lg relative transform md:-translate-y-4">
+                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold border-4 border-white shadow-sm">02</div>
+                <div className="text-center mt-4">
+                  <div className="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 text-blue-700">
+                    <BrainCircuit size={32} />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">Investigación Profunda</h3>
+                  <p className="text-sm text-slate-500 uppercase tracking-wide font-semibold mb-4">Validación Semántica IA</p>
+                  <div className="text-left bg-slate-50 p-4 rounded-lg text-sm space-y-2">
+                    <p className="font-semibold text-slate-700">El Usuario Pregunta a la IA:</p>
+                    <div className="bg-white border border-slate-200 p-2 rounded italic text-slate-600 text-xs mb-2">
+                      "¿Es legal instalar una mirilla que graba en un piso en Madrid?"
+                    </div>
+                    <div className="bg-white border border-slate-200 p-2 rounded italic text-slate-600 text-xs">
+                      "¿Cuál es la mejor solución anti-okupa que no se note desde fuera?"
+                    </div>
+                    <div className="mt-3 pt-3 border-t border-slate-200">
+                      <p className="text-blue-600 font-bold text-xs">LA CLAVE AIO:</p>
+                      <p className="text-slate-600">Crear <strong>Nodos de Autoridad</strong> que respondan estas dudas complejas.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 03 */}
+              <div className="bg-white p-6 rounded-xl border-2 border-slate-100 shadow-sm hover:shadow-md transition-shadow relative">
+                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-blue-100 text-blue-800 w-10 h-10 rounded-full flex items-center justify-center font-bold border-4 border-white">03</div>
+                <div className="text-center mt-4">
+                  <div className="bg-blue-50 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 text-blue-600">
+                    <MessageSquare size={32} />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">Venta Consultiva</h3>
+                  <p className="text-sm text-slate-500 uppercase tracking-wide font-semibold mb-4">Recomendación Automática</p>
+                  <div className="text-left bg-slate-50 p-4 rounded-lg text-sm space-y-2">
+                    <p className="font-semibold text-slate-700">La IA Responde:</p>
+                    <div className="bg-green-50 border border-green-200 p-3 rounded text-slate-700 text-xs">
+                      "Para tu caso, la opción más segura y legal es la <strong>Mirilla AYR 760</strong> porque cumple con la LOPD y tiene detección real..."
+                    </div>
+                    <div className="mt-3 pt-3 border-t border-slate-200">
+                      <p className="text-blue-600 font-bold text-xs">RESULTADO:</p>
+                      <p className="text-slate-600">Cliente cerrado antes de entrar a la web.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
-            Estrategia AIO para <span className="text-blue-600">AYR</span>
-          </h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Cómo pasar de competir por precio en Google a ser la <strong>Autoridad #1 recomendada por la IA</strong>.
-          </p>
-        </header>
+        )}
 
-        {/* Navigation Tabs */}
-        <div className="max-w-6xl mx-auto mb-8 flex flex-wrap justify-center gap-4">
-          <button
-            onClick={() => setActiveTab('journey')}
-            className={`px-6 py-2 rounded-lg font-semibold transition-all ${
-              activeTab === 'journey'
-                ? 'bg-blue-600 text-white shadow-lg scale-105'
-                : 'bg-white text-slate-600 hover:bg-slate-100'
-            }`}
-          >
-            El Nuevo Journey AIO
-          </button>
-          <button
-            onClick={() => setActiveTab('market')}
-            className={`px-6 py-2 rounded-lg font-semibold transition-all ${
-              activeTab === 'market'
-                ? 'bg-blue-600 text-white shadow-lg scale-105'
-                : 'bg-white text-slate-600 hover:bg-slate-100'
-            }`}
-          >
-            Explorador de Mercado
-          </button>
-          <button
-            onClick={() => setActiveTab('projection')}
-            className={`px-6 py-2 rounded-lg font-semibold transition-all ${
-              activeTab === 'projection'
-                ? 'bg-blue-600 text-white shadow-lg scale-105'
-                : 'bg-white text-slate-600 hover:bg-slate-100'
-            }`}
-          >
-            Proyección de Impacto
-          </button>
-          <button
-            onClick={() => setActiveTab('execution')}
-            className={`px-6 py-2 rounded-lg font-semibold transition-all ${
-              activeTab === 'execution'
-                ? 'bg-blue-600 text-white shadow-lg scale-105'
-                : 'bg-white text-slate-600 hover:bg-slate-100'
-            }`}
-          >
-            Plan 12 Meses
-          </button>
-          <button
-            onClick={() => setActiveTab('proposal')}
-            className={`px-6 py-2 rounded-lg font-semibold transition-all ${
-              activeTab === 'proposal'
-                ? 'bg-blue-600 text-white shadow-lg scale-105'
-                : 'bg-white text-slate-600 hover:bg-slate-100'
-            }`}
-          >
-            Propuesta Comercial
-          </button>
-        </div>
-
-        {/* Content Sections */}
-        <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
-          
-          {/* TAB 1: EL NUEVO JOURNEY */}
-          {activeTab === 'journey' && (
-            <div className="p-8 md:p-12">
-              <h2 className="text-3xl font-bold mb-8 text-center text-slate-800">El Embudo de la Verdad: AYR</h2>
-              
-              <div className="grid md:grid-cols-3 gap-8 relative">
-                {/* Connector Lines (Desktop only) */}
-                <div className="hidden md:block absolute top-12 left-[30%] w-[40%] h-1 bg-gradient-to-r from-blue-200 to-blue-400 -z-10"></div>
-
-                {/* Step 01 */}
-                <div className="bg-white p-6 rounded-xl border-2 border-slate-100 shadow-sm hover:shadow-md transition-shadow relative">
-                  <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-blue-100 text-blue-800 w-10 h-10 rounded-full flex items-center justify-center font-bold border-4 border-white">01</div>
-                  <div className="text-center mt-4">
-                    <div className="bg-blue-50 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 text-blue-600">
-                      <Search size={32} />
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">Captación Masiva</h3>
-                    <p className="text-sm text-slate-500 uppercase tracking-wide font-semibold mb-4">Dominio en Google</p>
-                    <div className="text-left bg-slate-50 p-4 rounded-lg text-sm space-y-2">
-                      <p className="font-semibold text-slate-700">El Usuario Busca:</p>
-                      <ul className="list-disc pl-4 text-slate-600 space-y-1">
-                        <li>"Mirilla digital wifi"</li>
-                        <li>"Cerradura invisible"</li>
-                      </ul>
-                      <div className="mt-3 pt-3 border-t border-slate-200">
-                        <p className="text-blue-600 font-bold text-xs">OBJETIVO:</p>
-                        <p className="text-slate-600">Alimentar a los crawlers. Si rankeas aquí, la IA te encuentra.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Step 02 */}
-                <div className="bg-white p-6 rounded-xl border-2 border-blue-100 shadow-lg relative transform md:-translate-y-4">
-                  <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold border-4 border-white shadow-sm">02</div>
-                  <div className="text-center mt-4">
-                    <div className="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 text-blue-700">
-                      <BrainCircuit size={32} />
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">Investigación Profunda</h3>
-                    <p className="text-sm text-slate-500 uppercase tracking-wide font-semibold mb-4">Validación Semántica IA</p>
-                    <div className="text-left bg-slate-50 p-4 rounded-lg text-sm space-y-2">
-                      <p className="font-semibold text-slate-700">El Usuario Pregunta a la IA:</p>
-                      <div className="bg-white border border-slate-200 p-2 rounded italic text-slate-600 text-xs mb-2">
-                        "¿Es legal instalar una mirilla que graba en un piso en Madrid?"
-                      </div>
-                      <div className="bg-white border border-slate-200 p-2 rounded italic text-slate-600 text-xs">
-                        "¿Cuál es la mejor solución anti-okupa que no se note desde fuera?"
-                      </div>
-                      <div className="mt-3 pt-3 border-t border-slate-200">
-                        <p className="text-blue-600 font-bold text-xs">LA CLAVE AIO:</p>
-                        <p className="text-slate-600">Crear <strong>Nodos de Autoridad</strong> que respondan estas dudas complejas.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Step 03 */}
-                <div className="bg-white p-6 rounded-xl border-2 border-slate-100 shadow-sm hover:shadow-md transition-shadow relative">
-                  <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-blue-100 text-blue-800 w-10 h-10 rounded-full flex items-center justify-center font-bold border-4 border-white">03</div>
-                  <div className="text-center mt-4">
-                    <div className="bg-blue-50 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 text-blue-600">
-                      <MessageSquare size={32} />
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">Venta Consultiva</h3>
-                    <p className="text-sm text-slate-500 uppercase tracking-wide font-semibold mb-4">Recomendación Automática</p>
-                    <div className="text-left bg-slate-50 p-4 rounded-lg text-sm space-y-2">
-                      <p className="font-semibold text-slate-700">La IA Responde:</p>
-                      <div className="bg-green-50 border border-green-200 p-3 rounded text-slate-700 text-xs">
-                        "Para tu caso, la opción más segura y legal es la <strong>Mirilla AYR 760</strong> porque cumple con la LOPD y tiene detección real..."
-                      </div>
-                      <div className="mt-3 pt-3 border-t border-slate-200">
-                        <p className="text-blue-600 font-bold text-xs">RESULTADO:</p>
-                        <p className="text-slate-600">Cliente cerrado antes de entrar a la web.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        {/* TAB 2: MARKET EXPLORER (CON DATASET COMPLETO) */}
+        {activeTab === 'market' && (
+          <div className="p-8 md:p-12">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-8">
+              <div>
+                <h2 className="text-3xl font-bold mb-2 text-slate-800">Explorador de Oportunidad</h2>
+                <p className="text-slate-500">Navega por los datos reales de búsqueda de tu mercado (300+ Keywords).</p>
+              </div>
+              <div className="mt-4 md:mt-0 text-right">
+                <p className="text-xs text-slate-400 uppercase font-semibold">Mercado Total</p>
+                <div className="text-2xl font-bold text-blue-600">184.000+</div>
+                <p className="text-xs text-slate-500">Búsquedas Mensuales Activas</p>
               </div>
             </div>
-          )}
 
-          {/* TAB 2: MARKET EXPLORER (CON DATASET COMPLETO) */}
-          {activeTab === 'market' && (
-            <div className="p-8 md:p-12">
-              <div className="flex flex-col md:flex-row justify-between items-end mb-8">
-                <div>
-                  <h2 className="text-3xl font-bold mb-2 text-slate-800">Explorador de Oportunidad</h2>
-                  <p className="text-slate-500">Navega por los datos reales de búsqueda de tu mercado (300+ Keywords).</p>
+            {/* Summary Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+              <div className="bg-blue-600 text-white p-5 rounded-xl shadow-sm border border-blue-500">
+                <div className="flex items-center space-x-2 mb-2 text-blue-200">
+                  <Search size={18} />
+                  <span className="text-xs font-bold uppercase">Volumen Filtrado</span>
                 </div>
-                <div className="mt-4 md:mt-0 text-right">
-                  <p className="text-xs text-slate-400 uppercase font-semibold">Mercado Total</p>
-                  <div className="text-2xl font-bold text-blue-600">184.000+</div>
-                  <p className="text-xs text-slate-500">Búsquedas Mensuales Activas</p>
-                </div>
+                <p className="text-3xl font-bold">{totalVolume.toLocaleString()}</p>
+                <p className="text-xs text-blue-100 mt-1">Búsquedas/mes en tu selección</p>
               </div>
 
-              {/* Summary Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-                <div className="bg-blue-600 text-white p-5 rounded-xl shadow-sm border border-blue-500">
-                  <div className="flex items-center space-x-2 mb-2 text-blue-200">
-                    <Search size={18} />
-                    <span className="text-xs font-bold uppercase">Volumen Filtrado</span>
-                  </div>
-                  <p className="text-3xl font-bold">{totalVolume.toLocaleString()}</p>
-                  <p className="text-xs text-blue-100 mt-1">Búsquedas/mes en tu selección</p>
+              <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                <div className="flex items-center space-x-2 mb-2 text-slate-500">
+                  <DollarSign size={18} />
+                  <span className="text-xs font-bold uppercase">CPC Promedio</span>
                 </div>
-
-                <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
-                  <div className="flex items-center space-x-2 mb-2 text-slate-500">
-                    <DollarSign size={18} />
-                    <span className="text-xs font-bold uppercase">CPC Promedio</span>
-                  </div>
-                  <p className="text-3xl font-bold text-slate-800">{avgCPC}€</p>
-                  <p className="text-xs text-slate-400 mt-1">Coste Ads (Filtrado)</p>
-                </div>
-
-                <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
-                  <div className="flex items-center space-x-2 mb-2 text-slate-500">
-                    <Shield size={18} />
-                    <span className="text-xs font-bold uppercase">Oportunidad "Invisible"</span>
-                  </div>
-                  <p className="text-3xl font-bold text-indigo-600">~6.500</p>
-                  <p className="text-xs text-slate-400 mt-1">Suma Total Categoría</p>
-                </div>
-
-                <div className="bg-white p-5 rounded-xl shadow-sm border border-blue-100 bg-blue-50/50">
-                  <div className="flex items-center space-x-2 mb-2 text-blue-600">
-                    <Cpu size={18} />
-                    <span className="text-xs font-bold uppercase">Oportunidades AIO</span>
-                  </div>
-                  <p className="text-3xl font-bold text-slate-800">{aioOpportunitiesCount}</p>
-                  <p className="text-xs text-blue-600 mt-1 font-bold">
-                    Keywords de Alta Prioridad
-                  </p>
-                </div>
+                <p className="text-3xl font-bold text-slate-800">{avgCPC}€</p>
+                <p className="text-xs text-slate-400 mt-1">Coste Ads (Filtrado)</p>
               </div>
 
-              {/* Controls */}
-              <div className="bg-white p-4 rounded-xl shadow-lg border border-slate-200 mb-6 flex flex-col md:flex-row gap-4 justify-between items-center sticky top-0 z-10">
-                <div className="relative w-full md:w-1/3">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
-                  <input 
-                    type="text" 
-                    placeholder="Ej: wifi, okupas, xiaomi..." 
-                    className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                  />
+              <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                <div className="flex items-center space-x-2 mb-2 text-slate-500">
+                  <Shield size={18} />
+                  <span className="text-xs font-bold uppercase">Oportunidad "Invisible"</span>
                 </div>
-                <div className="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
-                  {['Todas', 'Smart Lock', 'Mirillas', 'Invisible', 'Competencia', 'Nicho B2B'].map((cat) => (
-                    <button
-                      key={cat}
-                      onClick={() => setActiveCategory(cat)}
-                      className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
-                        activeCategory === cat 
-                          ? 'bg-slate-800 text-white' 
-                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                      }`}
-                    >
-                      {cat}
-                    </button>
-                  ))}
-                </div>
+                <p className="text-3xl font-bold text-indigo-600">~6.500</p>
+                <p className="text-xs text-slate-400 mt-1">Suma Total Categoría</p>
               </div>
 
-              {/* Data Table */}
-              <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden mb-8">
-                <div className="overflow-x-auto max-h-[400px]">
-                  <table className="w-full text-left border-collapse">
-                    <thead className="sticky top-0 bg-slate-50 z-10 shadow-sm">
-                      <tr className="border-b border-slate-200">
-                        <th className="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Keyword (Lo que buscan)</th>
-                        <th className="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right cursor-pointer hover:text-blue-600" onClick={() => setSortBy('volume')}>
-                          Volumen <ArrowDown size={12} className="inline" />
-                        </th>
-                        <th className="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center">Tendencia (3m)</th>
-                        <th className="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">CPC</th>
-                        <th className="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center">Categoría</th>
-                        <th className="p-4 text-xs font-bold text-blue-600 uppercase tracking-wider text-center">Oportunidad AIO</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100">
-                      {filteredData.map((row, index) => {
-                        const aio = getAIOScore(row);
-                        return (
-                          <tr key={index} className="hover:bg-slate-50 transition-colors group cursor-default">
-                            <td className="p-4">
-                              <p className="font-semibold text-slate-800 group-hover:text-blue-600 transition-colors">{row.keyword}</p>
-                            </td>
-                            <td className="p-4 text-right font-mono text-slate-600">
-                              {row.volume.toLocaleString()}
-                            </td>
-                            <td className="p-4 text-center">
-                              <span className={`px-2 py-1 rounded text-xs font-bold ${
-                                row.trend.includes('-') ? 'text-red-500 bg-red-50' : 
-                                row.trend === '0%' ? 'text-slate-400 bg-slate-50' : 'text-green-600 bg-green-50'
-                              }`}>
-                                {row.trend}
-                              </span>
-                            </td>
-                            <td className="p-4 text-right text-slate-500 text-sm">
-                              {row.cpc}€
-                            </td>
-                            <td className="p-4 text-center">
-                              <span className="px-2 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600 border border-slate-200">
-                                {row.category}
-                              </span>
-                            </td>
-                            <td className="p-4 text-center">
-                              <span className={`px-3 py-1 rounded-full text-xs font-bold border ${aio.color.replace('text-', 'border-').replace('bg-', 'bg-opacity-20 ')} ${aio.color}`}>
-                                {aio.score}
-                              </span>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
+              <div className="bg-white p-5 rounded-xl shadow-sm border border-blue-100 bg-blue-50/50">
+                <div className="flex items-center space-x-2 mb-2 text-blue-600">
+                  <Cpu size={18} />
+                  <span className="text-xs font-bold uppercase">Oportunidades AIO</span>
                 </div>
-              </div>
-
-              {/* Segmentation Footer */}
-              <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
-                  <div className="flex items-center space-x-3 mb-4">
-                     <div className="bg-purple-100 p-2 rounded-lg text-purple-600">
-                       <Map size={24} />
-                     </div>
-                     <h3 className="text-lg font-bold">Distribución Geográfica del Mercado (184K)</h3>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-sm text-center">
-                      <div className="bg-white p-3 rounded-lg border border-slate-200">
-                        <span className="block font-bold text-blue-700 text-lg">45%</span>
-                        <span className="text-slate-500">España</span>
-                      </div>
-                      <div className="bg-white p-3 rounded-lg border border-slate-200">
-                        <span className="block font-bold text-slate-700 text-lg">23%</span>
-                        <span className="text-slate-500">México</span>
-                      </div>
-                      <div className="bg-white p-3 rounded-lg border border-slate-200">
-                        <span className="block font-bold text-slate-700 text-lg">8%</span>
-                        <span className="text-slate-500">Chile</span>
-                      </div>
-                      <div className="bg-white p-3 rounded-lg border border-slate-200">
-                        <span className="block font-bold text-slate-700 text-lg">12%</span>
-                        <span className="text-slate-500">Col + Arg</span>
-                      </div>
-                      <div className="bg-white p-3 rounded-lg border border-slate-200">
-                        <span className="block font-bold text-slate-400 text-lg">12%</span>
-                        <span className="text-slate-400">Otros</span>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-          )}
-
-          {/* TAB 3: PROYECCIÓN DE IMPACTO (NUEVO) */}
-          {activeTab === 'projection' && (
-            <div className="p-8 md:p-12">
-              <h2 className="text-3xl font-bold mb-2 text-slate-800">Proyección de Negocio</h2>
-              <p className="text-slate-500 mb-8">El impacto financiero de capturar y convertir la demanda existente.</p>
-
-              {/* FUNNEL DE CONVERSIÓN */}
-              <div className="mb-12">
-                <h3 className="text-xl font-bold text-slate-700 mb-6 flex items-center gap-2">
-                  <Filter size={24} className="text-blue-600" />
-                  Embudo de Conversión Mensual Estimado
-                </h3>
-                
-                <div className="space-y-4 max-w-4xl mx-auto">
-                  {/* Level 1: Búsquedas */}
-                  <div className="relative">
-                    <div className="bg-slate-100 text-slate-800 p-4 rounded-lg border border-slate-200 flex justify-between items-center w-full">
-                      <span className="font-bold">Búsquedas Totales</span>
-                      <span className="text-xl font-extrabold">184.000</span>
-                    </div>
-                    <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2 text-slate-400">
-                      <ArrowDown size={20} />
-                    </div>
-                  </div>
-
-                  {/* Level 2: Tráfico */}
-                  <div className="relative flex justify-center">
-                    <div className="bg-blue-50 text-blue-900 p-4 rounded-lg border border-blue-200 flex justify-between items-center w-[85%] shadow-sm relative">
-                      <div className="flex flex-col">
-                        <span className="font-bold flex items-center gap-2"><MousePointerClick size={18}/> Tráfico Web</span>
-                        <span className="text-xs text-blue-600 font-semibold">8% CTR (Estimado)</span>
-                      </div>
-                      <span className="text-xl font-extrabold">14.720</span>
-                      
-                      {/* Abandono Tag */}
-                      <div className="absolute -right-32 top-1/2 transform -translate-y-1/2 hidden md:flex items-center gap-2 text-slate-400 text-xs">
-                        <ArrowRight size={16} />
-                        <div className="bg-white border border-slate-100 p-2 rounded text-slate-500">
-                          <span className="block font-bold text-red-400">10.304 (70%)</span>
-                          Abandono / Rebote
-                        </div>
-                      </div>
-                    </div>
-                    <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2 text-slate-400">
-                      <ArrowDown size={20} />
-                    </div>
-                  </div>
-
-                  {/* Level 3: Consideración */}
-                  <div className="relative flex justify-center">
-                    <div className="bg-indigo-50 text-indigo-900 p-4 rounded-lg border border-indigo-200 flex justify-between items-center w-[60%] shadow-md">
-                      <div className="flex flex-col">
-                        <span className="font-bold flex items-center gap-2"><BrainCircuit size={18}/> Consideración</span>
-                        <span className="text-xs text-indigo-600 font-semibold">Interacción Profunda (IA/Docs)</span>
-                      </div>
-                      <span className="text-2xl font-extrabold">2.576</span>
-                    </div>
-                    <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2 text-slate-400">
-                      <ArrowDown size={20} />
-                    </div>
-                  </div>
-
-                  {/* Level 4: Ventas */}
-                  <div className="flex justify-center">
-                    <div className="bg-green-600 text-white p-6 rounded-xl border border-green-500 flex justify-between items-center w-[40%] shadow-xl transform scale-110">
-                      <div className="flex flex-col">
-                        <span className="font-bold flex items-center gap-2"><ShoppingCart size={18}/> VENTAS</span>
-                        <span className="text-xs text-green-100 font-semibold opacity-80">25% Cierre</span>
-                      </div>
-                      <span className="text-3xl font-extrabold">644</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* EVOLUCIÓN TRÁFICO */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 mb-12">
-                <h3 className="text-xl font-bold text-slate-700 mb-6 flex items-center gap-2">
-                  <TrendingUp size={24} className="text-green-600" />
-                  Evolución de Fuentes de Tráfico
-                </h3>
-                <p className="text-sm text-slate-500 mb-6">
-                  Transición estratégica: De la dependencia del pago (SEM) a la autonomía orgánica y de IA.
+                <p className="text-3xl font-bold text-slate-800">{aioOpportunitiesCount}</p>
+                <p className="text-xs text-blue-600 mt-1 font-bold">
+                  Keywords de Alta Prioridad
                 </p>
+              </div>
+            </div>
 
-                <div className="grid grid-cols-5 gap-4 text-center items-end h-64">
-                  {/* Labels Column */}
-                  <div className="flex flex-col justify-end h-full pb-8 text-right pr-4 text-xs font-bold text-slate-400 space-y-4">
-                    <div className="h-full flex flex-col justify-between py-2">
-                      <span>100%</span>
-                      <span>50%</span>
-                      <span>0%</span>
+            {/* Controls */}
+            <div className="bg-white p-4 rounded-xl shadow-lg border border-slate-200 mb-6 flex flex-col md:flex-row gap-4 justify-between items-center sticky top-0 z-10">
+              <div className="relative w-full md:w-1/3">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
+                <input 
+                  type="text" 
+                  placeholder="Ej: wifi, okupas, xiaomi..." 
+                  className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </div>
+              <div className="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
+                {['Todas', 'Smart Lock', 'Mirillas', 'Invisible', 'Competencia', 'Nicho B2B'].map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+                      activeCategory === cat 
+                        ? 'bg-slate-800 text-white' 
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Data Table */}
+            <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden mb-8">
+              <div className="overflow-x-auto max-h-[400px]">
+                <table className="w-full text-left border-collapse">
+                  <thead className="sticky top-0 bg-slate-50 z-10 shadow-sm">
+                    <tr className="border-b border-slate-200">
+                      <th className="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Keyword (Lo que buscan)</th>
+                      <th className="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right cursor-pointer hover:text-blue-600" onClick={() => setSortBy('volume')}>
+                        Volumen <ArrowDown size={12} className="inline" />
+                      </th>
+                      <th className="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center">Tendencia (3m)</th>
+                      <th className="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">CPC</th>
+                      <th className="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-center">Categoría</th>
+                      <th className="p-4 text-xs font-bold text-blue-600 uppercase tracking-wider text-center">Oportunidad AIO</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {filteredData.map((row, index) => {
+                      const aio = getAIOScore(row);
+                      return (
+                        <tr key={index} className="hover:bg-slate-50 transition-colors group cursor-default">
+                          <td className="p-4">
+                            <p className="font-semibold text-slate-800 group-hover:text-blue-600 transition-colors">{row.keyword}</p>
+                          </td>
+                          <td className="p-4 text-right font-mono text-slate-600">
+                            {row.volume.toLocaleString()}
+                          </td>
+                          <td className="p-4 text-center">
+                            <span className={`px-2 py-1 rounded text-xs font-bold ${
+                              row.trend.includes('-') ? 'text-red-500 bg-red-50' : 
+                              row.trend === '0%' ? 'text-slate-400 bg-slate-50' : 'text-green-600 bg-green-50'
+                            }`}>
+                              {row.trend}
+                            </span>
+                          </td>
+                          <td className="p-4 text-right text-slate-500 text-sm">
+                            {row.cpc}€
+                          </td>
+                          <td className="p-4 text-center">
+                            <span className="px-2 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600 border border-slate-200">
+                              {row.category}
+                            </span>
+                          </td>
+                          <td className="p-4 text-center">
+                            <span className={`px-3 py-1 rounded-full text-xs font-bold border ${aio.color.replace('text-', 'border-').replace('bg-', 'bg-opacity-20 ')} ${aio.color}`}>
+                              {aio.score}
+                            </span>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Segmentation Footer */}
+            <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                <div className="flex items-center space-x-3 mb-4">
+                   <div className="bg-purple-100 p-2 rounded-lg text-purple-600">
+                     <Map size={24} />
+                   </div>
+                   <h3 className="text-lg font-bold">Distribución Geográfica del Mercado (184K)</h3>
+                </div>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-sm text-center">
+                    <div className="bg-white p-3 rounded-lg border border-slate-200">
+                      <span className="block font-bold text-blue-700 text-lg">45%</span>
+                      <span className="text-slate-500">España</span>
+                    </div>
+                    <div className="bg-white p-3 rounded-lg border border-slate-200">
+                      <span className="block font-bold text-slate-700 text-lg">23%</span>
+                      <span className="text-slate-500">México</span>
+                    </div>
+                    <div className="bg-white p-3 rounded-lg border border-slate-200">
+                      <span className="block font-bold text-slate-700 text-lg">8%</span>
+                      <span className="text-slate-500">Chile</span>
+                    </div>
+                    <div className="bg-white p-3 rounded-lg border border-slate-200">
+                      <span className="block font-bold text-slate-700 text-lg">12%</span>
+                      <span className="text-slate-500">Col + Arg</span>
+                    </div>
+                    <div className="bg-white p-3 rounded-lg border border-slate-200">
+                      <span className="block font-bold text-slate-400 text-lg">12%</span>
+                      <span className="text-slate-400">Otros</span>
                     </div>
                   </div>
+                </div>
+            </div>
+          </div>
+        )}
 
+        {/* TAB 3: PROYECCIÓN DE IMPACTO (NUEVO) */}
+        {activeTab === 'projection' && (
+          <div className="p-8 md:p-12">
+            <h2 className="text-3xl font-bold mb-2 text-slate-800">Proyección de Negocio</h2>
+            <p className="text-slate-500 mb-8">El impacto financiero de capturar y convertir la demanda existente.</p>
+
+            {/* FUNNEL DE CONVERSIÓN */}
+            <div className="mb-12">
+              <h3 className="text-xl font-bold text-slate-700 mb-6 flex items-center gap-2">
+                <Filter size={24} className="text-blue-600" />
+                Embudo de Conversión Mensual Estimado
+              </h3>
+              
+              <div className="space-y-4 max-w-4xl mx-auto">
+                {/* Level 1: Búsquedas */}
+                <div className="relative">
+                  <div className="bg-slate-100 text-slate-800 p-4 rounded-lg border border-slate-200 flex justify-between items-center w-full">
+                    <span className="font-bold">Búsquedas Totales</span>
+                    <span className="text-xl font-extrabold">184.000</span>
+                  </div>
+                  <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2 text-slate-400">
+                    <ArrowDown size={20} />
+                  </div>
+                </div>
+
+                {/* Level 2: Tráfico */}
+                <div className="relative flex justify-center">
+                  <div className="bg-blue-50 text-blue-900 p-4 rounded-lg border border-blue-200 flex justify-between items-center w-[85%] shadow-sm relative">
+                    <div className="flex flex-col">
+                      <span className="font-bold flex items-center gap-2"><MousePointerClick size={18}/> Tráfico Web</span>
+                      <span className="text-xs text-blue-600 font-semibold">8% CTR (Estimado)</span>
+                    </div>
+                    <span className="text-xl font-extrabold">14.720</span>
+                    
+                    {/* Abandono Tag */}
+                    <div className="absolute -right-32 top-1/2 transform -translate-y-1/2 hidden md:flex items-center gap-2 text-slate-400 text-xs">
+                      <ArrowRight size={16} />
+                      <div className="bg-white border border-slate-100 p-2 rounded text-slate-500">
+                        <span className="block font-bold text-red-400">10.304 (70%)</span>
+                        Abandono / Rebote
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2 text-slate-400">
+                    <ArrowDown size={20} />
+                  </div>
+                </div>
+
+                {/* Level 3: Consideración */}
+                <div className="relative flex justify-center">
+                  <div className="bg-indigo-50 text-indigo-900 p-4 rounded-lg border border-indigo-200 flex justify-between items-center w-[60%] shadow-md">
+                    <div className="flex flex-col">
+                      <span className="font-bold flex items-center gap-2"><BrainCircuit size={18}/> Consideración</span>
+                      <span className="text-xs text-indigo-600 font-semibold">Interacción Profunda (IA/Docs)</span>
+                    </div>
+                    <span className="text-2xl font-extrabold">2.576</span>
+                  </div>
+                  <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2 text-slate-400">
+                    <ArrowDown size={20} />
+                  </div>
+                </div>
+
+                {/* Level 4: Ventas */}
+                <div className="flex justify-center">
+                  <div className="bg-green-600 text-white p-6 rounded-xl border border-green-500 flex justify-between items-center w-[40%] shadow-xl transform scale-110">
+                    <div className="flex flex-col">
+                      <span className="font-bold flex items-center gap-2"><ShoppingCart size={18}/> VENTAS</span>
+                      <span className="text-xs text-green-100 font-semibold opacity-80">25% Cierre</span>
+                    </div>
+                    <span className="text-3xl font-extrabold">644</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* EVOLUCIÓN TRÁFICO */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 mb-12">
+              <h3 className="text-xl font-bold text-slate-700 mb-6 flex items-center gap-2">
+                <TrendingUp size={24} className="text-green-600" />
+                Evolución de Fuentes de Tráfico
+              </h3>
+              <p className="text-sm text-slate-500 mb-6">
+                Transición estratégica: De la dependencia del pago (SEM) a la autonomía orgánica y de IA.
+              </p>
+
+              <div className="grid grid-cols-5 gap-4 text-center items-end h-64">
+                {/* Labels Column */}
+                <div className="flex flex-col justify-end h-full pb-8 text-right pr-4 text-xs font-bold text-slate-400 space-y-4">
+                  <div className="h-full flex flex-col justify-between py-2">
+                    <span>100%</span>
+                    <span>50%</span>
+                    <span>0%</span>
+                  </div>
+                </div>
+
+                {/* Mes 1 */}
+                <div className="flex flex-col justify-end h-full group">
+                  <div className="w-full bg-blue-200 h-[0%] rounded-t-sm relative group-hover:opacity-80 transition-all flex items-center justify-center"><span className="text-[10px] text-blue-800 font-bold hidden group-hover:block">Org 0%</span></div>
+                  <div className="w-full bg-purple-200 h-[0%] relative group-hover:opacity-80 transition-all flex items-center justify-center"><span className="text-[10px] text-purple-800 font-bold hidden group-hover:block">AI 0%</span></div>
+                  <div className="w-full bg-slate-400 h-[100%] rounded-b-lg relative group-hover:opacity-80 transition-all flex items-center justify-center text-white text-xs font-bold">SEM 100%</div>
+                  <p className="mt-2 text-sm font-bold text-slate-600">Mes 1</p>
+                </div>
+
+                {/* Mes 6 */}
+                <div className="flex flex-col justify-end h-full group">
+                  <div className="w-full bg-blue-500 h-[10%] rounded-t-lg relative group-hover:opacity-90 transition-all flex items-center justify-center text-white text-[10px]">10%</div>
+                  <div className="w-full bg-purple-500 h-[0%] relative group-hover:opacity-90 transition-all flex items-center justify-center"></div>
+                  <div className="w-full bg-slate-400 h-[90%] rounded-b-lg relative group-hover:opacity-90 transition-all flex items-center justify-center text-white text-xs font-bold">90%</div>
+                  <p className="mt-2 text-sm font-bold text-slate-600">Mes 6</p>
+                </div>
+
+                {/* Mes 12 */}
+                <div className="flex flex-col justify-end h-full group">
+                  <div className="w-full bg-purple-600 h-[10%] rounded-t-lg relative group-hover:opacity-90 transition-all flex items-center justify-center text-white text-[10px]">AI 10%</div>
+                  <div className="w-full bg-blue-600 h-[30%] relative group-hover:opacity-90 transition-all flex items-center justify-center text-white text-xs">Org 30%</div>
+                  <div className="w-full bg-slate-400 h-[60%] rounded-b-lg relative group-hover:opacity-90 transition-all flex items-center justify-center text-white text-xs font-bold">SEM 60%</div>
+                  <p className="mt-2 text-sm font-bold text-slate-600">Mes 12</p>
+                </div>
+
+                {/* Mes 24 */}
+                <div className="flex flex-col justify-end h-full group">
+                  <div className="w-full bg-purple-600 h-[30%] rounded-t-lg relative group-hover:opacity-90 transition-all flex items-center justify-center text-white text-xs font-bold">AI 30%</div>
+                  <div className="w-full bg-blue-600 h-[40%] relative group-hover:opacity-90 transition-all flex items-center justify-center text-white text-xs font-bold">Org 40%</div>
+                  <div className="w-full bg-slate-400 h-[30%] rounded-b-lg relative group-hover:opacity-90 transition-all flex items-center justify-center text-white text-xs">SEM 30%</div>
+                  <p className="mt-2 text-sm font-bold text-slate-600">Mes 24</p>
+                </div>
+              </div>
+              
+              <div className="flex justify-center gap-6 mt-6 text-xs font-bold">
+                <div className="flex items-center gap-2"><div className="w-3 h-3 bg-slate-400 rounded-full"></div>SEM (Pago)</div>
+                <div className="flex items-center gap-2"><div className="w-3 h-3 bg-blue-600 rounded-full"></div>Orgánico (SEO)</div>
+                <div className="flex items-center gap-2"><div className="w-3 h-3 bg-purple-600 rounded-full"></div>Tráfico IA (AIO)</div>
+              </div>
+            </div>
+
+            {/* SECCIÓN FINANCIERA SEM (NUEVO) */}
+            <div className="bg-slate-900 text-white p-8 rounded-2xl shadow-xl">
+              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <Banknote size={24} className="text-emerald-400" />
+                Eficiencia Financiera SEM
+              </h3>
+              
+              {/* Cards Comparativa CPC */}
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                <div className="bg-slate-800 p-6 rounded-xl border border-slate-700">
+                  <p className="text-slate-400 text-xs uppercase font-bold mb-2">Coste de Mercado (Media)</p>
+                  <div className="flex items-end gap-2">
+                    <span className="text-4xl font-bold text-red-400">1,72€</span>
+                    <span className="text-sm text-slate-500 mb-1">/clic</span>
+                  </div>
+                  <p className="text-xs text-slate-500 mt-2">Lo que paga tu competencia por ineficiencia.</p>
+                </div>
+                <div className="bg-emerald-900/30 p-6 rounded-xl border border-emerald-500/50 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 bg-emerald-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">AHORRO 76%</div>
+                  <p className="text-emerald-200 text-xs uppercase font-bold mb-2">Coste Optimizado (Alejo)</p>
+                  <div className="flex items-end gap-2">
+                    <span className="text-4xl font-bold text-emerald-400">0,40€</span>
+                    <span className="text-sm text-emerald-200/70 mb-1">/clic</span>
+                  </div>
+                  <p className="text-xs text-emerald-200/60 mt-2">Optimización experta de Quality Score.</p>
+                </div>
+              </div>
+
+              {/* Presupuesto Necesario Chart */}
+              <div>
+                <p className="text-sm font-bold text-slate-300 mb-4">Presupuesto Mensual Necesario (Para mantener 14.720 visitas)</p>
+                <div className="space-y-4">
+                  
                   {/* Mes 1 */}
-                  <div className="flex flex-col justify-end h-full group">
-                    <div className="w-full bg-blue-200 h-[0%] rounded-t-sm relative group-hover:opacity-80 transition-all flex items-center justify-center"><span className="text-[10px] text-blue-800 font-bold hidden group-hover:block">Org 0%</span></div>
-                    <div className="w-full bg-purple-200 h-[0%] relative group-hover:opacity-80 transition-all flex items-center justify-center"><span className="text-[10px] text-purple-800 font-bold hidden group-hover:block">AI 0%</span></div>
-                    <div className="w-full bg-slate-400 h-[100%] rounded-b-lg relative group-hover:opacity-80 transition-all flex items-center justify-center text-white text-xs font-bold">SEM 100%</div>
-                    <p className="mt-2 text-sm font-bold text-slate-600">Mes 1</p>
+                  <div className="flex items-center gap-4 group">
+                    <div className="w-16 text-xs text-slate-400 font-bold">Mes 1</div>
+                    <div className="flex-1 bg-slate-800 h-8 rounded-full overflow-hidden relative">
+                      <div className="bg-gradient-to-r from-red-500 to-red-600 h-full w-[100%]"></div>
+                      <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-white drop-shadow-md">5.888€</span>
+                    </div>
                   </div>
 
                   {/* Mes 6 */}
-                  <div className="flex flex-col justify-end h-full group">
-                    <div className="w-full bg-blue-500 h-[10%] rounded-t-lg relative group-hover:opacity-90 transition-all flex items-center justify-center text-white text-[10px]">10%</div>
-                    <div className="w-full bg-purple-500 h-[0%] relative group-hover:opacity-90 transition-all flex items-center justify-center"></div>
-                    <div className="w-full bg-slate-400 h-[90%] rounded-b-lg relative group-hover:opacity-90 transition-all flex items-center justify-center text-white text-xs font-bold">90%</div>
-                    <p className="mt-2 text-sm font-bold text-slate-600">Mes 6</p>
+                  <div className="flex items-center gap-4 group">
+                    <div className="w-16 text-xs text-slate-400 font-bold">Mes 6</div>
+                    <div className="flex-1 bg-slate-800 h-8 rounded-full overflow-hidden relative">
+                      <div className="bg-gradient-to-r from-orange-500 to-orange-600 h-full w-[90%]"></div>
+                      <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-white drop-shadow-md">5.299€</span>
+                    </div>
                   </div>
 
                   {/* Mes 12 */}
-                  <div className="flex flex-col justify-end h-full group">
-                    <div className="w-full bg-purple-600 h-[10%] rounded-t-lg relative group-hover:opacity-90 transition-all flex items-center justify-center text-white text-[10px]">AI 10%</div>
-                    <div className="w-full bg-blue-600 h-[30%] relative group-hover:opacity-90 transition-all flex items-center justify-center text-white text-xs">Org 30%</div>
-                    <div className="w-full bg-slate-400 h-[60%] rounded-b-lg relative group-hover:opacity-90 transition-all flex items-center justify-center text-white text-xs font-bold">SEM 60%</div>
-                    <p className="mt-2 text-sm font-bold text-slate-600">Mes 12</p>
+                  <div className="flex items-center gap-4 group">
+                    <div className="w-16 text-xs text-slate-400 font-bold">Mes 12</div>
+                    <div className="flex-1 bg-slate-800 h-8 rounded-full overflow-hidden relative">
+                      <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 h-full w-[60%]"></div>
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-900 drop-shadow-md">3.532€</span>
+                    </div>
                   </div>
 
                   {/* Mes 24 */}
-                  <div className="flex flex-col justify-end h-full group">
-                    <div className="w-full bg-purple-600 h-[30%] rounded-t-lg relative group-hover:opacity-90 transition-all flex items-center justify-center text-white text-xs font-bold">AI 30%</div>
-                    <div className="w-full bg-blue-600 h-[40%] relative group-hover:opacity-90 transition-all flex items-center justify-center text-white text-xs font-bold">Org 40%</div>
-                    <div className="w-full bg-slate-400 h-[30%] rounded-b-lg relative group-hover:opacity-90 transition-all flex items-center justify-center text-white text-xs">SEM 30%</div>
-                    <p className="mt-2 text-sm font-bold text-slate-600">Mes 24</p>
-                  </div>
-                </div>
-                
-                <div className="flex justify-center gap-6 mt-6 text-xs font-bold">
-                  <div className="flex items-center gap-2"><div className="w-3 h-3 bg-slate-400 rounded-full"></div>SEM (Pago)</div>
-                  <div className="flex items-center gap-2"><div className="w-3 h-3 bg-blue-600 rounded-full"></div>Orgánico (SEO)</div>
-                  <div className="flex items-center gap-2"><div className="w-3 h-3 bg-purple-600 rounded-full"></div>Tráfico IA (AIO)</div>
-                </div>
-              </div>
-
-              {/* SECCIÓN FINANCIERA SEM (NUEVO) */}
-              <div className="bg-slate-900 text-white p-8 rounded-2xl shadow-xl">
-                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                  <Banknote size={24} className="text-emerald-400" />
-                  Eficiencia Financiera SEM
-                </h3>
-                
-                {/* Cards Comparativa CPC */}
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <div className="bg-slate-800 p-6 rounded-xl border border-slate-700">
-                    <p className="text-slate-400 text-xs uppercase font-bold mb-2">Coste de Mercado (Media)</p>
-                    <div className="flex items-end gap-2">
-                      <span className="text-4xl font-bold text-red-400">1,72€</span>
-                      <span className="text-sm text-slate-500 mb-1">/clic</span>
+                  <div className="flex items-center gap-4 group">
+                    <div className="w-16 text-xs text-slate-400 font-bold">Mes 24</div>
+                    <div className="flex-1 bg-slate-800 h-8 rounded-full overflow-hidden relative">
+                      <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 h-full w-[30%]"></div>
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-900 drop-shadow-md">1.766€</span>
                     </div>
-                    <p className="text-xs text-slate-500 mt-2">Lo que paga tu competencia por ineficiencia.</p>
                   </div>
-                  <div className="bg-emerald-900/30 p-6 rounded-xl border border-emerald-500/50 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 bg-emerald-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">AHORRO 76%</div>
-                    <p className="text-emerald-200 text-xs uppercase font-bold mb-2">Coste Optimizado (Alejo)</p>
-                    <div className="flex items-end gap-2">
-                      <span className="text-4xl font-bold text-emerald-400">0,40€</span>
-                      <span className="text-sm text-emerald-200/70 mb-1">/clic</span>
-                    </div>
-                    <p className="text-xs text-emerald-200/60 mt-2">Optimización experta de Quality Score.</p>
-                  </div>
+
                 </div>
-
-                {/* Presupuesto Necesario Chart */}
-                <div>
-                  <p className="text-sm font-bold text-slate-300 mb-4">Presupuesto Mensual Necesario (Para mantener 14.720 visitas)</p>
-                  <div className="space-y-4">
-                    
-                    {/* Mes 1 */}
-                    <div className="flex items-center gap-4 group">
-                      <div className="w-16 text-xs text-slate-400 font-bold">Mes 1</div>
-                      <div className="flex-1 bg-slate-800 h-8 rounded-full overflow-hidden relative">
-                        <div className="bg-gradient-to-r from-red-500 to-red-600 h-full w-[100%]"></div>
-                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-white drop-shadow-md">5.888€</span>
-                      </div>
-                    </div>
-
-                    {/* Mes 6 */}
-                    <div className="flex items-center gap-4 group">
-                      <div className="w-16 text-xs text-slate-400 font-bold">Mes 6</div>
-                      <div className="flex-1 bg-slate-800 h-8 rounded-full overflow-hidden relative">
-                        <div className="bg-gradient-to-r from-orange-500 to-orange-600 h-full w-[90%]"></div>
-                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-white drop-shadow-md">5.299€</span>
-                      </div>
-                    </div>
-
-                    {/* Mes 12 */}
-                    <div className="flex items-center gap-4 group">
-                      <div className="w-16 text-xs text-slate-400 font-bold">Mes 12</div>
-                      <div className="flex-1 bg-slate-800 h-8 rounded-full overflow-hidden relative">
-                        <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 h-full w-[60%]"></div>
-                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-900 drop-shadow-md">3.532€</span>
-                      </div>
-                    </div>
-
-                    {/* Mes 24 */}
-                    <div className="flex items-center gap-4 group">
-                      <div className="w-16 text-xs text-slate-400 font-bold">Mes 24</div>
-                      <div className="flex-1 bg-slate-800 h-8 rounded-full overflow-hidden relative">
-                        <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 h-full w-[30%]"></div>
-                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-900 drop-shadow-md">1.766€</span>
-                      </div>
-                    </div>
-
-                  </div>
-                  <p className="text-xs text-slate-500 mt-4 text-center">
-                    *Gracias al crecimiento orgánico, reducimos la inversión publicitaria un <strong>70% en 2 años</strong> manteniendo el mismo volumen de ventas.
-                  </p>
-                </div>
-
-              </div>
-            </div>
-          )}
-
-          {/* TAB 4: EJECUCIÓN 12 MESES (UPDATED) */}
-          {activeTab === 'execution' && (
-            <div className="p-8 md:p-12 bg-slate-50">
-                <h2 className="text-3xl font-bold mb-8 text-center text-slate-800">Hoja de Ruta: 12 Meses</h2>
-                
-                <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
-                
-                {/* Phase 1 */}
-                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-blue-600 text-slate-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                    <span className="font-bold text-sm">1</span>
-                  </div>
-                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <div className="flex justify-between items-center mb-2">
-                        <h3 className="font-bold text-slate-800 text-lg">Fase 1: Estrategia Pura</h3>
-                        <span className="text-xs font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">MES 1 - 2</span>
-                    </div>
-                    <p className="text-sm text-slate-600 mb-4 italic">Auditoría profunda y diseño del futuro. No movemos un dedo sin un plan maestro.</p>
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2 text-sm text-slate-700">
-                        <CheckCircle size={16} className="text-blue-500 mt-0.5 shrink-0" />
-                        Construcción del Plan Estratégico (1 año)
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-slate-700">
-                        <CheckCircle size={16} className="text-blue-500 mt-0.5 shrink-0" />
-                        Definición de OKRs y KPIs
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-slate-700">
-                        <CheckCircle size={16} className="text-blue-500 mt-0.5 shrink-0" />
-                        Arquitectura del Ecosistema
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-slate-700">
-                        <CheckCircle size={16} className="text-blue-500 mt-0.5 shrink-0" />
-                        Selección de Nichos y Tácticas AIO
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-slate-700">
-                        <Rocket size={16} className="text-blue-500 mt-0.5 shrink-0" />
-                        <strong>Lanzamiento Campaña SEM (Tráfico Inmediato)</strong>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Phase 2 */}
-                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-white text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                    <span className="font-bold text-sm">2</span>
-                  </div>
-                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                      <div className="flex justify-between items-center mb-2">
-                        <h3 className="font-bold text-slate-800 text-lg">Fase 2: Construcción Masiva</h3>
-                        <span className="text-xs font-bold bg-purple-100 text-purple-800 px-3 py-1 rounded-full">MES 3 - 4</span>
-                    </div>
-                    <p className="text-sm text-slate-600 mb-4 italic">Ejecución táctica intensiva. Construyo el 100% de los activos necesarios. Sin límites.</p>
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2 text-sm text-slate-700">
-                        <PenTool size={16} className="text-purple-500 mt-0.5 shrink-0" />
-                        Despliegue de Webs, Apps y Dominios
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-slate-700">
-                        <Zap size={16} className="text-purple-500 mt-0.5 shrink-0" />
-                        Configuración de Gems y Flows
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-slate-700">
-                        <List size={16} className="text-purple-500 mt-0.5 shrink-0" />
-                        Gestión de proyectos con metodología OKR
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-slate-700">
-                        <Layout size={16} className="text-purple-500 mt-0.5 shrink-0" />
-                        Implementación de Dashboards
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Phase 3 */}
-                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-white text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                    <span className="font-bold text-sm">3</span>
-                  </div>
-                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                      <div className="flex justify-between items-center mb-2">
-                        <h3 className="font-bold text-slate-800 text-lg">Fase 3: Optimización & Vuelo</h3>
-                        <span className="text-xs font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">MES 5 - 12</span>
-                    </div>
-                    <p className="text-sm text-slate-600 mb-4 italic">Acompañamiento, medición y transferencia de conocimiento. Aseguramos que el motor funcione solo.</p>
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2 text-sm text-slate-700">
-                        <BarChart3 size={16} className="text-emerald-500 mt-0.5 shrink-0" />
-                        Lectura conjunta de Dashboards
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-slate-700">
-                        <MessageSquare size={16} className="text-emerald-500 mt-0.5 shrink-0" />
-                        Feedback de negocio y consultoría
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-slate-700">
-                        <Users size={16} className="text-emerald-500 mt-0.5 shrink-0" />
-                        Formación intensiva al equipo
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-slate-700">
-                        <Settings size={16} className="text-emerald-500 mt-0.5 shrink-0" />
-                        Ajuste fino de algoritmos AIO
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-               </div>
-            </div>
-          )}
-
-          {/* TAB 5: PROPUESTA COMERCIAL */}
-          {activeTab === 'proposal' && (
-            <div className="p-8 md:p-12">
-              <h2 className="text-3xl font-bold mb-8 text-center text-slate-800">Propuesta de Valor y Compromiso</h2>
-
-              {/* Entregables */}
-              <div className="grid md:grid-cols-3 gap-6 mb-12">
-                <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-blue-600">
-                    <Map size={24} />
-                  </div>
-                  <h3 className="font-bold text-lg mb-2">Plan Estratégico</h3>
-                  <p className="text-sm text-slate-600">La biblia de tu negocio por 1 año. Objetivos, tácticas y métricas claras.</p>
-                </div>
-                <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="bg-purple-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-purple-600">
-                    <Globe size={24} />
-                  </div>
-                  <h3 className="font-bold text-lg mb-2">Ecosistema Ilimitado</h3>
-                  <p className="text-sm text-slate-600">Dominios, Webs y Apps. Creamos tantas como la estrategia requiera. Sin coste extra.</p>
-                </div>
-                <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="bg-amber-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-amber-600">
-                    <Zap size={24} />
-                  </div>
-                  <h3 className="font-bold text-lg mb-2">Gems & Flows IA</h3>
-                  <p className="text-sm text-slate-600">Automatizaciones y asistentes personalizados para optimizar el trabajo diario.</p>
-                </div>
-                <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="bg-emerald-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-emerald-600">
-                    <BarChart3 size={24} />
-                  </div>
-                  <h3 className="font-bold text-lg mb-2">Dashboard Central</h3>
-                  <p className="text-sm text-slate-600">Medición en tiempo real. Datos unificados, verdad absoluta.</p>
-                </div>
-                
-                {/* POSICIONAMIENTO DIVIDIDO */}
-                <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="bg-rose-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-rose-600">
-                    <Rocket size={24} />
-                  </div>
-                  <h3 className="font-bold text-lg mb-2">Posicionamiento AIO</h3>
-                  <p className="text-sm text-slate-600">Estrategia híbrida para dominar: <strong>SEO (Orgánico)</strong>, <strong>SEM (Pago Eficiente)</strong> y <strong>IA (ChatGPT/Gemini)</strong>.</p>
-                </div>
-
-                <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="bg-cyan-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-cyan-600">
-                    <BrainCircuit size={24} />
-                  </div>
-                  <h3 className="font-bold text-lg mb-2">Tu Propio 'Alejo'</h3>
-                  <p className="text-sm text-slate-600">Entrega de una IA entrenada con mi metodología para consultas futuras.</p>
-                </div>
-              </div>
-
-              {/* Manifiesto */}
-              <div className="bg-slate-900 text-white rounded-2xl overflow-hidden mb-12 shadow-2xl">
-                <div className="p-8 text-center border-b border-slate-800">
-                  <h3 className="text-2xl font-bold mb-2 flex items-center justify-center gap-2">
-                    <Handshake size={28} /> Manifiesto de Colaboración
-                  </h3>
-                  <p className="text-slate-400 max-w-2xl mx-auto">Para que esto funcione, operamos bajo reglas estrictas. No soy un proveedor, soy un socio estratégico temporal.</p>
-                </div>
-                <div className="grid md:grid-cols-2">
-                  <div className="p-8 border-r border-slate-800">
-                    <h4 className="font-bold text-blue-400 mb-6 uppercase tracking-wider text-sm flex items-center gap-2">
-                      <CheckCircle size={16} /> Mis Compromisos
-                    </h4>
-                    <ul className="space-y-4 text-sm text-slate-300">
-                      <li className="flex gap-3 items-start">
-                        <span className="text-blue-500 font-bold mt-0.5">•</span> Producción ILIMITADA de activos (webs, apps, contenido) según estrategia.
-                      </li>
-                      <li className="flex gap-3 items-start">
-                        <span className="text-blue-500 font-bold mt-0.5">•</span> Profundidad total en el conocimiento de tu industria.
-                      </li>
-                      <li className="flex gap-3 items-start">
-                        <span className="text-blue-500 font-bold mt-0.5">•</span> Obsesión por cumplir el 100% de los OKRs.
-                      </li>
-                      <li className="flex gap-3 items-start">
-                        <span className="text-blue-500 font-bold mt-0.5">•</span> Solo pido el tiempo estrictamente necesario.
-                      </li>
-                      <li className="flex gap-3 items-start">
-                        <span className="text-blue-500 font-bold mt-0.5">•</span> <strong>Garantía de Autonomía:</strong> Te entrego el sistema funcionando al mes 12.
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="p-8 bg-slate-900/50">
-                    <h4 className="font-bold text-red-400 mb-6 uppercase tracking-wider text-sm flex items-center gap-2">
-                      <AlertTriangle size={16} /> Tus Compromisos (No Negociables)
-                    </h4>
-                    <ul className="space-y-4 text-sm text-slate-300">
-                      <li className="flex gap-3 items-start">
-                        <span className="text-red-500 font-bold mt-0.5">•</span> <strong>Compromiso de hierro:</strong> 12 meses sin abandono.
-                      </li>
-                      <li className="flex gap-3 items-start">
-                        <span className="text-red-500 font-bold mt-0.5">•</span> <strong>Confianza Radical:</strong> El plan estratégico NO se cambia.
-                      </li>
-                      <li className="flex gap-3 items-start">
-                        <span className="text-red-500 font-bold mt-0.5">•</span> <strong>Estabilidad:</strong> Sin cambios bruscos en marca/precios durante el proceso.
-                      </li>
-                      <li className="flex gap-3 items-start">
-                        <span className="text-red-500 font-bold mt-0.5">•</span> <strong>Cero Micro-management:</strong> No pedir cambios estéticos en webs/apps.
-                      </li>
-                      <li className="flex gap-3 items-start">
-                        <span className="text-red-500 font-bold mt-0.5">•</span> <strong>Llaves del Reino:</strong> Acceso total (Hosting, Ads, CRM, Data).
-                      </li>
-                      <li className="flex gap-3 items-start">
-                        <span className="text-red-500 font-bold mt-0.5">•</span> <strong>Mentalidad Remote-First:</strong> Cero reuniones presenciales.
-                      </li>
-                      <li className="flex gap-3 items-start">
-                        <span className="text-red-500 font-bold mt-0.5">•</span> <strong>Paciencia Estratégica:</strong> Los KPIs llegan cuando el plan lo indica.
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Pricing & CTA */}
-              <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-                <div className="text-center md:text-right">
-                  <p className="text-sm text-slate-500 uppercase font-bold tracking-wide">Inversión Mensual</p>
-                  <div className="flex items-baseline justify-center md:justify-end gap-1">
-                    <span className="text-5xl font-extrabold text-slate-900">3.000€</span>
-                    <span className="text-xl text-slate-500 font-medium">/mes</span>
-                  </div>
-                  <p className="text-xs text-slate-400 mt-2">Contrato anual cerrado. Facturación mensual.</p>
-                  <p className="text-xs text-slate-400">Incluye todos los costes de desarrollo y automatización.</p>
-                </div>
-                
-                <div className="h-16 w-px bg-slate-200 hidden md:block"></div>
-
-                <div className="text-center">
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white text-xl font-bold py-4 px-12 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
-                    Acepto el Reto. Iniciemos.
-                  </button>
-                  <p className="text-[10px] text-slate-400 mt-3 max-w-xs mx-auto">
-                    *Al hacer clic confirmas haber leído y aceptado los compromisos del manifiesto.
-                  </p>
-                </div>
+                <p className="text-xs text-slate-500 mt-4 text-center">
+                  *Gracias al crecimiento orgánico, reducimos la inversión publicitaria un <strong>70% en 2 años</strong> manteniendo el mismo volumen de ventas.
+                </p>
               </div>
 
             </div>
-          )}
-          
-          {/* Footer */}
-          <div className="bg-slate-900 text-white p-6 text-center border-t border-slate-800">
-              <p className="text-sm opacity-60">Estrategia diseñada exclusivamente para AYR por Alejo Moreno</p>
           </div>
+        )}
 
+        {/* TAB 4: EJECUCIÓN 12 MESES (UPDATED) */}
+        {activeTab === 'execution' && (
+          <div className="p-8 md:p-12 bg-slate-50">
+             <h2 className="text-3xl font-bold mb-8 text-center text-slate-800">Hoja de Ruta: 12 Meses</h2>
+             
+             <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+              
+              {/* Phase 1 */}
+              <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-blue-600 text-slate-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                  <span className="font-bold text-sm">1</span>
+                </div>
+                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                  <div className="flex justify-between items-center mb-2">
+                      <h3 className="font-bold text-slate-800 text-lg">Fase 1: Estrategia Pura</h3>
+                      <span className="text-xs font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">MES 1 - 2</span>
+                  </div>
+                  <p className="text-sm text-slate-600 mb-4 italic">Auditoría profunda y diseño del futuro. No movemos un dedo sin un plan maestro.</p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2 text-sm text-slate-700">
+                      <CheckCircle size={16} className="text-blue-500 mt-0.5 shrink-0" />
+                      Construcción del Plan Estratégico (1 año)
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-slate-700">
+                      <CheckCircle size={16} className="text-blue-500 mt-0.5 shrink-0" />
+                      Definición de OKRs y KPIs
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-slate-700">
+                      <CheckCircle size={16} className="text-blue-500 mt-0.5 shrink-0" />
+                      Arquitectura del Ecosistema
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-slate-700">
+                      <CheckCircle size={16} className="text-blue-500 mt-0.5 shrink-0" />
+                      Selección de Nichos y Tácticas AIO
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-slate-700">
+                      <Rocket size={16} className="text-blue-500 mt-0.5 shrink-0" />
+                      <strong>Lanzamiento Campaña SEM (Tráfico Inmediato)</strong>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Phase 2 */}
+              <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-white text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                  <span className="font-bold text-sm">2</span>
+                </div>
+                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                   <div className="flex justify-between items-center mb-2">
+                      <h3 className="font-bold text-slate-800 text-lg">Fase 2: Construcción Masiva</h3>
+                      <span className="text-xs font-bold bg-purple-100 text-purple-800 px-3 py-1 rounded-full">MES 3 - 4</span>
+                  </div>
+                  <p className="text-sm text-slate-600 mb-4 italic">Ejecución táctica intensiva. Construyo el 100% de los activos necesarios. Sin límites.</p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2 text-sm text-slate-700">
+                      <PenTool size={16} className="text-purple-500 mt-0.5 shrink-0" />
+                      Despliegue de Webs, Apps y Dominios
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-slate-700">
+                      <Zap size={16} className="text-purple-500 mt-0.5 shrink-0" />
+                      Configuración de Gems y Flows
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-slate-700">
+                      <List size={16} className="text-purple-500 mt-0.5 shrink-0" />
+                      Gestión de proyectos con metodología OKR
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-slate-700">
+                      <Layout size={16} className="text-purple-500 mt-0.5 shrink-0" />
+                      Implementación de Dashboards
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Phase 3 */}
+              <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-white text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                  <span className="font-bold text-sm">3</span>
+                </div>
+                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                   <div className="flex justify-between items-center mb-2">
+                      <h3 className="font-bold text-slate-800 text-lg">Fase 3: Optimización & Vuelo</h3>
+                      <span className="text-xs font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">MES 5 - 12</span>
+                  </div>
+                  <p className="text-sm text-slate-600 mb-4 italic">Acompañamiento, medición y transferencia de conocimiento. Aseguramos que el motor funcione solo.</p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2 text-sm text-slate-700">
+                      <BarChart3 size={16} className="text-emerald-500 mt-0.5 shrink-0" />
+                      Lectura conjunta de Dashboards
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-slate-700">
+                      <MessageSquare size={16} className="text-emerald-500 mt-0.5 shrink-0" />
+                      Feedback de negocio y consultoría
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-slate-700">
+                      <Users size={16} className="text-emerald-500 mt-0.5 shrink-0" />
+                      Formación intensiva al equipo
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-slate-700">
+                      <Settings size={16} className="text-emerald-500 mt-0.5 shrink-0" />
+                      Ajuste fino de algoritmos AIO
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+             </div>
+          </div>
+        )}
+
+        {/* TAB 5: PROPUESTA COMERCIAL */}
+        {activeTab === 'proposal' && (
+          <div className="p-8 md:p-12">
+            <h2 className="text-3xl font-bold mb-8 text-center text-slate-800">Propuesta de Valor y Compromiso</h2>
+
+            {/* Entregables */}
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+                  <Map size={24} />
+                </div>
+                <h3 className="font-bold text-lg mb-2">Plan Estratégico</h3>
+                <p className="text-sm text-slate-600">La biblia de tu negocio por 1 año. Objetivos, tácticas y métricas claras.</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-purple-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-purple-600">
+                  <Globe size={24} />
+                </div>
+                <h3 className="font-bold text-lg mb-2">Ecosistema Ilimitado</h3>
+                <p className="text-sm text-slate-600">Dominios, Webs y Apps. Creamos tantas como la estrategia requiera. Sin coste extra.</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-amber-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-amber-600">
+                  <Zap size={24} />
+                </div>
+                <h3 className="font-bold text-lg mb-2">Gems & Flows IA</h3>
+                <p className="text-sm text-slate-600">Automatizaciones y asistentes personalizados para optimizar el trabajo diario.</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-emerald-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-emerald-600">
+                  <BarChart3 size={24} />
+                </div>
+                <h3 className="font-bold text-lg mb-2">Dashboard Central</h3>
+                <p className="text-sm text-slate-600">Medición en tiempo real. Datos unificados, verdad absoluta.</p>
+              </div>
+              
+              {/* POSICIONAMIENTO DIVIDIDO */}
+              <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-rose-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-rose-600">
+                  <Rocket size={24} />
+                </div>
+                <h3 className="font-bold text-lg mb-2">Posicionamiento AIO</h3>
+                <p className="text-sm text-slate-600">Estrategia híbrida para dominar: <strong>SEO (Orgánico)</strong>, <strong>SEM (Pago Eficiente)</strong> y <strong>IA (ChatGPT/Gemini)</strong>.</p>
+              </div>
+
+              <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-cyan-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-cyan-600">
+                  <BrainCircuit size={24} />
+                </div>
+                <h3 className="font-bold text-lg mb-2">Tu Propio 'Alejo'</h3>
+                <p className="text-sm text-slate-600">Entrega de una IA entrenada con mi metodología para consultas futuras.</p>
+              </div>
+            </div>
+
+            {/* Manifiesto */}
+            <div className="bg-slate-900 text-white rounded-2xl overflow-hidden mb-12 shadow-2xl">
+              <div className="p-8 text-center border-b border-slate-800">
+                <h3 className="text-2xl font-bold mb-2 flex items-center justify-center gap-2">
+                  <Handshake size={28} /> Manifiesto de Colaboración
+                </h3>
+                <p className="text-slate-400 max-w-2xl mx-auto">Para que esto funcione, operamos bajo reglas estrictas. No soy un proveedor, soy un socio estratégico temporal.</p>
+              </div>
+              <div className="grid md:grid-cols-2">
+                <div className="p-8 border-r border-slate-800">
+                  <h4 className="font-bold text-blue-400 mb-6 uppercase tracking-wider text-sm flex items-center gap-2">
+                    <CheckCircle size={16} /> Mis Compromisos
+                  </h4>
+                  <ul className="space-y-4 text-sm text-slate-300">
+                    <li className="flex gap-3 items-start">
+                      <span className="text-blue-500 font-bold mt-0.5">•</span> Producción ILIMITADA de activos (webs, apps, contenido) según estrategia.
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <span className="text-blue-500 font-bold mt-0.5">•</span> Profundidad total en el conocimiento de tu industria.
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <span className="text-blue-500 font-bold mt-0.5">•</span> Obsesión por cumplir el 100% de los OKRs.
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <span className="text-blue-500 font-bold mt-0.5">•</span> Solo pido el tiempo estrictamente necesario.
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <span className="text-blue-500 font-bold mt-0.5">•</span> <strong>Garantía de Autonomía:</strong> Te entrego el sistema funcionando al mes 12.
+                    </li>
+                  </ul>
+                </div>
+                <div className="p-8 bg-slate-900/50">
+                  <h4 className="font-bold text-red-400 mb-6 uppercase tracking-wider text-sm flex items-center gap-2">
+                    <AlertTriangle size={16} /> Tus Compromisos (No Negociables)
+                  </h4>
+                  <ul className="space-y-4 text-sm text-slate-300">
+                    <li className="flex gap-3 items-start">
+                      <span className="text-red-500 font-bold mt-0.5">•</span> <strong>Compromiso de hierro:</strong> 12 meses sin abandono.
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <span className="text-red-500 font-bold mt-0.5">•</span> <strong>Confianza Radical:</strong> El plan estratégico NO se cambia.
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <span className="text-red-500 font-bold mt-0.5">•</span> <strong>Estabilidad:</strong> Sin cambios bruscos en marca/precios durante el proceso.
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <span className="text-red-500 font-bold mt-0.5">•</span> <strong>Cero Micro-management:</strong> No pedir cambios estéticos en webs/apps.
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <span className="text-red-500 font-bold mt-0.5">•</span> <strong>Llaves del Reino:</strong> Acceso total (Hosting, Ads, CRM, Data).
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <span className="text-red-500 font-bold mt-0.5">•</span> <strong>Mentalidad Remote-First:</strong> Cero reuniones presenciales.
+                    </li>
+                    <li className="flex gap-3 items-start">
+                      <span className="text-red-500 font-bold mt-0.5">•</span> <strong>Paciencia Estratégica:</strong> Los KPIs llegan cuando el plan lo indica.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Pricing & CTA */}
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+              <div className="text-center md:text-right">
+                <p className="text-sm text-slate-500 uppercase font-bold tracking-wide">Inversión Mensual</p>
+                <div className="flex items-baseline justify-center md:justify-end gap-1">
+                  <span className="text-5xl font-extrabold text-slate-900">3.000€</span>
+                  <span className="text-xl text-slate-500 font-medium">/mes</span>
+                </div>
+                <p className="text-xs text-slate-400 mt-2">Contrato anual cerrado. Facturación mensual.</p>
+                <p className="text-xs text-slate-400">Incluye todos los costes de desarrollo y automatización.</p>
+              </div>
+              
+              <div className="h-16 w-px bg-slate-200 hidden md:block"></div>
+
+              <div className="text-center">
+                <button className="bg-blue-600 hover:bg-blue-700 text-white text-xl font-bold py-4 px-12 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
+                  Acepto el Reto. Iniciemos.
+                </button>
+                <p className="text-[10px] text-slate-400 mt-3 max-w-xs mx-auto">
+                  *Al hacer clic confirmas haber leído y aceptado los compromisos del manifiesto.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        )}
+        
+        {/* Footer */}
+        <div className="bg-slate-900 text-white p-6 text-center border-t border-slate-800">
+           <p className="text-sm opacity-60">Estrategia diseñada exclusivamente para AYR por Alejo Moreno</p>
         </div>
+
       </div>
     </div>
   );
