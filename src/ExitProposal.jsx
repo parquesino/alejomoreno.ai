@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   CheckCircle2, Lock, Rocket, Calendar, Target, Lightbulb, ArrowRight, 
@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 
 const Logo = () => (
+  // EL LOGO AHORA ES UN LINK A "/"
   <Link to="/" className="flex items-center gap-2 group cursor-pointer">
     <div className="relative w-10 h-10 flex items-center justify-center">
       <svg viewBox="0 0 100 100" className="w-full h-full text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]">
@@ -20,7 +21,6 @@ const Logo = () => (
   </Link>
 );
 
-// --- COMPONENTE FASE CARD CORREGIDO ---
 const PhaseCard = ({ number, title, duration, description, items }) => {
   const isEven = number % 2 === 0;
   
