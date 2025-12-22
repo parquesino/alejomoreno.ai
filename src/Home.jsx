@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; // Añadido Link
 import { 
   ArrowRight, 
   Menu, 
@@ -25,7 +25,8 @@ import {
 const PROFILE_IMAGE_URL = "https://raw.githubusercontent.com/parquesino/alejomoreno.ai/main/Copia%20de%20foto%20profesional%20alejo%20fondo%20gris.png"; 
 
 const Logo = () => (
-  <div className="flex items-center gap-2 group cursor-pointer">
+  // EL LOGO AHORA ES UN LINK A "/"
+  <Link to="/" className="flex items-center gap-2 group cursor-pointer">
     <div className="relative w-10 h-10 flex items-center justify-center">
       <svg viewBox="0 0 100 100" className="w-full h-full text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]">
         <path d="M50 10 L85 90 L70 90 L50 40 L30 90 L15 90 Z" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
@@ -36,7 +37,7 @@ const Logo = () => (
       <span className="text-xl font-bold tracking-tight text-white leading-none">ALEJO<span className="text-gray-400">MORENO</span><span className="text-cyan-400">.ai</span></span>
       <span className="text-[0.6rem] tracking-[0.2em] text-cyan-400/80 uppercase">AI Growth Architect</span>
     </div>
-  </div>
+  </Link>
 );
 
 const ServiceCard = ({ icon: Icon, title, subtitle, idealFor, description, route }) => {
