@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   BarChart3, 
   TrendingUp, 
@@ -29,7 +30,8 @@ const IMAGES = {
 // ------------------------------------------------------------------
 
 const Logo = () => (
-  <div className="flex items-center gap-2 group cursor-pointer">
+  // EL LOGO AHORA ES UN LINK A "/"
+  <Link to="/" className="flex items-center gap-2 group cursor-pointer">
     <div className="relative w-10 h-10 flex items-center justify-center">
       <svg viewBox="0 0 100 100" className="w-full h-full text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]">
         <path d="M50 10 L85 90 L70 90 L50 40 L30 90 L15 90 Z" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
@@ -40,7 +42,7 @@ const Logo = () => (
       <span className="text-xl font-bold tracking-tight text-white leading-none">ALEJO<span className="text-gray-400">MORENO</span><span className="text-cyan-400">.ai</span></span>
       <span className="text-[0.6rem] tracking-[0.2em] text-cyan-400/80 uppercase">Case Study</span>
     </div>
-  </div>
+  </Link>
 );
 
 const StatCard = ({ icon: Icon, value, label, sub, trend }) => (
