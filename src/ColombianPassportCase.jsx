@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   BarChart3, 
   TrendingUp, 
@@ -15,21 +15,15 @@ import {
   Network,
   ShieldCheck,
   ExternalLink,
-  Maximize2
+  Maximize2,
+  X
 } from 'lucide-react';
 
-// --- CONFIGURACIÓN DE IMÁGENES (Pega aquí tus enlaces de GitHub) ---
+// --- CONFIGURACIÓN DE IMÁGENES ---
 const IMAGES = {
-  // Captura de Search Console (Gráfica de subida)
   searchConsole: "/search-console.png", 
-  
-  // Captura del Chat con Gemini/ChatGPT recomendándote
   aiRecommendation: "/ai-chat.png",
-  
-  // Captura del Dashboard de Wix con tráfico de Bots
   aiTraffic: "/wix-bots.png",
-  
-  // Captura de las Reseñas de Google
   googleReviews: "/google-reviews.png"
 };
 // ------------------------------------------------------------------
@@ -70,10 +64,15 @@ const StatCard = ({ icon: Icon, value, label, sub, trend }) => (
   </div>
 );
 
-const EvidenceFrame = ({ title, src, caption }) => (
-  <div className="group relative">
+// Componente EvidenceFrame actualizado con funcionalidad Click
+const EvidenceFrame = ({ title, src, caption, onExpand }) => (
+  <div 
+    className="group relative cursor-zoom-in" 
+    onClick={() => onExpand && onExpand(src, title)}
+  >
     <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-    <div className="relative bg-slate-900 rounded-xl overflow-hidden border border-white/10 shadow-2xl">
+    <div className="relative bg-slate-900 rounded-xl overflow-hidden border border-white/10 shadow-2xl transition-transform group-hover:scale-[1.01]">
+      {/* Barra de Navegador */}
       <div className="h-8 bg-slate-950 border-b border-white/5 flex items-center px-4 gap-2">
         <div className="flex gap-1.5">
           <div className="w-2.5 h-2.5 rounded-full bg-red-500/20"></div>
@@ -83,16 +82,20 @@ const EvidenceFrame = ({ title, src, caption }) => (
         <div className="flex-1 text-center">
           <span className="text-[10px] text-gray-500 font-mono">{title}</span>
         </div>
+        <Maximize2 size={12} className="text-gray-600" />
       </div>
-      <div className="relative aspect-video bg-slate-800 group cursor-zoom-in">
+      
+      {/* Imagen */}
+      <div className="relative aspect-video bg-slate-800">
         <img 
           src={src} 
           alt={title} 
-          className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-500" 
+          className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500" 
         />
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-            <span className="bg-black/50 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm border border-white/20">
-                Evidencia Real
+        {/* Overlay al hacer hover */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-black/20 backdrop-blur-[1px]">
+            <span className="bg-black/80 text-white text-xs px-4 py-2 rounded-full border border-white/20 flex items-center gap-2 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform">
+               <Maximize2 size={14} className="text-cyan-400" /> Ampliar Evidencia
             </span>
         </div>
       </div>
@@ -100,6 +103,50 @@ const EvidenceFrame = ({ title, src, caption }) => (
     {caption && <p className="text-center text-xs text-gray-500 mt-3 italic">{caption}</p>}
   </div>
 );
+
+// Componente Lightbox (Visor a pantalla completa)
+const ImageLightbox = ({ src, title, isOpen, onClose }) => {
+  // Manejador de tecla ESC
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    if (isOpen) window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div 
+      className="fixed inset-0 z-[1000] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-10 animate-in fade-in duration-300" 
+      onClick={onClose}
+    >
+      <button 
+        onClick={onClose}
+        className="absolute top-6 right-6 text-white/70 hover:text-white hover:bg-white/10 p-2 rounded-full transition-all z-[1010]"
+      >
+        <X size={32} />
+      </button>
+      
+      <div 
+        className="relative max-w-full max-h-full flex flex-col items-center" 
+        onClick={(e) => e.stopPropagation()} // Evita cerrar si clickeas la imagen
+      >
+         <img 
+            src={src} 
+            alt={title} 
+            className="max-w-[90vw] max-h-[85vh] rounded-lg border border-white/10 shadow-2xl object-contain"
+         />
+         <div className="mt-4">
+            <span className="text-gray-300 font-mono text-xs md:text-sm bg-black/50 px-4 py-2 rounded-full border border-white/10">
+              {title}
+            </span>
+         </div>
+      </div>
+    </div>
+  );
+};
 
 const SatelliteNode = ({ url, positionClass }) => (
   <div className={`absolute ${positionClass} z-20 flex flex-col items-center group`}>
@@ -111,9 +158,23 @@ const SatelliteNode = ({ url, positionClass }) => (
 );
 
 export default function ColombianPassportCase() {
+  const [lightbox, setLightbox] = useState({ isOpen: false, src: '', title: '' });
+
+  const openLightbox = (src, title) => {
+    setLightbox({ isOpen: true, src, title });
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-cyan-500/30 selection:text-cyan-200 overflow-x-hidden">
       
+      {/* Visor de Imágenes */}
+      <ImageLightbox 
+        isOpen={lightbox.isOpen} 
+        src={lightbox.src} 
+        title={lightbox.title} 
+        onClose={() => setLightbox({ ...lightbox, isOpen: false })} 
+      />
+
       {/* Nav */}
       <nav className="w-full py-6 border-b border-white/5 bg-slate-950/50 backdrop-blur-md fixed z-50">
         <div className="container mx-auto px-6 flex justify-between items-center">
@@ -180,9 +241,10 @@ export default function ColombianPassportCase() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="order-2 md:order-1">
                   <EvidenceFrame 
-                    title="google-search-console.pdf" 
+                    title="google-search-console.png" 
                     src={IMAGES.searchConsole} 
                     caption="Gráfica real de Search Console: Crecimiento orgánico constante en 12 meses."
+                    onExpand={openLightbox}
                   />
               </div>
               <div className="order-1 md:order-2">
@@ -249,6 +311,7 @@ export default function ColombianPassportCase() {
                         title="chatgpt-recommendation.png" 
                         src={IMAGES.aiRecommendation} 
                         caption="Captura real: ChatGPT recomendando nuestra firma junto a competidores históricos."
+                        onExpand={openLightbox}
                       />
                   </div>
               </div>
@@ -282,6 +345,7 @@ export default function ColombianPassportCase() {
                             title="wix-analytics-bot-traffic.jpg" 
                             src={IMAGES.aiTraffic} 
                             caption="Dashboard de Wix Analytics mostrando el tráfico segmentado por Bots de IA."
+                            onExpand={openLightbox}
                           />
                       </div>
                   </div>
@@ -361,6 +425,7 @@ export default function ColombianPassportCase() {
                         title="google-maps-reviews.png" 
                         src={IMAGES.googleReviews} 
                         caption="Perfil de Google Business: 4.8 Estrellas con automatización total."
+                        onExpand={openLightbox}
                       />
                   </div>
                   <div className="text-left max-w-md">
