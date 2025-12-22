@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 
 const Logo = () => (
+  // EL LOGO AHORA ES UN LINK A "/"
   <Link to="/" className="flex items-center gap-2 group cursor-pointer">
     <div className="relative w-10 h-10 flex items-center justify-center">
       <svg viewBox="0 0 100 100" className="w-full h-full text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]">
@@ -20,29 +21,22 @@ const Logo = () => (
   </Link>
 );
 
-// --- COMPONENTE FASE CARD CORREGIDO (Lógica Robusta) ---
 const PhaseCard = ({ number, title, duration, description, items }) => {
-  const isEven = number % 2 === 0; // Pares (2, 4) van a la izquierda (en Desktop)
+  const isEven = number % 2 === 0;
   
   return (
     <div className="relative pl-8 md:pl-0 border-l-2 border-cyan-500/20 md:border-none pb-12 last:pb-0">
-      {/* Marcador Central (Solo Desktop) */}
       <div className="hidden md:flex absolute top-0 left-1/2 -translate-x-1/2 w-8 h-8 bg-slate-900 border-2 border-cyan-500 rounded-full z-10 shadow-[0_0_15px_rgba(34,211,238,0.4)] items-center justify-center text-cyan-400 font-bold text-xs">
         {number}
       </div>
 
-      {/* Contenedor de la Tarjeta */}
-      {/* LÓGICA CORREGIDA: Usamos mr-auto (izquierda) o ml-auto (derecha) explícitamente */}
       <div className={`md:w-1/2 relative group transition-all duration-300 ${isEven ? 'md:mr-auto md:pr-12 md:text-right' : 'md:ml-auto md:pl-12 md:text-left'}`}>
          
-         {/* Marcador Móvil (Punto en la línea izquierda) */}
          <div className="md:hidden absolute top-0 -left-[37px] w-6 h-6 bg-slate-900 border-2 border-cyan-500 rounded-full z-10 flex items-center justify-center text-cyan-400 font-bold text-[10px]">
             {number}
          </div>
          
-         {/* Tarjeta */}
          <div className="p-6 rounded-2xl bg-slate-900 border border-white/5 group-hover:border-cyan-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10">
-            {/* Encabezado */}
             <div className={`flex flex-col gap-4 mb-4 ${isEven ? 'md:flex-row-reverse items-center justify-between' : 'md:flex-row items-center justify-between'}`}>
                <h3 className="text-xl font-bold text-white">{title}</h3>
                <span className="px-3 py-1 rounded-full bg-cyan-950/50 text-cyan-400 text-xs font-bold border border-cyan-500/20 flex items-center gap-1 w-fit">
@@ -52,7 +46,6 @@ const PhaseCard = ({ number, title, duration, description, items }) => {
             
             <p className="text-gray-400 text-sm mb-4 leading-relaxed">{description}</p>
             
-            {/* Lista de Items */}
             <ul className={`space-y-2 flex flex-col ${isEven ? 'md:items-end' : 'md:items-start'}`}>
               {items.map((item, i) => (
                   <li key={i} className={`flex items-start gap-2 text-sm text-gray-300 ${isEven ? 'flex-row-reverse text-right' : 'flex-row text-left'}`}>
