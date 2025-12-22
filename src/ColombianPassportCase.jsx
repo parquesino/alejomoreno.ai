@@ -21,16 +21,16 @@ import {
 // --- CONFIGURACIÓN DE IMÁGENES (Pega aquí tus enlaces de GitHub) ---
 const IMAGES = {
   // Captura de Search Console (Gráfica de subida)
-  searchConsole: "https://via.placeholder.com/800x450/0f172a/22d3ee?text=Foto+Search+Console", 
+  searchConsole: "/search-console.png", 
   
   // Captura del Chat con Gemini/ChatGPT recomendándote
-  aiRecommendation: "https://via.placeholder.com/600x800/0f172a/22d3ee?text=Foto+Recomendacion+IA",
+  aiRecommendation: "/ai-chat.png",
   
   // Captura del Dashboard de Wix con tráfico de Bots
-  aiTraffic: "https://via.placeholder.com/800x450/0f172a/22d3ee?text=Foto+Dashboard+Wix",
+  aiTraffic: "/wix-bots.png",
   
   // Captura de las Reseñas de Google
-  googleReviews: "https://via.placeholder.com/500x300/0f172a/22d3ee?text=Foto+Google+Reviews"
+  googleReviews: "/evidencia/google-reviews.png"
 };
 // ------------------------------------------------------------------
 
