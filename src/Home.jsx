@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Añadido Link
+import { useNavigate, Link } from 'react-router-dom';
 import { 
   ArrowRight, 
   Menu, 
@@ -25,7 +25,6 @@ import {
 const PROFILE_IMAGE_URL = "https://raw.githubusercontent.com/parquesino/alejomoreno.ai/main/Copia%20de%20foto%20profesional%20alejo%20fondo%20gris.png"; 
 
 const Logo = () => (
-  // EL LOGO AHORA ES UN LINK A "/"
   <Link to="/" className="flex items-center gap-2 group cursor-pointer">
     <div className="relative w-10 h-10 flex items-center justify-center">
       <svg viewBox="0 0 100 100" className="w-full h-full text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]">
@@ -116,6 +115,16 @@ export default function Home() {
     navigate('/caso-colombian-passport');
   };
 
+  // FUNCIÓN PARA NAVEGAR ENTRE SECCIONES SIN ROMPER EL ROUTER
+  const scrollToSection = (e, id) => {
+    e.preventDefault(); // Evita que la URL cambie y rompa el HashRouter
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false); // Cierra el menú móvil si está abierto
+  };
+
   const companies = [
     { name: "ISPD", role: "Regional Director" },
     { name: "REBOLD", role: "Analysis Director" },
@@ -132,10 +141,10 @@ export default function Home() {
           <Logo />
           
           <div className="hidden md:flex items-center gap-8">
-            <a href="#problem" className="text-sm font-medium hover:text-cyan-400 transition-colors">La Nueva Era</a>
-            <a href="#proof" className="text-sm font-medium hover:text-cyan-400 transition-colors">Evidencia Real</a>
-            <a href="#services" className="text-sm font-medium hover:text-cyan-400 transition-colors">Servicios</a>
-            <a href="#about" className="text-sm font-medium hover:text-cyan-400 transition-colors">Sobre Mí</a>
+            <a href="#problem" onClick={(e) => scrollToSection(e, 'problem')} className="text-sm font-medium hover:text-cyan-400 transition-colors cursor-pointer">La Nueva Era</a>
+            <a href="#proof" onClick={(e) => scrollToSection(e, 'proof')} className="text-sm font-medium hover:text-cyan-400 transition-colors cursor-pointer">Evidencia Real</a>
+            <a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="text-sm font-medium hover:text-cyan-400 transition-colors cursor-pointer">Servicios</a>
+            <a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="text-sm font-medium hover:text-cyan-400 transition-colors cursor-pointer">Sobre Mí</a>
             <a 
               href="https://wa.me/34655328878?text=Hola%20Alejo%2C%20me%20gustar%C3%ADa%20agendar%20una%20Consultor%C3%ADa%20Estrat%C3%A9gica" 
               target="_blank" 
@@ -156,10 +165,10 @@ export default function Home() {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-slate-950 pt-24 px-6 md:hidden">
           <div className="flex flex-col gap-6 text-xl">
-            <a href="#problem" onClick={() => setIsMobileMenuOpen(false)}>La Nueva Era</a>
-            <a href="#proof" onClick={() => setIsMobileMenuOpen(false)}>Evidencia Real</a>
-            <a href="#services" onClick={() => setIsMobileMenuOpen(false)}>Servicios</a>
-            <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>Sobre Mí</a>
+            <a href="#problem" onClick={(e) => scrollToSection(e, 'problem')}>La Nueva Era</a>
+            <a href="#proof" onClick={(e) => scrollToSection(e, 'proof')}>Evidencia Real</a>
+            <a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Servicios</a>
+            <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>Sobre Mí</a>
           </div>
         </div>
       )}
