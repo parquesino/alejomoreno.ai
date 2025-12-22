@@ -5,8 +5,9 @@ import AIOProposal from './AIOProposal';
 import ExitProposal from './ExitProposal';
 import AgencyProposal from './AgencyProposal';
 import ColombianPassportCase from './ColombianPassportCase';
+import EstrategiaAYR from './EstrategiaAYR'; // Importamos la nueva propuesta
 
-// Wrapper para usar el hook useLocation dentro del Router y hacer scroll arriba
+// Wrapper para hacer scroll al inicio cada vez que cambia la ruta
 const ScrollToTopWrapper = () => {
   const { pathname } = useLocation();
   React.useEffect(() => {
@@ -25,6 +26,9 @@ function App() {
         <Route path="/mentoria-exit" element={<ExitProposal />} />
         <Route path="/fractional-ai" element={<AgencyProposal />} />
         <Route path="/caso-colombian-passport" element={<ColombianPassportCase />} />
+        
+        {/* Nueva ruta para la propuesta de AYR */}
+        <Route path="/estrategia-ayr" element={<EstrategiaAYR />} />
       </Routes>
     </Router>
   );

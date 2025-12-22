@@ -139,7 +139,7 @@ export default function ExitProposal() {
           </div>
       </section>
       <section className="py-24 container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-white text-center mb-4">Pacto de Caballeros</h2>
+          <h2 className="text-3xl font-bold text-white text-center mb-4">Alianza</h2>
           <p className="text-center text-gray-400 mb-16 max-w-2xl mx-auto">Esta mentoría requiere honestidad radical. Yo pongo mi cerebro y experiencia; tú pones la ejecución y los recursos.</p>
           <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
               <div className="bg-slate-900/50 p-8 rounded-2xl border border-cyan-500/20 relative overflow-hidden">
