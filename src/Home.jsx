@@ -190,7 +190,7 @@ export default function Home() {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 font-light">
-            Ex-Directivo de grandes multinacionales en España y Colombia, te revela cómo unificar los dos mundos: <strong className="text-white">SEO para Google</strong> y <strong className="text-white">AIO para Gemini & ChatGPT</strong>.
+            Ex-Director de grandes empresas de Marketing y Comunicación en España y Colombia, te revela cómo unificar los dos mundos: <strong className="text-white">SEO para Google</strong> y <strong className="text-white">AIO para Gemini & ChatGPT</strong>.
           </p>
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
