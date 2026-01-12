@@ -7,6 +7,7 @@ import AgencyProposal from './AgencyProposal';
 import ColombianPassportCase from './ColombianPassportCase';
 import EstrategiaAYR from './EstrategiaAYR'; // Importamos la nueva propuesta
 import EstrategiaKalacibi from './EstrategiaKalacibi';
+import EstrategiaEncimera from './EstrategiaEncimera';
 
 // Wrapper para hacer scroll al inicio cada vez que cambia la ruta
 const ScrollToTopWrapper = () => {
@@ -31,6 +32,7 @@ function App() {
         {/* Nueva ruta para la propuesta de AYR */}
         <Route path="/estrategia-ayr" element={<EstrategiaAYR />} />
         <Route path="/estrategia-kalacibi" element={<EstrategiaKalacibi />} />
+        <Route path="/estrategia-encimera" element={<EstrategiaEncimera />} />
       </Routes>
     </Router>
   );
