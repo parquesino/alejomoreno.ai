@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Search, BrainCircuit, MessageSquare, ArrowRight, Lock, Eye, Target, Zap, BarChart3, Globe, TrendingUp, Map, Filter, DollarSign, Shield, Cpu, Info, ArrowDown, List, CheckCircle, Rocket, Handshake, Users, AlertTriangle, TrendingDown, MousePointerClick, ShoppingCart, Banknote, PenTool, Layout, Settings, Briefcase, GraduationCap } from 'lucide-react';
+import { Search, BrainCircuit, MessageSquare, ArrowRight, Lock, Eye, Target, Zap, BarChart3, Globe, TrendingUp, Map, Filter, DollarSign, Shield, Cpu, Info, ArrowDown, List, CheckCircle, Rocket, Handshake, Users, AlertTriangle, TrendingDown, MousePointerClick, ShoppingCart, Banknote, PenTool, Layout, Settings, Briefcase, GraduationCap, Megaphone, Award, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const EstrategiaKalacibi = () => {
@@ -172,7 +172,7 @@ const EstrategiaKalacibi = () => {
   // Calculations based on the Prompt's Funnel
   const marketTotalVolume = 10000;
   
-  // Funnel Math
+  // Funnel Math AIO
   const impressions = marketTotalVolume;
   const ctr = 0.05;
   const traffic = impressions * ctr; // 500
@@ -229,16 +229,17 @@ const EstrategiaKalacibi = () => {
 
       {/* Hero Section */}
       <div className="pt-32 pb-12 px-6 container mx-auto text-center relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-500/10 rounded-full blur-[100px] -z-10" />
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-8">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-            <span className="text-xs font-bold tracking-wide uppercase text-cyan-400">Metodología Q1 2026</span>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/10 rounded-full blur-[100px] -z-10" />
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-8">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span className="text-xs font-bold tracking-wide uppercase text-emerald-400">Metodología Q1 2026</span>
         </div>
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-          Estrategia AIO para <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">KALACIBI</span>
+          Plan Director 2026: Hegemonía <br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">Digital, Operativa y Reputacional</span>
         </h1>
-        <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-          Cómo pasar de competir por precio en Google a ser la <strong className="text-white">Autoridad #1 recomendada por la IA</strong>.
+        <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
+          AIO + Gestión del Talento + Procesos de Nuevo Negocio + Liderazgo de Pensamiento (CISO 2026).
         </p>
       </div>
 
@@ -271,68 +272,63 @@ const EstrategiaKalacibi = () => {
           
           <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent opacity-50"></div>
 
-          {/* TAB 1: JOURNEY */}
+          {/* TAB 1: JOURNEY INTEGRAL (3 PILARES) */}
           {activeTab === 'journey' && (
             <div className="animate-fade-in-up">
-              <h2 className="text-3xl font-bold mb-12 text-center text-white">El Embudo de la Verdad: Kalacibi</h2>
+              <h2 className="text-3xl font-bold mb-12 text-center text-white">Los 3 Pilares del Crecimiento Kalacibi</h2>
               
               <div className="grid md:grid-cols-3 gap-8 relative">
-                <div className="hidden md:block absolute top-12 left-[30%] w-[40%] h-0.5 bg-gradient-to-r from-emerald-900 to-cyan-900 -z-10"></div>
-
-                {/* Step 01 */}
+                
+                {/* Pilar 1: Operativa */}
                 <div className="bg-slate-950 p-6 rounded-2xl border border-white/10 hover:border-emerald-500/30 transition-all group relative">
-                  <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-slate-900 text-emerald-400 w-10 h-10 rounded-full flex items-center justify-center font-bold border border-white/10 shadow-[0_0_15px_rgba(16,185,129,0.2)]">01</div>
                   <div className="text-center mt-4">
                     <div className="bg-slate-900 w-16 h-16 mx-auto rounded-xl flex items-center justify-center mb-6 text-emerald-400 border border-white/5 group-hover:scale-110 transition-transform">
                       <Briefcase size={32} />
                     </div>
-                    <h3 className="text-xl font-bold mb-2 text-white">Transformación Interna</h3>
-                    <p className="text-xs text-emerald-400 uppercase tracking-widest font-bold mb-4">Way of Work</p>
+                    <h3 className="text-xl font-bold mb-2 text-white">1. Operativa & Talento</h3>
+                    <p className="text-xs text-emerald-400 uppercase tracking-widest font-bold mb-4">La Base</p>
                     <div className="text-left bg-slate-900/50 p-4 rounded-xl border border-white/5 text-sm space-y-3">
-                      <p className="font-semibold text-gray-300">Antes de vender, preparamos:</p>
+                      <p className="font-semibold text-gray-300">Preparación para Escalar:</p>
                       <ul className="space-y-2 text-gray-400">
-                        <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-500"/> Gestión de Talento</li>
-                        <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-500"/> Cultura de Ciberseguridad</li>
-                        <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-500"/> Alineación Plan 2026</li>
+                        <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-500"/> Way of Work (Agilidad)</li>
+                        <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-500"/> Sistema de Talento</li>
+                        <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-500"/> Cultura Corporativa</li>
                       </ul>
                     </div>
                   </div>
                 </div>
 
-                {/* Step 02 */}
+                {/* Pilar 2: Demanda */}
                 <div className="bg-slate-950 p-6 rounded-2xl border border-cyan-500/30 shadow-[0_0_30px_rgba(6,182,212,0.1)] relative transform md:-translate-y-4">
-                  <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-cyan-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold shadow-lg">02</div>
                   <div className="text-center mt-4">
                     <div className="bg-cyan-900/20 w-16 h-16 mx-auto rounded-xl flex items-center justify-center mb-6 text-cyan-400 border border-cyan-500/20">
-                      <Shield size={32} />
+                      <Zap size={32} />
                     </div>
-                    <h3 className="text-xl font-bold mb-2 text-white">Autoridad B2B</h3>
-                    <p className="text-xs text-cyan-400 uppercase tracking-widest font-bold mb-4">Posicionamiento Experto</p>
+                    <h3 className="text-xl font-bold mb-2 text-white">2. Motor de Demanda</h3>
+                    <p className="text-xs text-cyan-400 uppercase tracking-widest font-bold mb-4">AIO + Nuevo Negocio</p>
                     <div className="text-left bg-slate-900/50 p-4 rounded-xl border border-white/5 text-sm space-y-3">
-                      <p className="font-semibold text-gray-300">Capturamos la demanda de:</p>
-                      <div className="bg-slate-800/50 border border-white/5 p-2 rounded text-gray-400 text-xs italic">
-                        "Implementación ISO 27000 para empresas"
-                      </div>
-                      <div className="bg-slate-800/50 border border-white/5 p-2 rounded text-gray-400 text-xs italic">
-                        "Ciberseguridad industrial y servicios gestionados"
-                      </div>
+                      <p className="font-semibold text-gray-300">Captación y Respuesta:</p>
+                      <ul className="space-y-2 text-gray-400">
+                        <li className="flex items-center gap-2"><CheckCircle size={14} className="text-cyan-500"/> SEO/SEM (Inbound)</li>
+                        <li className="flex items-center gap-2"><CheckCircle size={14} className="text-cyan-500"/> Procesos RFP (Outbound)</li>
+                        <li className="flex items-center gap-2"><CheckCircle size={14} className="text-cyan-500"/> Dept. Nuevo Negocio</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
 
-                {/* Step 03 */}
+                {/* Pilar 3: Reputación */}
                 <div className="bg-slate-950 p-6 rounded-2xl border border-white/10 hover:border-blue-500/30 transition-all group relative">
-                  <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-slate-900 text-blue-400 w-10 h-10 rounded-full flex items-center justify-center font-bold border border-white/10 shadow-[0_0_15px_rgba(59,130,246,0.2)]">03</div>
                   <div className="text-center mt-4">
                     <div className="bg-slate-900 w-16 h-16 mx-auto rounded-xl flex items-center justify-center mb-6 text-blue-400 border border-white/5 group-hover:scale-110 transition-transform">
-                      <Handshake size={32} />
+                      <Megaphone size={32} />
                     </div>
-                    <h3 className="text-xl font-bold mb-2 text-white">Cierre de Alto Valor</h3>
-                    <p className="text-xs text-blue-400 uppercase tracking-widest font-bold mb-4">50% Tasa de Éxito</p>
+                    <h3 className="text-xl font-bold mb-2 text-white">3. Reputación & Autoridad</h3>
+                    <p className="text-xs text-blue-400 uppercase tracking-widest font-bold mb-4">Discurso CISO 2026</p>
                     <div className="text-left bg-slate-900/50 p-4 rounded-xl border border-white/5 text-sm space-y-3">
-                      <p className="font-semibold text-gray-300">El Resultado:</p>
+                      <p className="font-semibold text-gray-300">Liderazgo de Mercado:</p>
                       <div className="bg-blue-500/10 border border-blue-500/20 p-3 rounded text-blue-200 text-xs">
-                        Leads cualificados que entienden el valor de la seguridad y buscan partners a largo plazo, no proveedores baratos.
+                        "Construcción de un discurso único para CISOs y Plan de Medios para amplificar la voz de Kalacibi."
                       </div>
                     </div>
                   </div>
@@ -346,8 +342,8 @@ const EstrategiaKalacibi = () => {
             <div className="animate-fade-in-up">
               <div className="flex flex-col md:flex-row justify-between items-end mb-8 border-b border-white/10 pb-6">
                 <div>
-                  <h2 className="text-3xl font-bold mb-2 text-white">Explorador de Oportunidad</h2>
-                  <p className="text-gray-400">Análisis de la demanda B2B en Ciberseguridad.</p>
+                  <h2 className="text-3xl font-bold mb-2 text-white">Explorador de Oportunidad AIO</h2>
+                  <p className="text-gray-400">Datos para alimentar el Motor de Demanda Inbound.</p>
                 </div>
                 <div className="mt-4 md:mt-0 text-right">
                   <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Mercado Objetivo</p>
@@ -464,82 +460,93 @@ const EstrategiaKalacibi = () => {
             </div>
           )}
 
-          {/* TAB 3: PROYECCIÓN (FUNNEL & GRAPHS) */}
+          {/* TAB 3: PROYECCIÓN (SPLIT SCREEN) */}
           {activeTab === 'projection' && (
             <div className="animate-fade-in-up">
-              <h2 className="text-3xl font-bold mb-2 text-white">Proyección de Impacto</h2>
-              <p className="text-gray-400 mb-8">Embudo de conversión basado en métricas de alta eficiencia.</p>
+              <h2 className="text-3xl font-bold mb-2 text-white">Proyección de Impacto 2026</h2>
+              <p className="text-gray-400 mb-12">Dos motores de crecimiento operando en paralelo: Inbound y Reputación.</p>
 
-              {/* FUNNEL VISUAL */}
-              <div className="space-y-4 max-w-4xl mx-auto mb-12">
-                  {/* Level 1: Mercado */}
-                  <div className="relative">
-                    <div className="bg-slate-800 text-white p-4 rounded-lg border border-white/10 flex justify-between items-center w-full">
-                      <div className="flex items-center gap-3">
-                        <Search size={20} className="text-gray-400"/>
-                        <span className="font-bold text-gray-300">Búsquedas Totales (Mercado)</span>
+              <div className="grid md:grid-cols-2 gap-8 mb-16">
+                  {/* COLUMNA A: MOTOR AIO (INBOUND) */}
+                  <div className="bg-slate-950 p-6 rounded-2xl border border-cyan-500/20 shadow-lg">
+                      <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
+                          <Zap size={24} className="text-cyan-400"/>
+                          <h3 className="text-xl font-bold text-white">Motor Inbound (AIO)</h3>
                       </div>
-                      <span className="text-xl font-extrabold text-white">10.000</span>
-                    </div>
-                    <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2 text-gray-600"><ArrowDown size={20} /></div>
+                      
+                      {/* FUNNEL */}
+                      <div className="space-y-3">
+                          <div className="flex justify-between text-sm">
+                              <span className="text-gray-400">Mercado Total</span>
+                              <span className="text-white font-bold">10.000</span>
+                          </div>
+                          <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                              <div className="bg-cyan-500 w-full h-full"></div>
+                          </div>
+                          
+                          <div className="flex justify-between text-sm mt-4">
+                              <span className="text-gray-400">Tráfico (5% CTR)</span>
+                              <span className="text-white font-bold">{traffic}</span>
+                          </div>
+                          <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                              <div className="bg-cyan-500 w-[5%] h-full"></div>
+                          </div>
+
+                          <div className="flex justify-between text-sm mt-4">
+                              <span className="text-gray-400">Leads (25% Conv)</span>
+                              <span className="text-white font-bold">{Math.round(leads)}</span>
+                          </div>
+                          <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                              <div className="bg-cyan-500 w-[1%] h-full"></div>
+                          </div>
+
+                           <div className="bg-emerald-900/20 p-4 rounded-lg border border-emerald-500/20 mt-6 text-center">
+                              <p className="text-xs text-emerald-400 uppercase font-bold">Nuevos Clientes / Mes</p>
+                              <p className="text-4xl font-extrabold text-white mt-2">{Math.round(clients)}</p>
+                           </div>
+                           <p className="text-center text-xs text-gray-500 mt-2">Coste Ads: ~200€/mes (Optimizado)</p>
+                      </div>
                   </div>
 
-                  {/* Level 2: Tráfico */}
-                  <div className="relative flex justify-center">
-                    <div className="bg-blue-900/20 text-blue-100 p-4 rounded-lg border border-blue-500/20 flex justify-between items-center w-[90%] shadow-sm backdrop-blur-sm">
-                      <div className="flex flex-col">
-                        <span className="font-bold flex items-center gap-2 text-blue-300"><MousePointerClick size={18}/> Tráfico Web</span>
-                        <span className="text-xs text-blue-400 font-semibold">5% CTR (Conservador)</span>
+                  {/* COLUMNA B: MOTOR REPUTACIÓN (MEDIOS) */}
+                  <div className="bg-slate-950 p-6 rounded-2xl border border-blue-500/20 shadow-lg">
+                      <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
+                          <Megaphone size={24} className="text-blue-400"/>
+                          <h3 className="text-xl font-bold text-white">Motor Reputación</h3>
                       </div>
-                      <span className="text-xl font-extrabold text-white">{traffic.toLocaleString()}</span>
-                    </div>
-                    <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2 text-gray-600"><ArrowDown size={20} /></div>
-                  </div>
 
-                  {/* Level 3: Retención */}
-                  <div className="relative flex justify-center">
-                    <div className="bg-purple-900/20 text-purple-100 p-4 rounded-lg border border-purple-500/20 flex justify-between items-center w-[70%] shadow-md backdrop-blur-sm">
-                      <div className="flex flex-col">
-                        <span className="font-bold flex items-center gap-2 text-purple-300"><Eye size={18}/> Tráfico Retenido</span>
-                        <span className="text-xs text-purple-400 font-semibold">70% Rebote (Filtrado Natural)</span>
-                      </div>
-                      <span className="text-xl font-extrabold text-white">{retainedTraffic.toLocaleString()}</span>
-                    </div>
-                    <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2 text-gray-600"><ArrowDown size={20} /></div>
-                  </div>
+                      <div className="space-y-6">
+                           <div className="bg-slate-900 p-4 rounded-lg border border-white/5">
+                               <div className="flex justify-between items-center">
+                                   <span className="text-sm text-gray-400">Inversión Medios</span>
+                                   <span className="text-xl font-bold text-white">800€<span className="text-xs font-normal text-gray-500">/mes</span></span>
+                               </div>
+                           </div>
 
-                   {/* Level 4: Leads */}
-                  <div className="relative flex justify-center">
-                    <div className="bg-cyan-900/20 text-cyan-100 p-4 rounded-lg border border-cyan-500/20 flex justify-between items-center w-[50%] shadow-md backdrop-blur-sm">
-                      <div className="flex flex-col">
-                        <span className="font-bold flex items-center gap-2 text-cyan-300"><Target size={18}/> Leads Generados</span>
-                        <span className="text-xs text-cyan-400 font-semibold">25% Conversión (Alta Calidad)</span>
-                      </div>
-                      <span className="text-2xl font-extrabold text-white">{Math.round(leads)}</span>
-                    </div>
-                    <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2 text-gray-600"><ArrowDown size={20} /></div>
-                  </div>
+                           <div className="bg-slate-900 p-4 rounded-lg border border-white/5">
+                               <div className="flex justify-between items-center">
+                                   <span className="text-sm text-gray-400">Activo Principal</span>
+                                   <span className="text-sm font-bold text-blue-400">Manifiesto CISO 2026</span>
+                               </div>
+                           </div>
 
-                  {/* Level 5: Clientes */}
-                  <div className="flex justify-center">
-                    <div className="bg-emerald-600 text-slate-950 p-6 rounded-xl border border-emerald-400 flex justify-between items-center w-[35%] shadow-[0_0_25px_rgba(16,185,129,0.5)] transform scale-110">
-                      <div className="flex flex-col">
-                        <span className="font-bold flex items-center gap-2"><Handshake size={18}/> NUEVOS CLIENTES</span>
-                        <span className="text-xs text-emerald-900 font-bold opacity-80">50% Tasa de Cierre</span>
+                           <div className="bg-gradient-to-r from-blue-900/40 to-cyan-900/40 p-6 rounded-xl border border-blue-500/30 text-center mt-4">
+                              <p className="text-xs text-blue-300 uppercase font-bold">Pipeline Generado 2026</p>
+                              <p className="text-4xl font-extrabold text-white mt-2">2.000.000€</p>
+                              <p className="text-xs text-blue-300/60 mt-2">Objetivo de Valor de Contrato</p>
+                           </div>
                       </div>
-                      <span className="text-3xl font-extrabold">{Math.round(clients)}</span>
-                    </div>
                   </div>
               </div>
 
-              {/* EVOLUCIÓN TRÁFICO (IGUAL A AYR) */}
+              {/* EVOLUCIÓN TRÁFICO */}
               <div className="bg-slate-950 p-8 rounded-2xl shadow-sm border border-white/10 mb-12">
                 <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
                   <TrendingUp size={24} className="text-green-400" />
-                  Evolución de Fuentes de Tráfico
+                  Evolución de Tráfico AIO
                 </h3>
                 <p className="text-sm text-gray-400 mb-6">
-                  Transición estratégica: De la dependencia del pago (SEM) a la autonomía orgánica y de IA.
+                  Reducción progresiva de dependencia de Ads mientras crece la autoridad.
                 </p>
 
                 <div className="grid grid-cols-5 gap-4 text-center items-end h-64 border-b border-white/5 pb-4">
@@ -596,168 +603,111 @@ const EstrategiaKalacibi = () => {
               <div className="bg-slate-950 text-white p-8 rounded-2xl shadow-xl border border-white/10">
                 <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
                   <Banknote size={24} className="text-emerald-400" />
-                  Eficiencia Financiera SEM
+                  Eficiencia Financiera SEM (Motor Inbound)
                 </h3>
                 
-                {/* Cards Comparativa CPC */}
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
                   <div className="bg-slate-900 p-6 rounded-xl border border-white/5">
-                    <p className="text-gray-500 text-xs uppercase font-bold mb-2">Coste de Mercado (Media)</p>
+                    <p className="text-gray-500 text-xs uppercase font-bold mb-2">Coste de Mercado</p>
                     <div className="flex items-end gap-2">
                       <span className="text-4xl font-bold text-red-400">1,00€</span>
                       <span className="text-sm text-gray-500 mb-1">/clic</span>
                     </div>
-                    <p className="text-xs text-gray-500 mt-2">Lo que paga tu competencia por ineficiencia.</p>
                   </div>
                   <div className="bg-emerald-900/10 p-6 rounded-xl border border-emerald-500/30 relative overflow-hidden">
                     <div className="absolute top-0 right-0 bg-emerald-500 text-slate-950 text-[10px] font-bold px-2 py-1 rounded-bl-lg">AHORRO 60%</div>
-                    <p className="text-emerald-400 text-xs uppercase font-bold mb-2">Coste Optimizado (Alejo)</p>
+                    <p className="text-emerald-400 text-xs uppercase font-bold mb-2">Coste Optimizado</p>
                     <div className="flex items-end gap-2">
                       <span className="text-4xl font-bold text-emerald-400">0,40€</span>
                       <span className="text-sm text-emerald-400/70 mb-1">/clic</span>
                     </div>
-                    <p className="text-xs text-emerald-400/60 mt-2">Optimización experta de Quality Score.</p>
                   </div>
-                </div>
-
-                {/* Presupuesto Necesario Chart */}
-                <div>
-                  <p className="text-sm font-bold text-gray-300 mb-4">Presupuesto Mensual Necesario (Para mantener {traffic} visitas)</p>
-                  <div className="space-y-4">
-                    
-                    {/* Mes 1 */}
-                    <div className="flex items-center gap-4 group">
-                      <div className="w-16 text-xs text-gray-500 font-bold">Mes 1</div>
-                      <div className="flex-1 bg-slate-900 h-8 rounded-full overflow-hidden relative border border-white/5">
-                        <div className="bg-gradient-to-r from-red-500/80 to-red-600/80 h-full w-[100%]"></div>
-                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-white drop-shadow-md">200€</span>
-                      </div>
-                    </div>
-
-                    {/* Mes 6 */}
-                    <div className="flex items-center gap-4 group">
-                      <div className="w-16 text-xs text-gray-500 font-bold">Mes 6</div>
-                      <div className="flex-1 bg-slate-900 h-8 rounded-full overflow-hidden relative border border-white/5">
-                        <div className="bg-gradient-to-r from-orange-500/80 to-orange-600/80 h-full w-[90%]"></div>
-                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-white drop-shadow-md">180€</span>
-                      </div>
-                    </div>
-
-                    {/* Mes 12 */}
-                    <div className="flex items-center gap-4 group">
-                      <div className="w-16 text-xs text-gray-500 font-bold">Mes 12</div>
-                      <div className="flex-1 bg-slate-900 h-8 rounded-full overflow-hidden relative border border-white/5">
-                        <div className="bg-gradient-to-r from-yellow-500/80 to-yellow-600/80 h-full w-[60%]"></div>
-                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-white drop-shadow-md">120€</span>
-                      </div>
-                    </div>
-
-                    {/* Mes 24 */}
-                    <div className="flex items-center gap-4 group">
-                      <div className="w-16 text-xs text-gray-500 font-bold">Mes 24</div>
-                      <div className="flex-1 bg-slate-900 h-8 rounded-full overflow-hidden relative border border-white/5">
-                        <div className="bg-gradient-to-r from-emerald-500/80 to-emerald-600/80 h-full w-[30%]"></div>
-                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-white drop-shadow-md">60€</span>
-                      </div>
-                    </div>
-
-                  </div>
-                  <p className="text-xs text-gray-500 mt-4 text-center">
-                    *Gracias al crecimiento orgánico, reducimos la inversión publicitaria un <strong className="text-white">70% en 2 años</strong> manteniendo el mismo volumen de ventas.
-                  </p>
                 </div>
               </div>
             </div>
           )}
 
-          {/* TAB 4: EJECUCIÓN 12 MESES (CON FASE DE TALENTO) */}
+          {/* TAB 4: EJECUCIÓN 12 MESES (PLAN DIRECTOR) */}
           {activeTab === 'execution' && (
             <div className="animate-fade-in-up">
-                <h2 className="text-3xl font-bold mb-8 text-center text-white">Hoja de Ruta de Transformación</h2>
+                <h2 className="text-3xl font-bold mb-8 text-center text-white">Hoja de Ruta: Plan Director 2026</h2>
                 
                 <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-emerald-500/20 before:to-transparent">
                 
-                {/* Phase 1: TALENTO (NUEVO) */}
+                {/* Phase 1: CIMIENTOS */}
                 <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                   <div className="flex items-center justify-center w-10 h-10 rounded-full border border-emerald-500 bg-emerald-500/20 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.5)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                     <span className="font-bold text-sm">1</span>
                   </div>
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-950 p-6 rounded-xl border border-emerald-500/30 shadow-lg">
                     <div className="flex justify-between items-center mb-2">
-                        <h3 className="font-bold text-white text-lg">Fase 1: Talento & Way of Work</h3>
+                        <h3 className="font-bold text-white text-lg">Fase 1: Cimientos Corporativos</h3>
                         <span className="text-xs font-bold bg-emerald-900/30 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/30">MES 1</span>
                     </div>
-                    <p className="text-sm text-gray-400 mb-4 italic">Antes de escalar, transformamos. Consultoría estratégica para alinear la compañía con el Plan 2026.</p>
+                    <p className="text-sm text-gray-400 mb-4 italic">Organización interna y definición de procesos clave.</p>
                     <ul className="space-y-3">
                       <li className="flex items-start gap-2 text-sm text-gray-300">
                         <Users size={16} className="text-emerald-500 mt-0.5 shrink-0" />
-                        <strong className="text-emerald-400">Gestión de Talento:</strong> Entrega de formatos y sistema de gestión de personas.
+                        <strong className="text-emerald-400">Talento & WoW:</strong> Entrega de formatos y sistema de gestión.
                       </li>
                       <li className="flex items-start gap-2 text-sm text-gray-300">
-                        <Briefcase size={16} className="text-emerald-500 mt-0.5 shrink-0" />
-                        <strong className="text-emerald-400">Way of Work (WoW):</strong> Definición de nuevos flujos de trabajo ágiles.
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-gray-300">
-                        <GraduationCap size={16} className="text-emerald-500 mt-0.5 shrink-0" />
-                        <strong className="text-emerald-400">Transferencia de Conocimiento:</strong> Estructura organizacional lista para crecer.
+                        <Target size={16} className="text-emerald-500 mt-0.5 shrink-0" />
+                        <strong className="text-emerald-400">Nuevo Negocio (Auditoría):</strong> Definición de flujos de respuesta RFPs.
                       </li>
                     </ul>
                   </div>
                 </div>
 
-                {/* Phase 2: ESTRATEGIA AIO */}
+                {/* Phase 2: CONSTRUCCIÓN */}
                 <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                   <div className="flex items-center justify-center w-10 h-10 rounded-full border border-cyan-500 bg-cyan-500/20 text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.5)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                     <span className="font-bold text-sm">2</span>
                   </div>
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-950 p-6 rounded-xl border border-cyan-500/30 shadow-lg">
                       <div className="flex justify-between items-center mb-2">
-                        <h3 className="font-bold text-white text-lg">Fase 2: Estrategia AIO & Setup</h3>
+                        <h3 className="font-bold text-white text-lg">Fase 2: Activos & Discurso</h3>
                         <span className="text-xs font-bold bg-cyan-900/30 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/30">MES 2 - 3</span>
                     </div>
-                    <p className="text-sm text-gray-400 mb-4 italic">Auditoría profunda y diseño del futuro. No movemos un dedo sin un plan maestro.</p>
+                    <p className="text-sm text-gray-400 mb-4 italic">Desarrollo técnico y narrativo.</p>
                     <ul className="space-y-2">
-                       <li className="flex items-start gap-2 text-sm text-gray-300"><CheckCircle size={16} className="text-cyan-500 mt-0.5"/> Construcción del Plan Estratégico AIO</li>
-                       <li className="flex items-start gap-2 text-sm text-gray-300"><CheckCircle size={16} className="text-cyan-500 mt-0.5"/> Definición de OKRs y KPIs de Negocio</li>
-                       <li className="flex items-start gap-2 text-sm text-gray-300"><Rocket size={16} className="text-cyan-500 mt-0.5"/> Lanzamiento Campaña SEM (Tráfico Inmediato)</li>
+                       <li className="flex items-start gap-2 text-sm text-gray-300"><Layout size={16} className="text-cyan-500 mt-0.5"/> Despliegue Ecosistema AIO</li>
+                       <li className="flex items-start gap-2 text-sm text-gray-300"><MessageSquare size={16} className="text-cyan-500 mt-0.5"/> <strong>Taller CISO 2026:</strong> Creación del discurso reputacional.</li>
                     </ul>
                   </div>
                 </div>
 
-                {/* Phase 3: CONSTRUCCIÓN */}
+                {/* Phase 3: LANZAMIENTO */}
                 <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                   <div className="flex items-center justify-center w-10 h-10 rounded-full border border-blue-500 bg-blue-500/20 text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.5)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                     <span className="font-bold text-sm">3</span>
                   </div>
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-950 p-6 rounded-xl border border-blue-500/30 shadow-lg">
                       <div className="flex justify-between items-center mb-2">
-                        <h3 className="font-bold text-white text-lg">Fase 3: Construcción Masiva</h3>
+                        <h3 className="font-bold text-white text-lg">Fase 3: Activación Dual</h3>
                         <span className="text-xs font-bold bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full border border-blue-500/30">MES 4 - 5</span>
                     </div>
-                    <p className="text-sm text-gray-400 mb-4 italic">Ejecución táctica intensiva. Construyo el 100% de los activos necesarios. Sin límites.</p>
+                    <p className="text-sm text-gray-400 mb-4 italic">Encendemos motores.</p>
                     <ul className="space-y-2">
-                       <li className="flex items-start gap-2 text-sm text-gray-300"><PenTool size={16} className="text-blue-500 mt-0.5"/> Despliegue de Webs y Landing Pages</li>
-                       <li className="flex items-start gap-2 text-sm text-gray-300"><Zap size={16} className="text-blue-500 mt-0.5"/> Configuración de Gems y Flows IA</li>
-                       <li className="flex items-start gap-2 text-sm text-gray-300"><Layout size={16} className="text-blue-500 mt-0.5"/> Implementación de Dashboards</li>
+                       <li className="flex items-start gap-2 text-sm text-gray-300"><Rocket size={16} className="text-blue-500 mt-0.5"/> Lanzamiento Google Ads (Inbound)</li>
+                       <li className="flex items-start gap-2 text-sm text-gray-300"><Megaphone size={16} className="text-blue-500 mt-0.5"/> <strong>Inicio Plan de Medios:</strong> Distribución del Manifiesto (800€/mes).</li>
                     </ul>
                   </div>
                 </div>
 
-                {/* Phase 4: OPTIMIZACIÓN */}
+                {/* Phase 4: CONSOLIDACIÓN */}
                 <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                   <div className="flex items-center justify-center w-10 h-10 rounded-full border border-purple-500 bg-purple-500/20 text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.5)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                     <span className="font-bold text-sm">4</span>
                   </div>
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-950 p-6 rounded-xl border border-purple-500/30 shadow-lg">
                       <div className="flex justify-between items-center mb-2">
-                        <h3 className="font-bold text-white text-lg">Fase 4: Optimización & Vuelo</h3>
+                        <h3 className="font-bold text-white text-lg">Fase 4: Consolidación</h3>
                         <span className="text-xs font-bold bg-purple-900/30 text-purple-400 px-3 py-1 rounded-full border border-purple-500/30">MES 6 - 12</span>
                     </div>
-                    <p className="text-sm text-gray-400 mb-4 italic">Acompañamiento, medición y transferencia de conocimiento.</p>
+                    <p className="text-sm text-gray-400 mb-4 italic">Medición de Pipeline y Ajuste.</p>
                     <ul className="space-y-2">
-                       <li className="flex items-start gap-2 text-sm text-gray-300"><BarChart3 size={16} className="text-purple-500 mt-0.5"/> Lectura conjunta de Dashboards</li>
-                       <li className="flex items-start gap-2 text-sm text-gray-300"><MessageSquare size={16} className="text-purple-500 mt-0.5"/> Feedback de negocio y consultoría</li>
-                       <li className="flex items-start gap-2 text-sm text-gray-300"><Settings size={16} className="text-purple-500 mt-0.5"/> Ajuste fino de algoritmos AIO</li>
+                       <li className="flex items-start gap-2 text-sm text-gray-300"><BarChart3 size={16} className="text-purple-500 mt-0.5"/> Medición de Pipeline de Reputación.</li>
+                       <li className="flex items-start gap-2 text-sm text-gray-300"><Settings size={16} className="text-purple-500 mt-0.5"/> Optimización continua AIO.</li>
                     </ul>
                   </div>
                 </div>
@@ -769,19 +719,17 @@ const EstrategiaKalacibi = () => {
           {/* TAB 5: PROPUESTA COMERCIAL */}
           {activeTab === 'proposal' && (
             <div className="animate-fade-in-up">
-              <h2 className="text-3xl font-bold mb-8 text-center text-white">Propuesta de Valor y Compromiso</h2>
+              <h2 className="text-3xl font-bold mb-8 text-center text-white">Propuesta de Valor Integral</h2>
 
               {/* Entregables */}
-              <div className="grid md:grid-cols-3 gap-6 mb-12">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                 {[
-                  { icon: Map, color: "text-blue-400", title: "Plan Estratégico", desc: "La biblia de tu negocio por 1 año. Objetivos, tácticas y métricas claras." },
-                  { icon: Globe, color: "text-purple-400", title: "Ecosistema Ilimitado", desc: "Dominios, Webs y Apps. Creamos tantas como la estrategia requiera. Sin coste extra." },
-                  { icon: Zap, color: "text-amber-400", title: "Gems & Flows IA", desc: "Automatizaciones y asistentes personalizados para optimizar el trabajo diario." },
-                  { icon: BarChart3, color: "text-emerald-400", title: "Dashboard Central", desc: "Medición en tiempo real. Datos unificados, verdad absoluta." },
-                  { icon: Rocket, color: "text-rose-400", title: "Posicionamiento AIO", desc: "Estrategia híbrida para dominar: SEO, SEM y AI (ChatGPT/Gemini)." },
-                  { icon: BrainCircuit, color: "text-cyan-400", title: "Tu Propio 'Alejo'", desc: "Entrega de una IA entrenada con mi metodología para consultas futuras." },
+                  { icon: Users, color: "text-emerald-400", title: "Consultoría Talento", desc: "Formatos, Sistema de Gestión y Way of Work (Agilidad)." },
+                  { icon: Target, color: "text-cyan-400", title: "Nuevo Negocio", desc: "Consultoría de procesos y flujos de respuesta RFP con Dirección." },
+                  { icon: Megaphone, color: "text-blue-400", title: "Consultoría Reputación", desc: "Creación de Discurso CISO 2026 y Plan de Medios." },
+                  { icon: Rocket, color: "text-purple-400", title: "Estrategia AIO", desc: "Implementación técnica completa del ecosistema digital." },
                 ].map((item, i) => (
-                   <div key={i} className="bg-slate-950 p-6 rounded-xl border border-white/10 hover:border-cyan-500/30 transition-all shadow-lg group">
+                   <div key={i} className="bg-slate-950 p-6 rounded-xl border border-white/10 hover:border-emerald-500/30 transition-all shadow-lg group">
                     <div className={`bg-slate-900 w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${item.color} border border-white/5 group-hover:scale-110 transition-transform`}>
                       <item.icon size={24} />
                     </div>
@@ -806,9 +754,9 @@ const EstrategiaKalacibi = () => {
                     </h4>
                     <ul className="space-y-4 text-sm text-gray-300">
                       {[
-                        "Producción ILIMITADA de activos (webs, apps, contenido) según estrategia.",
-                        "Profundidad total en el conocimiento de tu industria.",
-                        "Obsesión por cumplir el 100% de los OKRs.",
+                        "Acompañamiento a Directores (Nuevo Negocio y Servicio).",
+                        "Profundidad total en el conocimiento de la industria.",
+                        "Obsesión por cumplir el objetivo de 2M€ Pipeline.",
                         "Solo pido el tiempo estrictamente necesario.",
                         "Garantía de Autonomía: Te entrego el sistema funcionando al mes 12."
                       ].map((txt, i) => (
@@ -825,11 +773,11 @@ const EstrategiaKalacibi = () => {
                     <ul className="space-y-4 text-sm text-gray-300">
                       {[
                         "Compromiso de hierro: 12 meses sin abandono.",
-                        "Confianza Radical: El plan estratégico NO se cambia.",
-                        "Estabilidad: Sin cambios bruscos en marca/precios.",
-                        "Cero Micro-management: No pedir cambios estéticos en webs/apps.",
-                        "Llaves del Reino: Acceso total (Hosting, Ads, CRM, Data).",
-                        "Mentalidad Remote-First: Cero reuniones presenciales."
+                        "Disponibilidad de Directores para talleres estratégicos.",
+                        "Inversión de 800€/mes en Medios (Adicional al Fee).",
+                        "Cero Micro-management.",
+                        "Llaves del Reino: Acceso total.",
+                        "Mentalidad Remote-First."
                       ].map((txt, i) => (
                         <li key={i} className="flex gap-3 items-start">
                           <span className="text-red-500 font-bold mt-0.5">•</span> {txt}
@@ -841,21 +789,21 @@ const EstrategiaKalacibi = () => {
               </div>
 
               {/* Pricing & CTA */}
-              <div className="flex flex-col md:flex-row items-center justify-center gap-8 bg-gradient-to-br from-slate-900 to-slate-950 p-8 rounded-3xl border border-cyan-500/20 shadow-[0_0_50px_rgba(34,211,238,0.1)]">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-8 bg-gradient-to-br from-slate-900 to-slate-950 p-8 rounded-3xl border border-emerald-500/20 shadow-[0_0_50px_rgba(16,185,129,0.1)]">
                 <div className="text-center md:text-right">
-                  <p className="text-sm text-cyan-400 uppercase font-bold tracking-wide">Inversión Mensual</p>
+                  <p className="text-sm text-emerald-400 uppercase font-bold tracking-wide">Inversión Mensual</p>
                   <div className="flex items-baseline justify-center md:justify-end gap-1">
                     <span className="text-5xl font-extrabold text-white">3.000€</span>
                     <span className="text-xl text-gray-500 font-medium">/mes</span>
                   </div>
                   <p className="text-xs text-gray-500 mt-2">Contrato anual cerrado. Facturación mensual.</p>
-                  <p className="text-xs text-gray-500">Incluye todos los costes de desarrollo y automatización.</p>
+                  <p className="text-xs text-gray-500">Incluye Consultoría + Desarrollo + Gestión.</p>
                 </div>
                 
                 <div className="h-16 w-px bg-white/10 hidden md:block"></div>
 
                 <div className="text-center">
-                  <a href="https://wa.me/34655328878?text=Acepto%20el%20reto%20Kalacibi" target="_blank" rel="noopener noreferrer" className="inline-block bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xl font-bold py-4 px-12 rounded-full shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] transform hover:-translate-y-1 transition-all">
+                  <a href="https://wa.me/34655328878?text=Acepto%20el%20reto%20Kalacibi" target="_blank" rel="noopener noreferrer" className="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xl font-bold py-4 px-12 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)] transform hover:-translate-y-1 transition-all">
                     Acepto el Reto. Iniciemos.
                   </a>
                   <p className="text-[10px] text-gray-500 mt-3 max-w-xs mx-auto">
