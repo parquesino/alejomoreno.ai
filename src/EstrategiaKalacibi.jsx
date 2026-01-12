@@ -504,7 +504,7 @@ const EstrategiaKalacibi = () => {
                               <p className="text-xs text-emerald-400 uppercase font-bold">Nuevos Clientes / Mes</p>
                               <p className="text-4xl font-extrabold text-white mt-2">{Math.round(clients)}</p>
                            </div>
-                           <p className="text-center text-xs text-gray-500 mt-2">Coste Ads: ~200€/mes (Optimizado)</p>
+                           <p className="text-center text-xs text-gray-500 mt-2">Coste Ads: ~200€/mes</p>
                       </div>
                   </div>
 
@@ -539,14 +539,14 @@ const EstrategiaKalacibi = () => {
                   </div>
               </div>
 
-              {/* EVOLUCIÓN TRÁFICO */}
+              {/* EVOLUCIÓN TRÁFICO (MODIFICADO) */}
               <div className="bg-slate-950 p-8 rounded-2xl shadow-sm border border-white/10 mb-12">
                 <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
                   <TrendingUp size={24} className="text-green-400" />
-                  Evolución de Tráfico AIO
+                  Evolución de Fuentes de Tráfico
                 </h3>
                 <p className="text-sm text-gray-400 mb-6">
-                  Reducción progresiva de dependencia de Ads mientras crece la autoridad.
+                  Transición estratégica: Del pago (SEM) a la autonomía orgánica y reputacional.
                 </p>
 
                 <div className="grid grid-cols-5 gap-4 text-center items-end h-64 border-b border-white/5 pb-4">
@@ -561,7 +561,8 @@ const EstrategiaKalacibi = () => {
 
                   {/* Mes 1 */}
                   <div className="flex flex-col justify-end h-full group">
-                    <div className="w-full bg-cyan-500/20 h-[0%] rounded-t-sm relative transition-all border-x border-t border-cyan-500/30"></div>
+                    <div className="w-full bg-indigo-500/20 h-[0%] rounded-t-sm relative transition-all border-x border-t border-indigo-500/30"></div>
+                    <div className="w-full bg-cyan-500/20 h-[0%] relative transition-all border-x border-t border-cyan-500/30"></div>
                     <div className="w-full bg-purple-500/20 h-[0%] relative transition-all border-x border-t border-purple-500/30"></div>
                     <div className="w-full bg-slate-700 h-[100%] rounded-b-lg relative transition-all flex items-center justify-center text-white text-xs font-bold border border-white/10">SEM 100%</div>
                     <p className="mt-2 text-sm font-bold text-gray-400">Mes 1</p>
@@ -569,61 +570,40 @@ const EstrategiaKalacibi = () => {
 
                   {/* Mes 6 */}
                   <div className="flex flex-col justify-end h-full group">
-                    <div className="w-full bg-cyan-600 h-[10%] rounded-t-lg relative transition-all flex items-center justify-center text-white text-[10px] shadow-[0_0_10px_rgba(8,145,178,0.4)]">10%</div>
+                    <div className="w-full bg-indigo-500 h-[10%] rounded-t-lg relative transition-all flex items-center justify-center text-white text-[10px] shadow-[0_0_10px_rgba(99,102,241,0.4)]">Dir 10%</div>
+                    <div className="w-full bg-cyan-600 h-[10%] relative transition-all flex items-center justify-center text-white text-[10px] shadow-[0_0_10px_rgba(8,145,178,0.4)]">Org 10%</div>
                     <div className="w-full bg-purple-500/20 h-[0%] relative transition-all"></div>
-                    <div className="w-full bg-slate-700 h-[90%] rounded-b-lg relative transition-all flex items-center justify-center text-white text-xs font-bold border border-white/10">90%</div>
+                    <div className="w-full bg-slate-700 h-[80%] rounded-b-lg relative transition-all flex items-center justify-center text-white text-xs font-bold border border-white/10">SEM 80%</div>
                     <p className="mt-2 text-sm font-bold text-gray-400">Mes 6</p>
                   </div>
 
                   {/* Mes 12 */}
                   <div className="flex flex-col justify-end h-full group">
                     <div className="w-full bg-purple-600 h-[10%] rounded-t-lg relative transition-all flex items-center justify-center text-white text-[10px] shadow-[0_0_10px_rgba(147,51,234,0.4)]">AI 10%</div>
+                    <div className="w-full bg-indigo-500 h-[15%] relative transition-all flex items-center justify-center text-white text-xs shadow-[0_0_10px_rgba(99,102,241,0.4)] z-10">Dir 15%</div>
                     <div className="w-full bg-cyan-600 h-[30%] relative transition-all flex items-center justify-center text-white text-xs shadow-[0_0_10px_rgba(8,145,178,0.4)] z-10">Org 30%</div>
-                    <div className="w-full bg-slate-700 h-[60%] rounded-b-lg relative transition-all flex items-center justify-center text-white text-xs font-bold border border-white/10">SEM 60%</div>
+                    <div className="w-full bg-slate-700 h-[45%] rounded-b-lg relative transition-all flex items-center justify-center text-white text-xs font-bold border border-white/10">SEM 45%</div>
                     <p className="mt-2 text-sm font-bold text-gray-400">Mes 12</p>
                   </div>
 
                   {/* Mes 24 */}
                   <div className="flex flex-col justify-end h-full group">
                     <div className="w-full bg-purple-600 h-[30%] rounded-t-lg relative transition-all flex items-center justify-center text-white text-xs font-bold shadow-[0_0_15px_rgba(147,51,234,0.4)] z-20">AI 30%</div>
+                    <div className="w-full bg-indigo-500 h-[20%] relative transition-all flex items-center justify-center text-white text-xs font-bold shadow-[0_0_15px_rgba(99,102,241,0.4)] z-10">Dir 20%</div>
                     <div className="w-full bg-cyan-600 h-[40%] relative transition-all flex items-center justify-center text-white text-xs font-bold shadow-[0_0_15px_rgba(8,145,178,0.4)] z-10">Org 40%</div>
-                    <div className="w-full bg-slate-700 h-[30%] rounded-b-lg relative transition-all flex items-center justify-center text-white text-xs">SEM 30%</div>
+                    <div className="w-full bg-slate-700 h-[10%] rounded-b-lg relative transition-all flex items-center justify-center text-white text-xs">SEM 10%</div>
                     <p className="mt-2 text-sm font-bold text-gray-400">Mes 24</p>
                   </div>
                 </div>
                 
-                <div className="flex justify-center gap-6 mt-6 text-xs font-bold text-gray-400">
+                <div className="flex flex-wrap justify-center gap-6 mt-6 text-xs font-bold text-gray-400">
                   <div className="flex items-center gap-2"><div className="w-3 h-3 bg-slate-700 rounded-full border border-white/10"></div>SEM (Pago)</div>
                   <div className="flex items-center gap-2"><div className="w-3 h-3 bg-cyan-600 rounded-full shadow-[0_0_5px_rgba(8,145,178,0.8)]"></div>Orgánico (SEO)</div>
                   <div className="flex items-center gap-2"><div className="w-3 h-3 bg-purple-600 rounded-full shadow-[0_0_5px_rgba(147,51,234,0.8)]"></div>Tráfico IA (AIO)</div>
+                  <div className="flex items-center gap-2"><div className="w-3 h-3 bg-indigo-500 rounded-full shadow-[0_0_5px_rgba(99,102,241,0.8)]"></div>Directo (Reputación)</div>
                 </div>
               </div>
 
-              {/* SECCIÓN FINANCIERA SEM (CPC 0,40€) */}
-              <div className="bg-slate-950 text-white p-8 rounded-2xl shadow-xl border border-white/10">
-                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                  <Banknote size={24} className="text-emerald-400" />
-                  Eficiencia Financiera SEM (Motor Inbound)
-                </h3>
-                
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <div className="bg-slate-900 p-6 rounded-xl border border-white/5">
-                    <p className="text-gray-500 text-xs uppercase font-bold mb-2">Coste de Mercado</p>
-                    <div className="flex items-end gap-2">
-                      <span className="text-4xl font-bold text-red-400">1,00€</span>
-                      <span className="text-sm text-gray-500 mb-1">/clic</span>
-                    </div>
-                  </div>
-                  <div className="bg-emerald-900/10 p-6 rounded-xl border border-emerald-500/30 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 bg-emerald-500 text-slate-950 text-[10px] font-bold px-2 py-1 rounded-bl-lg">AHORRO 60%</div>
-                    <p className="text-emerald-400 text-xs uppercase font-bold mb-2">Coste Optimizado</p>
-                    <div className="flex items-end gap-2">
-                      <span className="text-4xl font-bold text-emerald-400">0,40€</span>
-                      <span className="text-sm text-emerald-400/70 mb-1">/clic</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           )}
 
@@ -689,7 +669,7 @@ const EstrategiaKalacibi = () => {
                     <p className="text-sm text-gray-400 mb-4 italic">Encendemos motores.</p>
                     <ul className="space-y-2">
                        <li className="flex items-start gap-2 text-sm text-gray-300"><Rocket size={16} className="text-blue-500 mt-0.5"/> Lanzamiento Google Ads (Inbound)</li>
-                       <li className="flex items-start gap-2 text-sm text-gray-300"><Megaphone size={16} className="text-blue-500 mt-0.5"/> <strong>Inicio Plan de Medios:</strong> Distribución del Manifiesto (800€/mes).</li>
+                       <li className="flex items-start gap-2 text-sm text-gray-300"><Megaphone size={16} className="text-blue-500 mt-0.5"/> <strong>Inicio Plan de Medios:</strong> Distribución del Manifiesto.</li>
                     </ul>
                   </div>
                 </div>
@@ -755,8 +735,8 @@ const EstrategiaKalacibi = () => {
                     <ul className="space-y-4 text-sm text-gray-300">
                       {[
                         "Acompañamiento a Directores (Nuevo Negocio y Servicio).",
-                        "Profundidad total en el conocimiento de la industria.",
-                        "Obsesión por cumplir el objetivo de 2M€ Pipeline.",
+                        "Producción ILIMITADA de activos (webs, apps, contenido).",
+                        "Obsesión por cumplir el objetivo de 2M€ Pipeline y 19 ventas mensuales de MCP.",
                         "Solo pido el tiempo estrictamente necesario.",
                         "Garantía de Autonomía: Te entrego el sistema funcionando al mes 12."
                       ].map((txt, i) => (
@@ -774,7 +754,7 @@ const EstrategiaKalacibi = () => {
                       {[
                         "Compromiso de hierro: 12 meses sin abandono.",
                         "Disponibilidad de Directores para talleres estratégicos.",
-                        "Inversión de 800€/mes en Medios (Adicional al Fee).",
+                        "Inversión en medios: 800€ Content Marketing + 200€ SEM mensual (fase activación).",
                         "Cero Micro-management.",
                         "Llaves del Reino: Acceso total.",
                         "Mentalidad Remote-First."
