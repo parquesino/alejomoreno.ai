@@ -8,7 +8,7 @@ const EstrategiaKalacibi = () => {
   const [activeCategory, setActiveCategory] = useState('Todas');
   const [sortBy, setSortBy] = useState('volume');
 
-  // --- DATASET KALACIBI ---
+  // --- DATASET KALACIBI (10k Total) ---
   const rawData = [
     { keyword: "incibe ciberseguridad", volume: 1000, trend: "0%", cpc: "1,00" },
     { keyword: "ciberseguridad empresas", volume: 1000, trend: "15%", cpc: "1,00" },
@@ -170,8 +170,7 @@ const EstrategiaKalacibi = () => {
   }, [enrichedData, searchTerm, activeCategory, sortBy]);
 
   // Calculations based on the Prompt's Funnel
-  const marketTotalVolume = 10000; // Fixed per prompt
-  const avgCPC = "1,00";
+  const marketTotalVolume = 10000;
   
   // Funnel Math
   const impressions = marketTotalVolume;
@@ -230,17 +229,16 @@ const EstrategiaKalacibi = () => {
 
       {/* Hero Section */}
       <div className="pt-32 pb-12 px-6 container mx-auto text-center relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/10 rounded-full blur-[100px] -z-10" />
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-8">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span className="text-xs font-bold tracking-wide uppercase text-emerald-400">Objetivo Estratégico 2026</span>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-500/10 rounded-full blur-[100px] -z-10" />
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-8">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span className="text-xs font-bold tracking-wide uppercase text-cyan-400">Metodología Q1 2026</span>
         </div>
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-          Ciberseguridad & Talento: <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">KALACIBI</span>
+          Estrategia AIO para <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">KALACIBI</span>
         </h1>
         <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-          De la consultoría de transformación al dominio digital. Una estrategia integral para capturar el mercado B2B.
+          Cómo pasar de competir por precio en Google a ser la <strong className="text-white">Autoridad #1 recomendada por la IA</strong>.
         </p>
       </div>
 
@@ -257,10 +255,10 @@ const EstrategiaKalacibi = () => {
                   : 'text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >
-              {tab === 'journey' && 'Estrategia Holística'}
-              {tab === 'market' && 'Radar de Mercado'}
-              {tab === 'projection' && 'Impacto de Negocio'}
-              {tab === 'execution' && 'Plan de Transformación'}
+              {tab === 'journey' && 'El Nuevo Journey AIO'}
+              {tab === 'market' && 'Explorador de Mercado'}
+              {tab === 'projection' && 'Proyección de Impacto'}
+              {tab === 'execution' && 'Plan 12 Meses'}
               {tab === 'proposal' && 'Propuesta Comercial'}
             </button>
           ))}
@@ -276,7 +274,7 @@ const EstrategiaKalacibi = () => {
           {/* TAB 1: JOURNEY */}
           {activeTab === 'journey' && (
             <div className="animate-fade-in-up">
-              <h2 className="text-3xl font-bold mb-12 text-center text-white">El Ecosistema Kalacibi</h2>
+              <h2 className="text-3xl font-bold mb-12 text-center text-white">El Embudo de la Verdad: Kalacibi</h2>
               
               <div className="grid md:grid-cols-3 gap-8 relative">
                 <div className="hidden md:block absolute top-12 left-[30%] w-[40%] h-0.5 bg-gradient-to-r from-emerald-900 to-cyan-900 -z-10"></div>
@@ -348,7 +346,7 @@ const EstrategiaKalacibi = () => {
             <div className="animate-fade-in-up">
               <div className="flex flex-col md:flex-row justify-between items-end mb-8 border-b border-white/10 pb-6">
                 <div>
-                  <h2 className="text-3xl font-bold mb-2 text-white">Radar de Mercado</h2>
+                  <h2 className="text-3xl font-bold mb-2 text-white">Explorador de Oportunidad</h2>
                   <p className="text-gray-400">Análisis de la demanda B2B en Ciberseguridad.</p>
                 </div>
                 <div className="mt-4 md:mt-0 text-right">
@@ -466,7 +464,7 @@ const EstrategiaKalacibi = () => {
             </div>
           )}
 
-          {/* TAB 3: PROYECCIÓN (FUNNEL) */}
+          {/* TAB 3: PROYECCIÓN (FUNNEL & GRAPHS) */}
           {activeTab === 'projection' && (
             <div className="animate-fade-in-up">
               <h2 className="text-3xl font-bold mb-2 text-white">Proyección de Impacto</h2>
@@ -534,35 +532,152 @@ const EstrategiaKalacibi = () => {
                   </div>
               </div>
 
-              {/* KPI CARD */}
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-slate-900 p-6 rounded-xl border border-white/5">
-                  <h4 className="text-gray-400 uppercase text-xs font-bold mb-2">Inversión en Ads (Mensual)</h4>
-                  <div className="flex items-end gap-2">
-                    <span className="text-3xl font-bold text-white">500€</span>
-                    <span className="text-sm text-gray-500 mb-1">({traffic} clics x 1€)</span>
+              {/* EVOLUCIÓN TRÁFICO (IGUAL A AYR) */}
+              <div className="bg-slate-950 p-8 rounded-2xl shadow-sm border border-white/10 mb-12">
+                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                  <TrendingUp size={24} className="text-green-400" />
+                  Evolución de Fuentes de Tráfico
+                </h3>
+                <p className="text-sm text-gray-400 mb-6">
+                  Transición estratégica: De la dependencia del pago (SEM) a la autonomía orgánica y de IA.
+                </p>
+
+                <div className="grid grid-cols-5 gap-4 text-center items-end h-64 border-b border-white/5 pb-4">
+                  {/* Labels Column */}
+                  <div className="flex flex-col justify-end h-full pb-8 text-right pr-4 text-xs font-bold text-gray-600 space-y-4">
+                    <div className="h-full flex flex-col justify-between py-2">
+                      <span>100%</span>
+                      <span>50%</span>
+                      <span>0%</span>
+                    </div>
+                  </div>
+
+                  {/* Mes 1 */}
+                  <div className="flex flex-col justify-end h-full group">
+                    <div className="w-full bg-cyan-500/20 h-[0%] rounded-t-sm relative transition-all border-x border-t border-cyan-500/30"></div>
+                    <div className="w-full bg-purple-500/20 h-[0%] relative transition-all border-x border-t border-purple-500/30"></div>
+                    <div className="w-full bg-slate-700 h-[100%] rounded-b-lg relative transition-all flex items-center justify-center text-white text-xs font-bold border border-white/10">SEM 100%</div>
+                    <p className="mt-2 text-sm font-bold text-gray-400">Mes 1</p>
+                  </div>
+
+                  {/* Mes 6 */}
+                  <div className="flex flex-col justify-end h-full group">
+                    <div className="w-full bg-cyan-600 h-[10%] rounded-t-lg relative transition-all flex items-center justify-center text-white text-[10px] shadow-[0_0_10px_rgba(8,145,178,0.4)]">10%</div>
+                    <div className="w-full bg-purple-500/20 h-[0%] relative transition-all"></div>
+                    <div className="w-full bg-slate-700 h-[90%] rounded-b-lg relative transition-all flex items-center justify-center text-white text-xs font-bold border border-white/10">90%</div>
+                    <p className="mt-2 text-sm font-bold text-gray-400">Mes 6</p>
+                  </div>
+
+                  {/* Mes 12 */}
+                  <div className="flex flex-col justify-end h-full group">
+                    <div className="w-full bg-purple-600 h-[10%] rounded-t-lg relative transition-all flex items-center justify-center text-white text-[10px] shadow-[0_0_10px_rgba(147,51,234,0.4)]">AI 10%</div>
+                    <div className="w-full bg-cyan-600 h-[30%] relative transition-all flex items-center justify-center text-white text-xs shadow-[0_0_10px_rgba(8,145,178,0.4)] z-10">Org 30%</div>
+                    <div className="w-full bg-slate-700 h-[60%] rounded-b-lg relative transition-all flex items-center justify-center text-white text-xs font-bold border border-white/10">SEM 60%</div>
+                    <p className="mt-2 text-sm font-bold text-gray-400">Mes 12</p>
+                  </div>
+
+                  {/* Mes 24 */}
+                  <div className="flex flex-col justify-end h-full group">
+                    <div className="w-full bg-purple-600 h-[30%] rounded-t-lg relative transition-all flex items-center justify-center text-white text-xs font-bold shadow-[0_0_15px_rgba(147,51,234,0.4)] z-20">AI 30%</div>
+                    <div className="w-full bg-cyan-600 h-[40%] relative transition-all flex items-center justify-center text-white text-xs font-bold shadow-[0_0_15px_rgba(8,145,178,0.4)] z-10">Org 40%</div>
+                    <div className="w-full bg-slate-700 h-[30%] rounded-b-lg relative transition-all flex items-center justify-center text-white text-xs">SEM 30%</div>
+                    <p className="mt-2 text-sm font-bold text-gray-400">Mes 24</p>
                   </div>
                 </div>
-                <div className="bg-emerald-900/10 p-6 rounded-xl border border-emerald-500/30">
-                  <h4 className="text-emerald-400 uppercase text-xs font-bold mb-2">Coste por Adquisición (CAC)</h4>
-                  <div className="flex items-end gap-2">
-                    <span className="text-3xl font-bold text-emerald-400">~26€</span>
-                    <span className="text-sm text-emerald-400/70 mb-1">/cliente cerrado</span>
+                
+                <div className="flex justify-center gap-6 mt-6 text-xs font-bold text-gray-400">
+                  <div className="flex items-center gap-2"><div className="w-3 h-3 bg-slate-700 rounded-full border border-white/10"></div>SEM (Pago)</div>
+                  <div className="flex items-center gap-2"><div className="w-3 h-3 bg-cyan-600 rounded-full shadow-[0_0_5px_rgba(8,145,178,0.8)]"></div>Orgánico (SEO)</div>
+                  <div className="flex items-center gap-2"><div className="w-3 h-3 bg-purple-600 rounded-full shadow-[0_0_5px_rgba(147,51,234,0.8)]"></div>Tráfico IA (AIO)</div>
+                </div>
+              </div>
+
+              {/* SECCIÓN FINANCIERA SEM (CPC 0,40€) */}
+              <div className="bg-slate-950 text-white p-8 rounded-2xl shadow-xl border border-white/10">
+                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                  <Banknote size={24} className="text-emerald-400" />
+                  Eficiencia Financiera SEM
+                </h3>
+                
+                {/* Cards Comparativa CPC */}
+                <div className="grid md:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-slate-900 p-6 rounded-xl border border-white/5">
+                    <p className="text-gray-500 text-xs uppercase font-bold mb-2">Coste de Mercado (Media)</p>
+                    <div className="flex items-end gap-2">
+                      <span className="text-4xl font-bold text-red-400">1,00€</span>
+                      <span className="text-sm text-gray-500 mb-1">/clic</span>
+                    </div>
+                    <p className="text-xs text-gray-500 mt-2">Lo que paga tu competencia por ineficiencia.</p>
                   </div>
-                  <p className="text-xs text-gray-500 mt-2">Un CAC excepcionalmente bajo para el sector B2B.</p>
+                  <div className="bg-emerald-900/10 p-6 rounded-xl border border-emerald-500/30 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 bg-emerald-500 text-slate-950 text-[10px] font-bold px-2 py-1 rounded-bl-lg">AHORRO 60%</div>
+                    <p className="text-emerald-400 text-xs uppercase font-bold mb-2">Coste Optimizado (Alejo)</p>
+                    <div className="flex items-end gap-2">
+                      <span className="text-4xl font-bold text-emerald-400">0,40€</span>
+                      <span className="text-sm text-emerald-400/70 mb-1">/clic</span>
+                    </div>
+                    <p className="text-xs text-emerald-400/60 mt-2">Optimización experta de Quality Score.</p>
+                  </div>
+                </div>
+
+                {/* Presupuesto Necesario Chart */}
+                <div>
+                  <p className="text-sm font-bold text-gray-300 mb-4">Presupuesto Mensual Necesario (Para mantener {traffic} visitas)</p>
+                  <div className="space-y-4">
+                    
+                    {/* Mes 1 */}
+                    <div className="flex items-center gap-4 group">
+                      <div className="w-16 text-xs text-gray-500 font-bold">Mes 1</div>
+                      <div className="flex-1 bg-slate-900 h-8 rounded-full overflow-hidden relative border border-white/5">
+                        <div className="bg-gradient-to-r from-red-500/80 to-red-600/80 h-full w-[100%]"></div>
+                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-white drop-shadow-md">200€</span>
+                      </div>
+                    </div>
+
+                    {/* Mes 6 */}
+                    <div className="flex items-center gap-4 group">
+                      <div className="w-16 text-xs text-gray-500 font-bold">Mes 6</div>
+                      <div className="flex-1 bg-slate-900 h-8 rounded-full overflow-hidden relative border border-white/5">
+                        <div className="bg-gradient-to-r from-orange-500/80 to-orange-600/80 h-full w-[90%]"></div>
+                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-white drop-shadow-md">180€</span>
+                      </div>
+                    </div>
+
+                    {/* Mes 12 */}
+                    <div className="flex items-center gap-4 group">
+                      <div className="w-16 text-xs text-gray-500 font-bold">Mes 12</div>
+                      <div className="flex-1 bg-slate-900 h-8 rounded-full overflow-hidden relative border border-white/5">
+                        <div className="bg-gradient-to-r from-yellow-500/80 to-yellow-600/80 h-full w-[60%]"></div>
+                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-white drop-shadow-md">120€</span>
+                      </div>
+                    </div>
+
+                    {/* Mes 24 */}
+                    <div className="flex items-center gap-4 group">
+                      <div className="w-16 text-xs text-gray-500 font-bold">Mes 24</div>
+                      <div className="flex-1 bg-slate-900 h-8 rounded-full overflow-hidden relative border border-white/5">
+                        <div className="bg-gradient-to-r from-emerald-500/80 to-emerald-600/80 h-full w-[30%]"></div>
+                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-white drop-shadow-md">60€</span>
+                      </div>
+                    </div>
+
+                  </div>
+                  <p className="text-xs text-gray-500 mt-4 text-center">
+                    *Gracias al crecimiento orgánico, reducimos la inversión publicitaria un <strong className="text-white">70% en 2 años</strong> manteniendo el mismo volumen de ventas.
+                  </p>
                 </div>
               </div>
             </div>
           )}
 
-          {/* TAB 4: EJECUCIÓN 12 MESES */}
+          {/* TAB 4: EJECUCIÓN 12 MESES (CON FASE DE TALENTO) */}
           {activeTab === 'execution' && (
             <div className="animate-fade-in-up">
                 <h2 className="text-3xl font-bold mb-8 text-center text-white">Hoja de Ruta de Transformación</h2>
                 
                 <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-emerald-500/20 before:to-transparent">
                 
-                {/* Phase 1: CONSULTORÍA (CRÍTICO) */}
+                {/* Phase 1: TALENTO (NUEVO) */}
                 <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                   <div className="flex items-center justify-center w-10 h-10 rounded-full border border-emerald-500 bg-emerald-500/20 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.5)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                     <span className="font-bold text-sm">1</span>
@@ -576,54 +691,73 @@ const EstrategiaKalacibi = () => {
                     <ul className="space-y-3">
                       <li className="flex items-start gap-2 text-sm text-gray-300">
                         <Users size={16} className="text-emerald-500 mt-0.5 shrink-0" />
-                        <strong className="text-emerald-400">Sistema de Gestión de Talento:</strong> Implementación y optimización de recursos humanos.
+                        <strong className="text-emerald-400">Gestión de Talento:</strong> Entrega de formatos y sistema de gestión de personas.
                       </li>
                       <li className="flex items-start gap-2 text-sm text-gray-300">
                         <Briefcase size={16} className="text-emerald-500 mt-0.5 shrink-0" />
-                        <strong className="text-emerald-400">Way of Work (WoW):</strong> Rediseño de procesos operativos para agilidad y escalabilidad.
+                        <strong className="text-emerald-400">Way of Work (WoW):</strong> Definición de nuevos flujos de trabajo ágiles.
                       </li>
                       <li className="flex items-start gap-2 text-sm text-gray-300">
-                        <Target size={16} className="text-emerald-500 mt-0.5 shrink-0" />
-                        <strong className="text-emerald-400">Alineación Estratégica 2026:</strong> Definición de OKRs corporativos.
+                        <GraduationCap size={16} className="text-emerald-500 mt-0.5 shrink-0" />
+                        <strong className="text-emerald-400">Transferencia de Conocimiento:</strong> Estructura organizacional lista para crecer.
                       </li>
                     </ul>
                   </div>
                 </div>
 
-                {/* Phase 2: INFRAESTRUCTURA */}
+                {/* Phase 2: ESTRATEGIA AIO */}
                 <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                   <div className="flex items-center justify-center w-10 h-10 rounded-full border border-cyan-500 bg-cyan-500/20 text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.5)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                     <span className="font-bold text-sm">2</span>
                   </div>
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-950 p-6 rounded-xl border border-cyan-500/30 shadow-lg">
                       <div className="flex justify-between items-center mb-2">
-                        <h3 className="font-bold text-white text-lg">Fase 2: Infraestructura Digital</h3>
+                        <h3 className="font-bold text-white text-lg">Fase 2: Estrategia AIO & Setup</h3>
                         <span className="text-xs font-bold bg-cyan-900/30 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/30">MES 2 - 3</span>
                     </div>
-                    <p className="text-sm text-gray-400 mb-4 italic">Construcción de los activos digitales necesarios para captar y convertir el tráfico.</p>
+                    <p className="text-sm text-gray-400 mb-4 italic">Auditoría profunda y diseño del futuro. No movemos un dedo sin un plan maestro.</p>
                     <ul className="space-y-2">
-                       <li className="flex items-start gap-2 text-sm text-gray-300"><Layout size={16} className="text-cyan-500 mt-0.5"/> Desarrollo de Landing Pages B2B</li>
-                       <li className="flex items-start gap-2 text-sm text-gray-300"><Zap size={16} className="text-cyan-500 mt-0.5"/> Automatización de CRM</li>
-                       <li className="flex items-start gap-2 text-sm text-gray-300"><PenTool size={16} className="text-cyan-500 mt-0.5"/> Creación de Lead Magnets (Guías ISO)</li>
+                       <li className="flex items-start gap-2 text-sm text-gray-300"><CheckCircle size={16} className="text-cyan-500 mt-0.5"/> Construcción del Plan Estratégico AIO</li>
+                       <li className="flex items-start gap-2 text-sm text-gray-300"><CheckCircle size={16} className="text-cyan-500 mt-0.5"/> Definición de OKRs y KPIs de Negocio</li>
+                       <li className="flex items-start gap-2 text-sm text-gray-300"><Rocket size={16} className="text-cyan-500 mt-0.5"/> Lanzamiento Campaña SEM (Tráfico Inmediato)</li>
                     </ul>
                   </div>
                 </div>
 
-                {/* Phase 3: ESCALADO */}
+                {/* Phase 3: CONSTRUCCIÓN */}
                 <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                   <div className="flex items-center justify-center w-10 h-10 rounded-full border border-blue-500 bg-blue-500/20 text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.5)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                     <span className="font-bold text-sm">3</span>
                   </div>
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-950 p-6 rounded-xl border border-blue-500/30 shadow-lg">
                       <div className="flex justify-between items-center mb-2">
-                        <h3 className="font-bold text-white text-lg">Fase 3: Tráfico y Ventas</h3>
-                        <span className="text-xs font-bold bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full border border-blue-500/30">MES 4+</span>
+                        <h3 className="font-bold text-white text-lg">Fase 3: Construcción Masiva</h3>
+                        <span className="text-xs font-bold bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full border border-blue-500/30">MES 4 - 5</span>
                     </div>
-                    <p className="text-sm text-gray-400 mb-4 italic">Activación de campañas y optimización continua del embudo.</p>
+                    <p className="text-sm text-gray-400 mb-4 italic">Ejecución táctica intensiva. Construyo el 100% de los activos necesarios. Sin límites.</p>
                     <ul className="space-y-2">
-                       <li className="flex items-start gap-2 text-sm text-gray-300"><Rocket size={16} className="text-blue-500 mt-0.5"/> Lanzamiento Google Ads (Keywords 1€ CPC)</li>
-                       <li className="flex items-start gap-2 text-sm text-gray-300"><BarChart3 size={16} className="text-blue-500 mt-0.5"/> Análisis de Retorno y Ajuste</li>
-                       <li className="flex items-start gap-2 text-sm text-gray-300"><Shield size={16} className="text-blue-500 mt-0.5"/> Consolidación de Autoridad de Marca</li>
+                       <li className="flex items-start gap-2 text-sm text-gray-300"><PenTool size={16} className="text-blue-500 mt-0.5"/> Despliegue de Webs y Landing Pages</li>
+                       <li className="flex items-start gap-2 text-sm text-gray-300"><Zap size={16} className="text-blue-500 mt-0.5"/> Configuración de Gems y Flows IA</li>
+                       <li className="flex items-start gap-2 text-sm text-gray-300"><Layout size={16} className="text-blue-500 mt-0.5"/> Implementación de Dashboards</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Phase 4: OPTIMIZACIÓN */}
+                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-purple-500 bg-purple-500/20 text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.5)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                    <span className="font-bold text-sm">4</span>
+                  </div>
+                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-950 p-6 rounded-xl border border-purple-500/30 shadow-lg">
+                      <div className="flex justify-between items-center mb-2">
+                        <h3 className="font-bold text-white text-lg">Fase 4: Optimización & Vuelo</h3>
+                        <span className="text-xs font-bold bg-purple-900/30 text-purple-400 px-3 py-1 rounded-full border border-purple-500/30">MES 6 - 12</span>
+                    </div>
+                    <p className="text-sm text-gray-400 mb-4 italic">Acompañamiento, medición y transferencia de conocimiento.</p>
+                    <ul className="space-y-2">
+                       <li className="flex items-start gap-2 text-sm text-gray-300"><BarChart3 size={16} className="text-purple-500 mt-0.5"/> Lectura conjunta de Dashboards</li>
+                       <li className="flex items-start gap-2 text-sm text-gray-300"><MessageSquare size={16} className="text-purple-500 mt-0.5"/> Feedback de negocio y consultoría</li>
+                       <li className="flex items-start gap-2 text-sm text-gray-300"><Settings size={16} className="text-purple-500 mt-0.5"/> Ajuste fino de algoritmos AIO</li>
                     </ul>
                   </div>
                 </div>
@@ -635,16 +769,19 @@ const EstrategiaKalacibi = () => {
           {/* TAB 5: PROPUESTA COMERCIAL */}
           {activeTab === 'proposal' && (
             <div className="animate-fade-in-up">
-              <h2 className="text-3xl font-bold mb-8 text-center text-white">Propuesta de Valor</h2>
+              <h2 className="text-3xl font-bold mb-8 text-center text-white">Propuesta de Valor y Compromiso</h2>
 
               {/* Entregables */}
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 {[
-                  { icon: Users, color: "text-emerald-400", title: "Transformación Organizacional", desc: "Consultoría 'Way of Work' y gestión de talento para preparar la escala." },
-                  { icon: Target, color: "text-cyan-400", title: "Estrategia B2B Precisa", desc: "Foco en keywords transaccionales de alto valor (ISO, Consultoría) a bajo coste." },
-                  { icon: BarChart3, color: "text-blue-400", title: "Sistema de Ventas", desc: "Embudo optimizado para generar ~19 clientes/mes con alta rentabilidad." },
+                  { icon: Map, color: "text-blue-400", title: "Plan Estratégico", desc: "La biblia de tu negocio por 1 año. Objetivos, tácticas y métricas claras." },
+                  { icon: Globe, color: "text-purple-400", title: "Ecosistema Ilimitado", desc: "Dominios, Webs y Apps. Creamos tantas como la estrategia requiera. Sin coste extra." },
+                  { icon: Zap, color: "text-amber-400", title: "Gems & Flows IA", desc: "Automatizaciones y asistentes personalizados para optimizar el trabajo diario." },
+                  { icon: BarChart3, color: "text-emerald-400", title: "Dashboard Central", desc: "Medición en tiempo real. Datos unificados, verdad absoluta." },
+                  { icon: Rocket, color: "text-rose-400", title: "Posicionamiento AIO", desc: "Estrategia híbrida para dominar: SEO, SEM y AI (ChatGPT/Gemini)." },
+                  { icon: BrainCircuit, color: "text-cyan-400", title: "Tu Propio 'Alejo'", desc: "Entrega de una IA entrenada con mi metodología para consultas futuras." },
                 ].map((item, i) => (
-                   <div key={i} className="bg-slate-950 p-6 rounded-xl border border-white/10 hover:border-emerald-500/30 transition-all shadow-lg group">
+                   <div key={i} className="bg-slate-950 p-6 rounded-xl border border-white/10 hover:border-cyan-500/30 transition-all shadow-lg group">
                     <div className={`bg-slate-900 w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${item.color} border border-white/5 group-hover:scale-110 transition-transform`}>
                       <item.icon size={24} />
                     </div>
@@ -654,25 +791,75 @@ const EstrategiaKalacibi = () => {
                 ))}
               </div>
 
-              {/* Pricing & CTA */}
-              <div className="flex flex-col md:flex-row items-center justify-center gap-8 bg-gradient-to-br from-slate-900 to-slate-950 p-8 rounded-3xl border border-emerald-500/20 shadow-[0_0_50px_rgba(16,185,129,0.1)]">
-                <div className="text-center md:text-right">
-                  <p className="text-sm text-emerald-400 uppercase font-bold tracking-wide">Modelo de Partner</p>
-                  <div className="flex items-baseline justify-center md:justify-end gap-1">
-                    <span className="text-3xl font-bold text-white">Consultoría + Resultados</span>
+              {/* Manifiesto */}
+              <div className="bg-slate-950 text-white rounded-2xl overflow-hidden mb-12 shadow-2xl border border-white/10">
+                <div className="p-8 text-center border-b border-white/10 bg-slate-900/50">
+                  <h3 className="text-2xl font-bold mb-2 flex items-center justify-center gap-2">
+                    <Handshake size={28} className="text-cyan-400" /> Manifiesto de Colaboración
+                  </h3>
+                  <p className="text-gray-400 max-w-2xl mx-auto">Para que esto funcione, operamos bajo reglas estrictas. No soy un proveedor, soy un socio estratégico temporal.</p>
+                </div>
+                <div className="grid md:grid-cols-2">
+                  <div className="p-8 border-r border-white/10">
+                    <h4 className="font-bold text-blue-400 mb-6 uppercase tracking-wider text-sm flex items-center gap-2">
+                      <CheckCircle size={16} /> Mis Compromisos
+                    </h4>
+                    <ul className="space-y-4 text-sm text-gray-300">
+                      {[
+                        "Producción ILIMITADA de activos (webs, apps, contenido) según estrategia.",
+                        "Profundidad total en el conocimiento de tu industria.",
+                        "Obsesión por cumplir el 100% de los OKRs.",
+                        "Solo pido el tiempo estrictamente necesario.",
+                        "Garantía de Autonomía: Te entrego el sistema funcionando al mes 12."
+                      ].map((txt, i) => (
+                        <li key={i} className="flex gap-3 items-start">
+                          <span className="text-blue-500 font-bold mt-0.5">•</span> {txt}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <p className="text-xs text-gray-500 mt-2">Mes 1: Fee de Consultoría Estratégica</p>
-                  <p className="text-xs text-gray-500">Mes 2+: Fee de Gestión + Inversión Ads</p>
+                  <div className="p-8 bg-slate-900/30">
+                    <h4 className="font-bold text-red-400 mb-6 uppercase tracking-wider text-sm flex items-center gap-2">
+                      <AlertTriangle size={16} /> Tus Compromisos
+                    </h4>
+                    <ul className="space-y-4 text-sm text-gray-300">
+                      {[
+                        "Compromiso de hierro: 12 meses sin abandono.",
+                        "Confianza Radical: El plan estratégico NO se cambia.",
+                        "Estabilidad: Sin cambios bruscos en marca/precios.",
+                        "Cero Micro-management: No pedir cambios estéticos en webs/apps.",
+                        "Llaves del Reino: Acceso total (Hosting, Ads, CRM, Data).",
+                        "Mentalidad Remote-First: Cero reuniones presenciales."
+                      ].map((txt, i) => (
+                        <li key={i} className="flex gap-3 items-start">
+                          <span className="text-red-500 font-bold mt-0.5">•</span> {txt}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Pricing & CTA */}
+              <div className="flex flex-col md:flex-row items-center justify-center gap-8 bg-gradient-to-br from-slate-900 to-slate-950 p-8 rounded-3xl border border-cyan-500/20 shadow-[0_0_50px_rgba(34,211,238,0.1)]">
+                <div className="text-center md:text-right">
+                  <p className="text-sm text-cyan-400 uppercase font-bold tracking-wide">Inversión Mensual</p>
+                  <div className="flex items-baseline justify-center md:justify-end gap-1">
+                    <span className="text-5xl font-extrabold text-white">3.000€</span>
+                    <span className="text-xl text-gray-500 font-medium">/mes</span>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-2">Contrato anual cerrado. Facturación mensual.</p>
+                  <p className="text-xs text-gray-500">Incluye todos los costes de desarrollo y automatización.</p>
                 </div>
                 
                 <div className="h-16 w-px bg-white/10 hidden md:block"></div>
 
                 <div className="text-center">
-                  <a href="https://kalacibi.com" target="_blank" rel="noopener noreferrer" className="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xl font-bold py-4 px-12 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)] transform hover:-translate-y-1 transition-all">
-                    Iniciar Transformación
+                  <a href="https://wa.me/34655328878?text=Acepto%20el%20reto%20Kalacibi" target="_blank" rel="noopener noreferrer" className="inline-block bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xl font-bold py-4 px-12 rounded-full shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] transform hover:-translate-y-1 transition-all">
+                    Acepto el Reto. Iniciemos.
                   </a>
                   <p className="text-[10px] text-gray-500 mt-3 max-w-xs mx-auto">
-                    Alineados con el Plan Estratégico 2026 de Kalacibi.
+                    *Al hacer clic confirmas haber leído y aceptado los compromisos del manifiesto.
                   </p>
                 </div>
               </div>
