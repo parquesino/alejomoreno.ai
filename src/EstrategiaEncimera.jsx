@@ -8,7 +8,7 @@ const EstrategiaEncimera = () => {
   const [activeCategory, setActiveCategory] = useState('Todas');
   const [sortBy, setSortBy] = useState('volume');
 
-  // --- DATASET ENCIMERA ---
+  // --- DATASET COMPLETO (Procesado de tu lista) ---
   const rawData = [
     { keyword: "encimeras de cocina", volume: 2900, trend: "0%", cpc: "1,00" },
     { keyword: "encimera", volume: 1900, trend: "0%", cpc: "1,00" },
@@ -127,7 +127,7 @@ const EstrategiaEncimera = () => {
     return data;
   }, [enrichedData, searchTerm, activeCategory, sortBy]);
 
-  // Funnel Data (Based on your input)
+  // Funnel Data (Mensual, según tu input)
   const funnelData = [
     { month: 'Mes 1', share: '20%', traffic: 600, cost: 600, sales: 3.78 },
     { month: 'Mes 2', share: '20%', traffic: 600, cost: 600, sales: 3.78 },
@@ -415,6 +415,66 @@ const EstrategiaEncimera = () => {
                       </tr>
                     </tfoot>
                   </table>
+                </div>
+              </div>
+
+              {/* Evolución de Tráfico (Igual a AYR) */}
+              <div className="bg-slate-950 p-8 rounded-2xl shadow-sm border border-white/10 mb-12">
+                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                  <TrendingUp size={24} className="text-green-400" />
+                  Evolución de Fuentes de Tráfico
+                </h3>
+                <p className="text-sm text-gray-400 mb-6">
+                  Transición estratégica: De la dependencia del pago (SEM) a la autonomía orgánica y de IA.
+                </p>
+
+                <div className="grid grid-cols-5 gap-4 text-center items-end h-64 border-b border-white/5 pb-4">
+                  {/* Labels Column */}
+                  <div className="flex flex-col justify-end h-full pb-8 text-right pr-4 text-xs font-bold text-gray-600 space-y-4">
+                    <div className="h-full flex flex-col justify-between py-2">
+                      <span>100%</span>
+                      <span>50%</span>
+                      <span>0%</span>
+                    </div>
+                  </div>
+
+                  {/* Mes 1 */}
+                  <div className="flex flex-col justify-end h-full group">
+                    <div className="w-full bg-cyan-500/20 h-[0%] rounded-t-sm relative transition-all border-x border-t border-cyan-500/30"></div>
+                    <div className="w-full bg-purple-500/20 h-[0%] relative transition-all border-x border-t border-purple-500/30"></div>
+                    <div className="w-full bg-slate-700 h-[100%] rounded-b-lg relative transition-all flex items-center justify-center text-white text-xs font-bold border border-white/10">SEM 100%</div>
+                    <p className="mt-2 text-sm font-bold text-gray-400">Mes 1</p>
+                  </div>
+
+                  {/* Mes 6 */}
+                  <div className="flex flex-col justify-end h-full group">
+                    <div className="w-full bg-cyan-600 h-[10%] rounded-t-lg relative transition-all flex items-center justify-center text-white text-[10px] shadow-[0_0_10px_rgba(8,145,178,0.4)]">10%</div>
+                    <div className="w-full bg-purple-500/20 h-[0%] relative transition-all"></div>
+                    <div className="w-full bg-slate-700 h-[90%] rounded-b-lg relative transition-all flex items-center justify-center text-white text-xs font-bold border border-white/10">90%</div>
+                    <p className="mt-2 text-sm font-bold text-gray-400">Mes 6</p>
+                  </div>
+
+                  {/* Mes 12 */}
+                  <div className="flex flex-col justify-end h-full group">
+                    <div className="w-full bg-purple-600 h-[10%] rounded-t-lg relative transition-all flex items-center justify-center text-white text-[10px] shadow-[0_0_10px_rgba(147,51,234,0.4)]">AI 10%</div>
+                    <div className="w-full bg-cyan-600 h-[30%] relative transition-all flex items-center justify-center text-white text-xs shadow-[0_0_10px_rgba(8,145,178,0.4)] z-10">Org 30%</div>
+                    <div className="w-full bg-slate-700 h-[60%] rounded-b-lg relative transition-all flex items-center justify-center text-white text-xs font-bold border border-white/10">SEM 60%</div>
+                    <p className="mt-2 text-sm font-bold text-gray-400">Mes 12</p>
+                  </div>
+
+                  {/* Mes 24 */}
+                  <div className="flex flex-col justify-end h-full group">
+                    <div className="w-full bg-purple-600 h-[30%] rounded-t-lg relative transition-all flex items-center justify-center text-white text-xs font-bold shadow-[0_0_15px_rgba(147,51,234,0.4)] z-20">AI 30%</div>
+                    <div className="w-full bg-cyan-600 h-[40%] relative transition-all flex items-center justify-center text-white text-xs font-bold shadow-[0_0_15px_rgba(8,145,178,0.4)] z-10">Org 40%</div>
+                    <div className="w-full bg-slate-700 h-[30%] rounded-b-lg relative transition-all flex items-center justify-center text-white text-xs">SEM 30%</div>
+                    <p className="mt-2 text-sm font-bold text-gray-400">Mes 24</p>
+                  </div>
+                </div>
+                
+                <div className="flex justify-center gap-6 mt-6 text-xs font-bold text-gray-400">
+                  <div className="flex items-center gap-2"><div className="w-3 h-3 bg-slate-700 rounded-full border border-white/10"></div>SEM (Pago)</div>
+                  <div className="flex items-center gap-2"><div className="w-3 h-3 bg-cyan-600 rounded-full shadow-[0_0_5px_rgba(8,145,178,0.8)]"></div>Orgánico (SEO)</div>
+                  <div className="flex items-center gap-2"><div className="w-3 h-3 bg-purple-600 rounded-full shadow-[0_0_5px_rgba(147,51,234,0.8)]"></div>Tráfico IA (AIO)</div>
                 </div>
               </div>
 
