@@ -523,7 +523,7 @@ const EstrategiaEncimera = () => {
                     <span className="text-xs font-bold bg-blue-900/30 text-blue-400 px-3 py-1 rounded-full">Share 50%</span>
                   </div>
                   <ul className="space-y-2 text-sm text-gray-300">
-                    <li className="flex gap-2"><CheckCircle size={16} className="text-blue-500"/> Ampliación de presupuesto diario.</li>
+                    <li className="flex gap-2"><CheckCircle size={16} className="text-blue-500"/> Optimización de presupuesto diario.</li>
                     <li className="flex gap-2"><CheckCircle size={16} className="text-blue-500"/> Test A/B de anuncios.</li>
                     <li className="flex gap-2"><CheckCircle size={16} className="text-blue-500"/> Estrategia de retargeting.</li>
                   </ul>
