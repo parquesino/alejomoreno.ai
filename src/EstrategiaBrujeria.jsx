@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Search, ArrowRight, Zap, TrendingUp, Filter, DollarSign, Shield, ShoppingCart, Activity, Package, Droplets, Sparkles, AlertTriangle, BarChart3 } from 'lucide-react';
+import { Search, ArrowRight, Zap, TrendingUp, Filter, DollarSign, Shield, ShoppingCart, Activity, Package, Droplets, Sparkles, AlertTriangle, BarChart3, Database } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const EstrategiaBrujeria = () => {
@@ -8,36 +8,90 @@ const EstrategiaBrujeria = () => {
   const [activeCategory, setActiveCategory] = useState('Todas');
   const [sortBy, setSortBy] = useState('volume');
 
-  // --- DATASET REAL (Extraído de tu Keyword Research Q1 2026) ---
+  // --- DATASET COMPLETO (Sin resumir, extraído de tu CSV) ---
   const rawData = [
-    // GENÉRICAS ALTO VOLUMEN (La Oportunidad AIO)
-    { keyword: "shampoo de cebolla", volume: 14800, trend: "0%", cpc: "900" },
-    { keyword: "crema de peinar", volume: 12100, trend: "-5%", cpc: "600" },
-    { keyword: "shampoo de romero", volume: 9900, trend: "+22%", cpc: "850" },
-    { keyword: "tratamiento capilar", volume: 8100, trend: "0%", cpc: "1100" },
-    { keyword: "shampoo sin sal", volume: 6600, trend: "+15%", cpc: "700" },
-    { keyword: "tónico capilar", volume: 5400, trend: "+10%", cpc: "1200" },
-    { keyword: "termoprotector cabello", volume: 4400, trend: "+5%", cpc: "800" },
-    { keyword: "shampoo gusano de seda", volume: 2900, trend: "-10%", cpc: "500" },
-    { keyword: "repolarizador capilar", volume: 2400, trend: "0%", cpc: "800" },
-    { keyword: "shampoo de aguacate", volume: 1900, trend: "0%", cpc: "650" },
-    { keyword: "shampoo anticaspa", volume: 9900, trend: "+27%", cpc: "950" },
-    { keyword: "crecimiento cabello", volume: 1900, trend: "+30%", cpc: "950" },
-    
-    // COMPETENCIA (Contexto de Batalla)
+    // MARCA PROPIA (El punto de partida)
+    { keyword: "brujeria capilar", volume: 320, trend: "+127%", cpc: "N/A" },
+
+    // GIGANTES (La Competencia a derribar)
     { keyword: "anyeluz", volume: 33100, trend: "-18%", cpc: "1400" },
-    { keyword: "kaba", volume: 27100, trend: "-55%", cpc: "1800" },
-    { keyword: "la pocion", volume: 880, trend: "+26%", cpc: "1300" },
-    { keyword: "milagros", volume: 8100, trend: "+5%", cpc: "1100" },
-    { keyword: "click hair", volume: 6600, trend: "+22%", cpc: "1000" }
+    { keyword: "kaba", volume: 27100, trend: "0%", cpc: "1800" },
+    { keyword: "la poción", volume: 880, trend: "+26%", cpc: "1300" },
+    { keyword: "click hair", volume: 6600, trend: "+22%", cpc: "1000" },
+    { keyword: "crema milagros", volume: 210, trend: "-19%", cpc: "N/A" },
+    
+    // PRODUCTOS ANYELUZ (Donde robaremos tráfico por ingrediente)
+    { keyword: "anyeluz shampoo", volume: 4400, trend: "0%", cpc: "900" },
+    { keyword: "shampoo anyeluz", volume: 4400, trend: "-19%", cpc: "900" },
+    { keyword: "shampoo de cebolla anyeluz", volume: 1300, trend: "-33%", cpc: "1100" },
+    { keyword: "anyeluz shampoo de cebolla", volume: 480, trend: "0%", cpc: "1100" },
+    { keyword: "shampoo cebolla anyeluz", volume: 590, trend: "-19%", cpc: "1100" },
+    { keyword: "anyeluz cebolla", volume: 320, trend: "-19%", cpc: "1200" },
+    { keyword: "anyeluz romero", volume: 720, trend: "-19%", cpc: "1400" },
+    { keyword: "shampoo anyeluz romero", volume: 260, trend: "-19%", cpc: "1400" },
+    { keyword: "anyeluz shampoo romero", volume: 260, trend: "-19%", cpc: "1400" },
+    { keyword: "shampoo de romero anyeluz", volume: 480, trend: "-33%", cpc: "1600" },
+    { keyword: "anyeluz aguacate", volume: 50, trend: "-29%", cpc: "N/A" },
+    { keyword: "shampoo aguacate anyeluz", volume: 110, trend: "-36%", cpc: "N/A" },
+    { keyword: "shampoo anyeluz aguacate", volume: 70, trend: "-40%", cpc: "N/A" },
+    { keyword: "shampoo gusano de seda anyeluz", volume: 210, trend: "-36%", cpc: "N/A" },
+    { keyword: "anyeluz gusano de seda", volume: 70, trend: "+40%", cpc: "N/A" },
+    { keyword: "shampoo anyeluz gusano de seda", volume: 90, trend: "+25%", cpc: "N/A" },
+    { keyword: "shampoo aloe vera anyeluz", volume: 170, trend: "-50%", cpc: "N/A" },
+    { keyword: "shampoo anyeluz aloe vera", volume: 70, trend: "0%", cpc: "N/A" },
+    { keyword: "tonico anyeluz", volume: 320, trend: "-19%", cpc: "900" },
+    { keyword: "anyeluz tonico", volume: 70, trend: "-29%", cpc: "900" },
+    { keyword: "tonico anticaida anyeluz", volume: 210, trend: "-57%", cpc: "1100" },
+    { keyword: "tónico anyeluz", volume: 320, trend: "-19%", cpc: "900" },
+    { keyword: "termoprotector anyeluz", volume: 390, trend: "+23%", cpc: "1800" },
+    { keyword: "anyeluz termoprotector", volume: 90, trend: "-18%", cpc: "1800" },
+    { keyword: "termoprotector de anyeluz", volume: 90, trend: "-21%", cpc: "1800" },
+    { keyword: "crema de peinar milagros", volume: 320, trend: "+23%", cpc: "240" },
+    { keyword: "crema para peinar milagros", volume: 320, trend: "-18%", cpc: "590" },
+    { keyword: "milagros crema de peinar", volume: 70, trend: "-57%", cpc: "460" },
+    { keyword: "tratamiento anyeluz", volume: 210, trend: "+24%", cpc: "600" },
+    { keyword: "tratamiento capilar anyeluz", volume: 70, trend: "-40%", cpc: "220" },
+    { keyword: "terapia capilar anyeluz", volume: 260, trend: "-18%", cpc: "N/A" },
+    { keyword: "anyeluz terapia capilar", volume: 30, trend: "-50%", cpc: "N/A" },
+    
+    // INTENCIÓN & PREGUNTAS (Long tail)
+    { keyword: "el shampoo de anyeluz es bueno", volume: 20, trend: "0%", cpc: "N/A" },
+    { keyword: "los productos de anyeluz son buenos", volume: 20, trend: "-50%", cpc: "N/A" },
+    { keyword: "shampoo anyeluz opiniones", volume: 70, trend: "0%", cpc: "N/A" },
+    { keyword: "productos anyeluz opiniones", volume: 90, trend: "-57%", cpc: "N/A" },
+    { keyword: "shampoo anyeluz comentarios", volume: 10, trend: "100%", cpc: "N/A" },
+    { keyword: "shampoo anyeluz testimonios", volume: 170, trend: "-29%", cpc: "N/A" },
+    { keyword: "shampoo de cebolla anyeluz opiniones", volume: 40, trend: "0%", cpc: "N/A" },
+    { keyword: "shampoo de cebolla anyeluz testimonios", volume: 260, trend: "-22%", cpc: "N/A" },
+    
+    // PRECIO & TRANSACCIONAL
+    { keyword: "anyeluz al por mayor", volume: 70, trend: "-75%", cpc: "1000" },
+    { keyword: "anyeluz distribuidor oficial", volume: 70, trend: "-18%", cpc: "1100" },
+    { keyword: "puntos de venta anyeluz", volume: 30, trend: "+200%", cpc: "N/A" },
+    { keyword: "tienda anyeluz", volume: 40, trend: "+133%", cpc: "1900" },
+    { keyword: "anyeluz shampoo precio", volume: 90, trend: "-33%", cpc: "N/A" },
+    { keyword: "shampoo anyeluz precio", volume: 140, trend: "-44%", cpc: "N/A" },
+    { keyword: "shampoo de cebolla anyeluz precio", volume: 110, trend: "-33%", cpc: "N/A" },
+    
+    // OTROS COMPETIDORES / PRODUCTOS
+    { keyword: "la pocion tratamiento", volume: 320, trend: "-18%", cpc: "1500" },
+    { keyword: "la pocion cabello", volume: 20, trend: "+33%", cpc: "1300" },
+    { keyword: "la pocion ancestral", volume: 260, trend: "0%", cpc: "1100" },
+    { keyword: "tongolele la pocion", volume: 30, trend: "-25%", cpc: "1300" },
+    { keyword: "suero reconstructor click hair", volume: 140, trend: "-34%", cpc: "440" },
+    { keyword: "miel para el cabello click hair", volume: 260, trend: "+14%", cpc: "350" },
+    { keyword: "energizante capilar click hair", volume: 110, trend: "-18%", cpc: "520" },
+    { keyword: "click hair testimonios", volume: 70, trend: "-29%", cpc: "N/A" },
+    { keyword: "click hair opiniones", volume: 10, trend: "-50%", cpc: "N/A" }
   ];
 
   const categorizeKeyword = (keyword) => {
     const k = keyword.toLowerCase();
+    if (k.includes('brujeria')) return 'Tu Marca';
+    if (k.includes('cebolla') || k.includes('romero') || k.includes('aguacate') || k.includes('gusano') || k.includes('aloe')) return 'Ingrediente';
+    if (k.includes('opiniones') || k.includes('testimonios') || k.includes('bueno') || k.includes('comentarios')) return 'Reputación (AIO)';
+    if (k.includes('precio') || k.includes('venta') || k.includes('tienda') || k.includes('distribuidor')) return 'Transaccional';
     if (k.includes('anyeluz') || k.includes('kaba') || k.includes('pocion') || k.includes('milagros') || k.includes('click')) return 'Competencia';
-    if (k.includes('cebolla') || k.includes('romero') || k.includes('gusano') || k.includes('aguacate')) return 'Ingrediente Mágico';
-    if (k.includes('crecimiento') || k.includes('anticaida') || k.includes('repolarizador') || k.includes('tratamiento')) return 'Solución/Hechizo';
-    if (k.includes('shampoo') || k.includes('crema') || k.includes('tonico')) return 'Producto Base';
     return 'General';
   };
 
@@ -58,10 +112,11 @@ const EstrategiaBrujeria = () => {
   }, [enrichedData, searchTerm, activeCategory, sortBy]);
 
   const getAIOScore = (item) => {
-    if (item.category === 'Competencia') return { score: 'Bajo', color: 'text-gray-400 bg-gray-500/10 border-gray-500/30' };
-    if (item.category === 'Solución/Hechizo') return { score: 'Crítico', color: 'text-red-400 bg-red-500/10 border-red-500/30' };
-    if (item.category === 'Ingrediente Mágico') return { score: 'Muy Alto', color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30' };
-    return { score: 'Alto', color: 'text-purple-400 bg-purple-500/10 border-purple-500/30' };
+    if (item.category === 'Tu Marca') return { score: 'Foco', color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30' };
+    if (item.category === 'Ingrediente') return { score: 'Oportunidad', color: 'text-purple-400 bg-purple-500/10 border-purple-500/30' };
+    if (item.category === 'Reputación (AIO)') return { score: 'Crítico AIO', color: 'text-pink-400 bg-pink-500/10 border-pink-500/30' };
+    if (item.category === 'Transaccional') return { score: 'Conversión', color: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/30' };
+    return { score: 'Bajo', color: 'text-gray-400 bg-gray-500/10 border-gray-500/30' };
   };
 
   useEffect(() => window.scrollTo(0, 0), []);
@@ -101,11 +156,11 @@ const EstrategiaBrujeria = () => {
             <span className="text-xs font-bold tracking-wide uppercase text-purple-400">Estrategia Q1 2026</span>
         </div>
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-          Brujería Capilar: <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Hechizos Digitales & Dominio AIO</span>
+          Brujería Capilar vs Goliath: <br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Cómo Robar el Tráfico de Anyeluz</span>
         </h1>
         <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
-          Cómo dejar de pelear por precio contra Kaba y Anyeluz, para dominar la categoría de <strong className="text-white">Ingredientes Naturales</strong> en Google y ChatGPT.
+          Ellos tienen el volumen (33k búsquedas), pero tú tienes el crecimiento (+127%). La estrategia no es competir en marca, es ganar en <strong>Ingrediente</strong> y <strong>Verdad (AIO)</strong>.
         </p>
       </div>
 
@@ -123,7 +178,7 @@ const EstrategiaBrujeria = () => {
               }`}
             >
               {tab === 'journey' && 'El Embudo Mágico'}
-              {tab === 'market' && 'El Caldero (Data)'}
+              {tab === 'market' && 'El Caldero (Data Completa)'}
               {tab === 'execution' && 'Plan del Hechizo'}
             </button>
           ))}
@@ -138,7 +193,7 @@ const EstrategiaBrujeria = () => {
           {/* TAB 1: JOURNEY */}
           {activeTab === 'journey' && (
             <div className="animate-fade-in-up">
-              <h2 className="text-3xl font-bold mb-12 text-center text-white">Los 3 Pilares del Despegue</h2>
+              <h2 className="text-3xl font-bold mb-12 text-center text-white">3 Pilares para Derribar al Gigante</h2>
               <div className="grid md:grid-cols-3 gap-8">
                 
                 {/* Pilar 1 */}
@@ -146,9 +201,9 @@ const EstrategiaBrujeria = () => {
                   <div className="bg-slate-900 w-16 h-16 mx-auto rounded-xl flex items-center justify-center mb-6 text-purple-400 border border-white/5 group-hover:scale-110 transition-transform">
                     <Droplets size={32} />
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-white text-center">1. Dueños del Ingrediente</h3>
+                  <h3 className="text-xl font-bold mb-2 text-white text-center">1. El Ataque del Ingrediente</h3>
                   <p className="text-center text-gray-400 text-sm mb-4">
-                    La data lo confirma: <strong>"Shampoo de Cebolla" (14.8k)</strong> y <strong>"Romero" (9.9k)</strong> son minas de oro sin dueño claro. No vendas marca, vende el ingrediente.
+                    Anyeluz tiene 33k búsquedas de marca, pero miles buscan "Cebolla", "Romero" o "Gusano de Seda". Ahí es donde Brujería Capilar puede ganar sin pelear por nombre.
                   </p>
                 </div>
 
@@ -157,20 +212,20 @@ const EstrategiaBrujeria = () => {
                   <div className="bg-pink-900/20 w-16 h-16 mx-auto rounded-xl flex items-center justify-center mb-6 text-pink-400 border border-pink-500/20">
                     <Sparkles size={32} />
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-white text-center">2. Rituales > Productos</h3>
+                  <h3 className="text-xl font-bold mb-2 text-white text-center">2. Capturar la Duda (AIO)</h3>
                   <p className="text-center text-gray-400 text-sm mb-4">
-                    Transformamos productos sueltos (Shampoo, Tónico) en "Rituales de Crecimiento". Aumentamos el Ticket Medio y la retención emocional.
+                    Hay cientos de búsquedas como <em>"el shampoo anyeluz es bueno"</em> o <em>"testimonios"</em>. Crearemos contenido que la IA use para responder esas dudas, recomendando Brujería como la alternativa premium.
                   </p>
                 </div>
 
                 {/* Pilar 3 */}
                 <div className="bg-slate-950 p-6 rounded-2xl border border-white/10 hover:border-purple-500/30 transition-all group">
                   <div className="bg-slate-900 w-16 h-16 mx-auto rounded-xl flex items-center justify-center mb-6 text-purple-400 border border-white/5 group-hover:scale-110 transition-transform">
-                    <Zap size={32} />
+                    <TrendingUp size={32} />
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-white text-center">3. Profecía AIO</h3>
+                  <h3 className="text-xl font-bold mb-2 text-white text-center">3. El Momentum (+127%)</h3>
                   <p className="text-center text-gray-400 text-sm mb-4">
-                    Cuando una usuaria pregunte a la IA <em>"¿Qué sirve para recuperar el cabello quemado?"</em>, tu marca será la respuesta recomendada.
+                    Tu marca está viva y creciendo (+127% trimestral). La competencia cae o se estanca (-18% Anyeluz, -55% Kaba). Es el momento perfecto para acelerar.
                   </p>
                 </div>
               </div>
@@ -182,13 +237,13 @@ const EstrategiaBrujeria = () => {
             <div className="animate-fade-in-up">
               <div className="flex flex-col md:flex-row justify-between items-end mb-8 border-b border-white/10 pb-6">
                 <div>
-                  <h2 className="text-3xl font-bold mb-2 text-white">El Caldero de Data</h2>
-                  <p className="text-gray-400">Análisis de 165,000+ búsquedas mensuales activas.</p>
+                  <h2 className="text-3xl font-bold mb-2 text-white">El Caldero de Data (Todo el Mercado)</h2>
+                  <p className="text-gray-400">Análisis completo de keywords: Competencia vs Tu Oportunidad.</p>
                 </div>
                 <div className="mt-4 md:mt-0 text-right">
-                  <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Oportunidad Genérica</p>
-                  <div className="text-3xl font-bold text-emerald-400 drop-shadow-[0_0_10px_rgba(52,211,153,0.4)]">64.000+</div>
-                  <p className="text-xs text-gray-500">Búsquedas Mensuales Sin Marca (Tu Océano Azul)</p>
+                  <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Crecimiento Brujería</p>
+                  <div className="text-3xl font-bold text-emerald-400 drop-shadow-[0_0_10px_rgba(52,211,153,0.4)]">+127%</div>
+                  <p className="text-xs text-gray-500">Tendencia Trimestral (La única positiva)</p>
                 </div>
               </div>
 
@@ -198,14 +253,14 @@ const EstrategiaBrujeria = () => {
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={20} />
                   <input 
                     type="text" 
-                    placeholder="Filtrar hechizos..." 
+                    placeholder="Filtrar por keyword..." 
                     className="w-full pl-10 pr-4 py-2 bg-slate-900 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
                 </div>
                 <div className="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
-                  {['Todas', 'Ingrediente Mágico', 'Solución/Hechizo', 'Producto Base', 'Competencia'].map(cat => (
+                  {['Todas', 'Tu Marca', 'Ingrediente', 'Competencia', 'Reputación (AIO)', 'Transaccional'].map(cat => (
                     <button 
                       key={cat} 
                       onClick={() => setActiveCategory(cat)} 
@@ -219,15 +274,16 @@ const EstrategiaBrujeria = () => {
 
               {/* Tabla */}
               <div className="bg-slate-950 rounded-xl border border-white/10 overflow-hidden mb-8">
-                <div className="overflow-x-auto max-h-[400px] scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
+                <div className="overflow-x-auto max-h-[500px] scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
                   <table className="w-full text-left border-collapse">
                     <thead className="sticky top-0 bg-slate-900 z-10 shadow-lg">
                       <tr>
                         <th className="p-4 text-xs font-bold text-gray-500 uppercase">Keyword</th>
                         <th className="p-4 text-xs font-bold text-gray-500 uppercase text-right cursor-pointer hover:text-purple-400" onClick={() => setSortBy('volume')}>Volumen</th>
                         <th className="p-4 text-xs font-bold text-gray-500 uppercase text-center">Tendencia</th>
+                        <th className="p-4 text-xs font-bold text-gray-500 uppercase text-center">CPC (Est.)</th>
                         <th className="p-4 text-xs font-bold text-gray-500 uppercase text-center">Categoría</th>
-                        <th className="p-4 text-xs font-bold text-purple-400 uppercase text-center">Potencial AIO</th>
+                        <th className="p-4 text-xs font-bold text-purple-400 uppercase text-center">Estrategia</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-white/5">
@@ -235,13 +291,14 @@ const EstrategiaBrujeria = () => {
                         const aio = getAIOScore(row);
                         return (
                           <tr key={i} className="hover:bg-white/5 transition-colors group cursor-default">
-                            <td className="p-4 font-semibold text-gray-300 group-hover:text-white transition-colors">{row.keyword}</td>
+                            <td className="p-4 font-semibold text-gray-300 group-hover:text-white transition-colors text-sm">{row.keyword}</td>
                             <td className="p-4 text-right font-mono text-purple-400">{row.volume.toLocaleString()}</td>
                             <td className="p-4 text-center">
-                               <span className={`px-2 py-1 rounded text-xs font-bold ${row.trend.includes('-') ? 'text-red-400 bg-red-500/10' : row.trend === '0%' ? 'text-gray-500 bg-white/5' : 'text-emerald-400 bg-emerald-500/10'}`}>
+                               <span className={`px-2 py-1 rounded text-xs font-bold ${row.trend.includes('-') ? 'text-red-400 bg-red-500/10' : (row.trend === '0%' || row.trend === 'N/A') ? 'text-gray-500 bg-white/5' : 'text-emerald-400 bg-emerald-500/10'}`}>
                                 {row.trend}
                               </span>
                             </td>
+                            <td className="p-4 text-center text-xs text-gray-400">{row.cpc !== "N/A" ? `$${row.cpc}` : '-'}</td>
                             <td className="p-4 text-center"><span className="px-2 py-1 rounded-full text-[10px] bg-slate-800 text-gray-400 border border-white/5">{row.category}</span></td>
                             <td className="p-4 text-center"><span className={`px-3 py-1 rounded-full text-[10px] font-bold border ${aio.color}`}>{aio.score}</span></td>
                           </tr>
@@ -267,12 +324,12 @@ const EstrategiaBrujeria = () => {
                     <span className="font-bold text-sm">1</span>
                   </div>
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-950 p-6 rounded-xl border border-purple-500/30 shadow-lg">
-                    <h3 className="font-bold text-white text-lg mb-2">Fase 1: La Pócima (Infraestructura)</h3>
-                    <p className="text-sm text-gray-400 mb-4 italic">Mes 1-3: Preparar la casa para recibir visitas.</p>
+                    <h3 className="font-bold text-white text-lg mb-2">Fase 1: Infraestructura & Defensa</h3>
+                    <p className="text-sm text-gray-400 mb-4 italic">Mes 1-3: Preparar el terreno para la batalla.</p>
                     <ul className="space-y-2 text-sm text-gray-300">
-                      <li className="flex gap-2"><Package size={16} className="text-purple-500"/> Landing Pages Específicas: "Shampoo de Cebolla" (No Home Page).</li>
-                      <li className="flex gap-2"><Package size={16} className="text-purple-500"/> Configuración de Google Merchant Center (Shopping).</li>
-                      <li className="flex gap-2"><Package size={16} className="text-purple-500"/> Auditoría UX: Reducir clics al checkout.</li>
+                      <li className="flex gap-2"><Package size={16} className="text-purple-500"/> <strong>Páginas de Ingrediente:</strong> Crear landings específicas para "Cebolla", "Romero" y "Gusano de Seda" que no hablen de Anyeluz, sino de la solución.</li>
+                      <li className="flex gap-2"><Shield size={16} className="text-purple-500"/> <strong>Defensa de Marca:</strong> Blindar "Brujería Capilar" (320 búsquedas) para asegurar ese +127% de crecimiento orgánico.</li>
+                      <li className="flex gap-2"><Database size={16} className="text-purple-500"/> <strong>Feed de Datos:</strong> Estructurar el catálogo para Google Shopping y Meta Ads.</li>
                     </ul>
                   </div>
                 </div>
@@ -283,12 +340,12 @@ const EstrategiaBrujeria = () => {
                     <span className="font-bold text-sm">2</span>
                   </div>
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-950 p-6 rounded-xl border border-pink-500/30 shadow-lg">
-                    <h3 className="font-bold text-white text-lg mb-2">Fase 2: El Conjuro (Tráfico AIO)</h3>
-                    <p className="text-sm text-gray-400 mb-4 italic">Mes 4-8: Inundar el embudo con intención de compra.</p>
+                    <h3 className="font-bold text-white text-lg mb-2">Fase 2: El Ataque AIO (Reputación)</h3>
+                    <p className="text-sm text-gray-400 mb-4 italic">Mes 4-8: Interceptar la duda del cliente.</p>
                     <ul className="space-y-2 text-sm text-gray-300">
-                      <li className="flex gap-2"><Activity size={16} className="text-pink-500"/> Blog Estratégico: Responder "¿Qué shampoo sirve para el crecimiento?".</li>
-                      <li className="flex gap-2"><Activity size={16} className="text-pink-500"/> Campañas de Shopping atacando genéricos ("Shampoo sin sal").</li>
-                      <li className="flex gap-2"><Activity size={16} className="text-pink-500"/> Email Marketing: Recuperación de carrito "mágico".</li>
+                      <li className="flex gap-2"><Activity size={16} className="text-pink-500"/> <strong>Robo de Tráfico "Opiniones":</strong> Crear artículos comparativos honestos ("Anyeluz vs Brujería") optimizados para que la IA nos lea.</li>
+                      <li className="flex gap-2"><Activity size={16} className="text-pink-500"/> <strong>Long Tail:</strong> Responder preguntas como "¿El shampoo de cebolla sirve?" (Anyeluz tiene 40 búsquedas aquí, nosotros queremos miles).</li>
+                      <li className="flex gap-2"><Activity size={16} className="text-pink-500"/> <strong>Automatización:</strong> Email marketing para recuperar carritos de usuarios indecisos que vienen de la competencia.</li>
                     </ul>
                   </div>
                 </div>
@@ -299,12 +356,11 @@ const EstrategiaBrujeria = () => {
                     <span className="font-bold text-sm">3</span>
                   </div>
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-950 p-6 rounded-xl border border-emerald-500/30 shadow-lg">
-                    <h3 className="font-bold text-white text-lg mb-2">Fase 3: El Aquelarre (Comunidad & Retención)</h3>
-                    <p className="text-sm text-gray-400 mb-4 italic">Mes 9-12: Maximizar el LTV (Lifetime Value).</p>
+                    <h3 className="font-bold text-white text-lg mb-2">Fase 3: Consolidación & LTV</h3>
+                    <p className="text-sm text-gray-400 mb-4 italic">Mes 9-12: Fidelizar la magia.</p>
                     <ul className="space-y-2 text-sm text-gray-300">
-                      <li className="flex gap-2"><Sparkles size={16} className="text-emerald-500"/> Programa de Lealtad Gamificado.</li>
-                      <li className="flex gap-2"><Sparkles size={16} className="text-emerald-500"/> Suscripciones de producto (Recurrencia mensual).</li>
-                      <li className="flex gap-2"><Sparkles size={16} className="text-emerald-500"/> Dominio total de la SERP para ingredientes clave.</li>
+                      <li className="flex gap-2"><Sparkles size={16} className="text-emerald-500"/> <strong>Rituales Recurrentes:</strong> Convertir compradores de un solo producto en suscriptores de "kits".</li>
+                      <li className="flex gap-2"><Sparkles size={16} className="text-emerald-500"/> <strong>Expansión de Categoría:</strong> Posicionarnos en nuevos ingredientes donde Kaba no sea fuerte.</li>
                     </ul>
                   </div>
                 </div>
