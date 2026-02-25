@@ -1,13 +1,109 @@
-import React, { useState, useEffect } from 'react';
-import { Search, ArrowRight, Zap, Globe, TrendingUp, Shield, CheckCircle, Handshake, AlertTriangle, Coffee, Home, Landmark, BookOpen, ArrowDown, Users, DollarSign, Calculator, BarChart3, PieChart } from 'lucide-react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { Search, ArrowRight, Zap, Globe, TrendingUp, Shield, CheckCircle, Handshake, AlertTriangle, Coffee, Home, BookOpen, ArrowDown, Users, DollarSign, Calculator, BarChart3, Banknote, Filter, Map } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const EstrategiaConstructoras = () => {
-  const [activeTab, setActiveTab] = useState('funnel');
+  const [activeTab, setActiveTab] = useState('market');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeCategory, setActiveCategory] = useState('Todas');
+  const [sortBy, setSortBy] = useState('volume');
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // --- DATASET REAL (Filtrado > 100 búsquedas) ---
+  const rawData = [
+    // INGLÉS (High Volume)
+    { keyword: "houses for sale in colombia", volume: 3600, lang: "Inglés", region: "Nacional" },
+    { keyword: "homes for sale in colombia", volume: 3600, lang: "Inglés", region: "Nacional" },
+    { keyword: "medellin real estate", volume: 2400, lang: "Inglés", region: "Medellín" },
+    { keyword: "medellin real estate el poblado", volume: 2400, lang: "Inglés", region: "Medellín" },
+    { keyword: "medellin properties", volume: 2400, lang: "Inglés", region: "Medellín" },
+    { keyword: "houses in colombia", volume: 1900, lang: "Inglés", region: "Nacional" },
+    { keyword: "colombia homes", volume: 1900, lang: "Inglés", region: "Nacional" },
+    { keyword: "colombia south america real estate", volume: 1600, lang: "Inglés", region: "Nacional" },
+    { keyword: "real estate in cartagena colombia", volume: 1600, lang: "Inglés", region: "Caribe" },
+    { keyword: "medellin apartments for sale", volume: 1600, lang: "Inglés", region: "Medellín" },
+    { keyword: "santa marta colombia real estate", volume: 1000, lang: "Inglés", region: "Caribe" },
+    { keyword: "bogota real estate", volume: 880, lang: "Inglés", region: "Bogotá" },
+    { keyword: "real estate in bogota colombia", volume: 880, lang: "Inglés", region: "Bogotá" },
+    { keyword: "homes for sale in cartagena colombia", volume: 880, lang: "Inglés", region: "Caribe" },
+    { keyword: "properties for sale in colombia", volume: 720, lang: "Inglés", region: "Nacional" },
+    { keyword: "medellin condos for sale", volume: 720, lang: "Inglés", region: "Medellín" },
+    { keyword: "houses in medellin", volume: 720, lang: "Inglés", region: "Medellín" },
+    { keyword: "bogota colombia homes for sale", volume: 720, lang: "Inglés", region: "Bogotá" },
+    { keyword: "houses for sale in cartagena colombia", volume: 590, lang: "Inglés", region: "Caribe" },
+    { keyword: "buying property in colombia", volume: 590, lang: "Inglés", region: "Nacional" },
+    { keyword: "buying land in colombia", volume: 590, lang: "Inglés", region: "Nacional" },
+    { keyword: "medellin property for sale", volume: 590, lang: "Inglés", region: "Medellín" },
+    { keyword: "cali colombia homes for sale", volume: 480, lang: "Inglés", region: "Cali/Valle" },
+    { keyword: "real estate colombia", volume: 480, lang: "Inglés", region: "Nacional" },
+    { keyword: "cartagena condos for sale", volume: 320, lang: "Inglés", region: "Caribe" },
+    { keyword: "barranquilla real estate", volume: 320, lang: "Inglés", region: "Caribe" },
+    { keyword: "el poblado medellin apartments for sale", volume: 260, lang: "Inglés", region: "Medellín" },
+    { keyword: "colombia apartments for sale", volume: 260, lang: "Inglés", region: "Nacional" },
+    { keyword: "barranquilla homes for sale", volume: 210, lang: "Inglés", region: "Caribe" },
+    { keyword: "condos in medellin colombia", volume: 210, lang: "Inglés", region: "Medellín" },
+    { keyword: "pereira colombia real estate", volume: 170, lang: "Inglés", region: "Eje Cafetero" },
+    { keyword: "luxury homes in colombia", volume: 170, lang: "Inglés", region: "Nacional" },
+    { keyword: "luxury real estate medellin colombia", volume: 110, lang: "Inglés", region: "Medellín" },
+    { keyword: "investing in colombia real estate", volume: 110, lang: "Inglés", region: "Nacional" },
+    { keyword: "best place to buy property in colombia", volume: 110, lang: "Inglés", region: "Nacional" },
+
+    // ESPAÑOL (High Volume)
+    { keyword: "casas en colombia", volume: 1300, lang: "Español", region: "Nacional" },
+    { keyword: "apartamentos en venta medellin", volume: 880, lang: "Español", region: "Medellín" },
+    { keyword: "finca en colombia", volume: 880, lang: "Español", region: "Nacional" },
+    { keyword: "casas en venta en colombia", volume: 590, lang: "Español", region: "Nacional" },
+    { keyword: "venta casas medellin", volume: 590, lang: "Español", region: "Medellín" },
+    { keyword: "casas en venta bogota", volume: 480, lang: "Español", region: "Bogotá" },
+    { keyword: "casas medellin", volume: 480, lang: "Español", region: "Medellín" },
+    { keyword: "venta casas cali", volume: 390, lang: "Español", region: "Cali/Valle" },
+    { keyword: "casas cali", volume: 390, lang: "Español", region: "Cali/Valle" },
+    { keyword: "casa bogota", volume: 390, lang: "Español", region: "Bogotá" },
+    { keyword: "casas en venta cali colombia", volume: 320, lang: "Español", region: "Cali/Valle" },
+    { keyword: "precio de casas en colombia", volume: 320, lang: "Español", region: "Nacional" },
+    { keyword: "casas en venta barranquilla", volume: 260, lang: "Español", region: "Caribe" },
+    { keyword: "casas en venta bucaramanga", volume: 260, lang: "Español", region: "Santander" },
+    { keyword: "casa en el poblado medellin", volume: 260, lang: "Español", region: "Medellín" },
+    { keyword: "casa pereira venta", volume: 260, lang: "Español", region: "Eje Cafetero" },
+    { keyword: "apartamentos en medellin el poblado", volume: 210, lang: "Español", region: "Medellín" },
+    { keyword: "casas en venta en colombia baratas", volume: 210, lang: "Español", region: "Nacional" },
+    { keyword: "venta de apartamentos medellin", volume: 170, lang: "Español", region: "Medellín" },
+    { keyword: "casas barranquilla", volume: 170, lang: "Español", region: "Caribe" },
+    { keyword: "casa en venta en pereira colombia", volume: 170, lang: "Español", region: "Eje Cafetero" },
+    { keyword: "casas en venta colombia bogota", volume: 170, lang: "Español", region: "Bogotá" },
+    { keyword: "comprar apartamento en medellin", volume: 140, lang: "Español", region: "Medellín" },
+    { keyword: "casas en venta en ibague", volume: 140, lang: "Español", region: "Tolima" },
+    { keyword: "casas venta armenia quindio", volume: 140, lang: "Español", region: "Eje Cafetero" },
+    { keyword: "santa marta colombia casas en venta", volume: 140, lang: "Español", region: "Caribe" },
+    { keyword: "venta casa manizales", volume: 140, lang: "Español", region: "Eje Cafetero" },
+    { keyword: "compra apartamento bogota", volume: 110, lang: "Español", region: "Bogotá" },
+    { keyword: "finca raiz bucaramanga", volume: 110, lang: "Español", region: "Santander" },
+    { keyword: "casas en venta cartagena de indias", volume: 110, lang: "Español", region: "Caribe" },
+    { keyword: "venta de fincas baratas en colombia", volume: 110, lang: "Español", region: "Nacional" }
+  ];
+
+  // Logic for filtering
+  const filteredData = useMemo(() => {
+    let data = rawData.filter(item => 
+      (activeCategory === 'Todas' || 
+       (activeCategory === 'Inglés' && item.lang === 'Inglés') ||
+       (activeCategory === 'Español' && item.lang === 'Español') ||
+       item.region === activeCategory
+      ) &&
+      item.keyword.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    if (sortBy === 'volume') {
+      data.sort((a, b) => b.volume - a.volume);
+    }
+
+    return data;
+  }, [rawData, searchTerm, activeCategory, sortBy]);
+
+  const totalVolume = filteredData.reduce((acc, curr) => acc + curr.volume, 0);
 
   const Logo = () => (
     <Link to="/" className="flex items-center gap-2 group cursor-pointer">
@@ -78,7 +174,7 @@ const EstrategiaConstructoras = () => {
       <div className="container mx-auto px-6 pb-24">
         <div className="bg-slate-900/50 border border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-sm shadow-2xl relative overflow-hidden">
           
-          {/* TAB 1: DEMANDA GLOBAL */}
+          {/* TAB 1: DEMANDA GLOBAL + MARKET EXPLORER */}
           {activeTab === 'market' && (
             <div className="animate-fade-in-up">
               <h2 className="text-3xl font-bold mb-8 text-white flex items-center gap-3">
@@ -183,31 +279,89 @@ const EstrategiaConstructoras = () => {
                 </div>
               </div>
 
-              {/* Traducción Semántica */}
+              {/* --- EXPLORADOR DE MERCADO (Reemplazo de Traducción del Dinero) --- */}
               <div className="bg-slate-950 p-8 rounded-2xl border border-white/10 mb-8">
-                  <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                    <BookOpen className="text-cyan-400" /> La Traducción del Dinero
-                  </h3>
-                  <p className="text-gray-400 text-sm mb-6">
-                    El 60% de la venta internacional se pierde por usar las palabras incorrectas. El inversor anglo no busca lo que vendes; busca lo que entiende.
-                  </p>
-                  
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="relative">
-                      <p className="text-xs font-bold text-red-400 uppercase mb-2">Lo que dice la constructora (Error)</p>
-                      <div className="space-y-3">
-                         <div className="bg-red-900/10 border border-red-500/20 p-3 rounded-lg text-gray-400 text-sm line-through decoration-red-500/50">"Apartamentos en venta"</div>
-                         <div className="bg-red-900/10 border border-red-500/20 p-3 rounded-lg text-gray-400 text-sm line-through decoration-red-500/50">"Proyectos de vivienda"</div>
-                         <div className="bg-red-900/10 border border-red-500/20 p-3 rounded-lg text-gray-400 text-sm line-through decoration-red-500/50">"Zonas comunes"</div>
+                  <div className="flex flex-col md:flex-row justify-between items-end mb-8 border-b border-white/10 pb-6">
+                    <div>
+                      <h3 className="text-2xl font-bold mb-2 text-white flex items-center gap-2">
+                        <Search className="text-cyan-400" /> Explorador de Mercado Real
+                      </h3>
+                      <p className="text-gray-400 text-sm">Datos de búsqueda reales (>100/mes) que validan la demanda.</p>
+                    </div>
+                    <div className="mt-4 md:mt-0 text-right">
+                      <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Volumen Muestra</p>
+                      <div className="text-3xl font-bold text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.4)]">
+                        {totalVolume.toLocaleString()}
                       </div>
                     </div>
-                    <div className="relative">
-                      <p className="text-xs font-bold text-emerald-400 uppercase mb-2">Lo que busca el capital (AIO)</p>
-                      <div className="space-y-3">
-                         <div className="bg-emerald-900/10 border border-emerald-500/20 p-3 rounded-lg text-white font-bold text-sm shadow-[0_0_10px_rgba(16,185,129,0.1)]">"Luxury Condos & Penthouses"</div>
-                         <div className="bg-emerald-900/10 border border-emerald-500/20 p-3 rounded-lg text-white font-bold text-sm shadow-[0_0_10px_rgba(16,185,129,0.1)]">"High-Yield Investment Assets"</div>
-                         <div className="bg-emerald-900/10 border border-emerald-500/20 p-3 rounded-lg text-white font-bold text-sm shadow-[0_0_10px_rgba(16,185,129,0.1)]">"Resort-style Amenities"</div>
-                      </div>
+                  </div>
+
+                  {/* Controles de Filtro */}
+                  <div className="bg-slate-900 p-4 rounded-xl border border-white/10 mb-6 flex flex-col md:flex-row gap-4 justify-between items-center">
+                    <div className="relative w-full md:w-1/3">
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={18} />
+                      <input 
+                        type="text" 
+                        placeholder="Ej: luxury, medellin, fincas..." 
+                        className="w-full pl-10 pr-4 py-2 bg-slate-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all text-sm"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                      />
+                    </div>
+                    <div className="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
+                      {['Todas', 'Inglés', 'Español', 'Medellín', 'Bogotá', 'Caribe', 'Eje Cafetero'].map((cat) => (
+                        <button
+                          key={cat}
+                          onClick={() => setActiveCategory(cat)}
+                          className={`px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors border ${
+                            activeCategory === cat 
+                              ? 'bg-cyan-500 text-slate-950 border-cyan-400' 
+                              : 'bg-slate-800 text-gray-400 border-white/10 hover:border-cyan-500/50 hover:text-cyan-400'
+                          }`}
+                        >
+                          {cat}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Tabla de Datos */}
+                  <div className="bg-slate-900 rounded-xl border border-white/10 overflow-hidden">
+                    <div className="overflow-x-auto max-h-[400px] scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
+                      <table className="w-full text-left border-collapse">
+                        <thead className="sticky top-0 bg-slate-800 z-10 shadow-lg">
+                          <tr>
+                            <th className="p-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Keyword (Lo que buscan)</th>
+                            <th className="p-4 text-xs font-bold text-gray-500 uppercase tracking-wider text-right cursor-pointer hover:text-cyan-400 transition-colors" onClick={() => setSortBy('volume')}>
+                              Volumen <ArrowDown size={12} className="inline" />
+                            </th>
+                            <th className="p-4 text-xs font-bold text-gray-500 uppercase tracking-wider text-center">Idioma</th>
+                            <th className="p-4 text-xs font-bold text-gray-500 uppercase tracking-wider text-center">Región</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-white/5">
+                          {filteredData.map((row, index) => (
+                            <tr key={index} className="hover:bg-white/5 transition-colors group cursor-default">
+                              <td className="p-3 text-sm">
+                                <p className="font-medium text-gray-300 group-hover:text-white transition-colors">{row.keyword}</p>
+                              </td>
+                              <td className="p-3 text-right font-mono text-cyan-400 text-sm">
+                                {row.volume.toLocaleString()}
+                              </td>
+                              <td className="p-3 text-center">
+                                <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                                  row.lang === 'Inglés' ? 'text-cyan-400 bg-cyan-500/10 border border-cyan-500/20' : 'text-orange-400 bg-orange-500/10 border border-orange-500/20'
+                                }`}>
+                                  {row.lang}
+                                </span>
+                              </td>
+                              <td className="p-3 text-center">
+                                <span className="text-xs text-gray-500">{row.region}</span>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
                     </div>
                   </div>
               </div>
