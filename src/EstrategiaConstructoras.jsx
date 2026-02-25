@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ArrowRight, Zap, Globe, TrendingUp, Shield, CheckCircle, Handshake, AlertTriangle, Coffee, Home, Landmark, BookOpen } from 'lucide-react';
+import { Search, ArrowRight, Zap, Globe, TrendingUp, Shield, CheckCircle, Handshake, AlertTriangle, Coffee, Home, Landmark, BookOpen, ArrowDown, Users, DollarSign, Calculator } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const EstrategiaConstructoras = () => {
-  const [activeTab, setActiveTab] = useState('market');
+  const [activeTab, setActiveTab] = useState('funnel'); // Empezamos en Funnel para ver los cambios
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -215,59 +215,142 @@ const EstrategiaConstructoras = () => {
             </div>
           )}
 
-          {/* TAB 2: FUNNEL & ROI */}
+          {/* TAB 2: FUNNEL & ROI ACTUALIZADO */}
           {activeTab === 'funnel' && (
             <div className="animate-fade-in-up">
-               <h2 className="text-3xl font-bold mb-4 text-white">Embudo de Conversión Internacional</h2>
-               <p className="text-gray-400 mb-12">Proyección basada en una inversión optimizada de 4.500€/mes.</p>
+               <h2 className="text-3xl font-bold mb-4 text-white">Embudo de Conversión Optimizado</h2>
+               <p className="text-gray-400 mb-12">Proyección actualizada con doble flujo (Inglés/Español) y pre-calificación financiera.</p>
 
-               <div className="grid md:grid-cols-2 gap-12 mb-16">
-                  {/* Embudo Visual */}
+               <div className="grid lg:grid-cols-2 gap-12 mb-16">
+                  {/* Embudo Visual Detallado */}
                   <div className="space-y-4">
-                     <div className="bg-slate-950 p-4 rounded-xl border border-white/10 flex justify-between items-center">
-                        <span className="text-gray-400 font-bold">Impresiones (40% Share)</span>
-                        <span className="text-white font-bold">114.800</span>
+                     
+                     {/* 1. Impresiones */}
+                     <div className="relative">
+                        <div className="bg-slate-950 p-4 rounded-xl border border-white/10 flex justify-between items-center z-10 relative">
+                            <div className="flex items-center gap-3">
+                                <Users className="text-gray-500" size={20}/>
+                                <div>
+                                    <span className="text-gray-400 font-bold block text-sm">Impresiones (Share 40%)</span>
+                                    <span className="text-[10px] text-gray-600 uppercase">Ing: 70.800 | Esp: 44.000</span>
+                                </div>
+                            </div>
+                            <span className="text-white font-bold text-xl">114.800</span>
+                        </div>
                      </div>
-                     <div className="flex justify-center"><ArrowDown className="text-gray-700" size={20} /></div>
-                     <div className="bg-blue-900/20 p-4 rounded-xl border border-blue-500/20 flex justify-between items-center w-[90%] mx-auto">
-                        <span className="text-blue-300 font-bold">Visitas Web (8% CTR)</span>
-                        <span className="text-white font-bold">9.184</span>
+                     <div className="flex justify-center"><ArrowDown className="text-gray-800" size={16} /></div>
+
+                     {/* 2. Visitas Web */}
+                     <div className="relative w-[95%] mx-auto">
+                        <div className="bg-blue-900/10 p-4 rounded-xl border border-blue-500/20 flex justify-between items-center">
+                            <div className="flex items-center gap-3">
+                                <Globe className="text-blue-500" size={20}/>
+                                <div>
+                                    <span className="text-blue-300 font-bold block text-sm">Visitas Web (CTR 8%)</span>
+                                    <span className="text-[10px] text-blue-500/60 uppercase">Ing: 5.664 | Esp: 3.520</span>
+                                </div>
+                            </div>
+                            <span className="text-white font-bold text-xl">9.184</span>
+                        </div>
                      </div>
-                     <div className="flex justify-center"><ArrowDown className="text-gray-700" size={20} /></div>
-                     <div className="bg-indigo-900/20 p-4 rounded-xl border border-indigo-500/20 flex justify-between items-center w-[75%] mx-auto">
-                        <span className="text-indigo-300 font-bold">Leads (10% Conv)</span>
-                        <span className="text-white font-bold">275</span>
+                     <div className="flex justify-center"><ArrowDown className="text-gray-800" size={16} /></div>
+
+                     {/* 3. Visitas Reales (NUEVO) */}
+                     <div className="relative w-[85%] mx-auto">
+                        <div className="bg-blue-900/20 p-4 rounded-xl border border-blue-400/30 flex justify-between items-center shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+                            <div className="flex items-center gap-3">
+                                <CheckCircle className="text-blue-400" size={20}/>
+                                <div>
+                                    <span className="text-blue-200 font-bold block text-sm">Visitas Reales (30%)</span>
+                                    <span className="text-[10px] text-blue-300/60 uppercase">Filtrado de Rebote</span>
+                                </div>
+                            </div>
+                            <span className="text-white font-bold text-xl">2.755</span>
+                        </div>
                      </div>
-                     <div className="flex justify-center"><ArrowDown className="text-gray-700" size={20} /></div>
-                     <div className="bg-emerald-600 p-6 rounded-2xl border border-emerald-400 flex justify-between items-center w-[60%] mx-auto shadow-[0_0_30px_rgba(16,185,129,0.3)]">
-                        <span className="text-slate-950 font-black text-xl">VENTAS</span>
-                        <span className="text-slate-950 font-black text-3xl">14</span>
+                     <div className="flex justify-center"><ArrowDown className="text-gray-800" size={16} /></div>
+
+                     {/* 4. Leads */}
+                     <div className="relative w-[75%] mx-auto">
+                        <div className="bg-indigo-900/20 p-4 rounded-xl border border-indigo-500/30 flex justify-between items-center">
+                            <div className="flex items-center gap-3">
+                                <Users className="text-indigo-400" size={20}/>
+                                <div>
+                                    <span className="text-indigo-300 font-bold block text-sm">Leads Calificados (10%)</span>
+                                    <span className="text-[10px] text-indigo-400/60 uppercase">Ing: 170 | Esp: 106</span>
+                                </div>
+                            </div>
+                            <span className="text-white font-bold text-xl">276</span>
+                        </div>
+                     </div>
+                     <div className="flex justify-center"><ArrowDown className="text-gray-800" size={16} /></div>
+
+                     {/* 5. Cálculo Financiación (NUEVO) */}
+                     <div className="relative w-[65%] mx-auto">
+                        <div className="bg-purple-900/20 p-4 rounded-xl border border-purple-500/30 flex justify-between items-center shadow-[0_0_15px_rgba(168,85,247,0.15)]">
+                            <div className="flex items-center gap-3">
+                                <Calculator className="text-purple-400" size={20}/>
+                                <div>
+                                    <span className="text-purple-200 font-bold block text-sm">Pre-Aprobados (50%)</span>
+                                    <span className="text-[10px] text-purple-300/60 uppercase">Ing: 85 | Esp: 53</span>
+                                </div>
+                            </div>
+                            <span className="text-white font-bold text-xl">138</span>
+                        </div>
+                     </div>
+                     <div className="flex justify-center"><ArrowDown className="text-gray-800" size={16} /></div>
+
+                     {/* 6. VENTAS */}
+                     <div className="relative w-[55%] mx-auto">
+                        <div className="bg-emerald-600 p-6 rounded-2xl border border-emerald-400 flex justify-between items-center shadow-[0_0_30px_rgba(16,185,129,0.4)] transform hover:scale-105 transition-transform cursor-pointer">
+                            <div>
+                                <span className="text-slate-950 font-black text-xl block">VENTAS (20%)</span>
+                                <span className="text-emerald-900 text-xs font-bold uppercase">Cierre sobre Aprobados</span>
+                            </div>
+                            <div className="text-right">
+                                <span className="text-white font-black text-4xl block">28</span>
+                                <span className="text-emerald-100 text-[10px] font-bold">17 Inglés / 11 Español</span>
+                            </div>
+                        </div>
                      </div>
                   </div>
 
-                  {/* Unit Economics */}
-                  <div className="bg-slate-950 p-8 rounded-3xl border border-white/10 flex flex-col justify-center">
-                      <h3 className="text-2xl font-bold text-white mb-8 border-b border-white/5 pb-4">Eficiencia Financiera</h3>
-                      <div className="space-y-6">
-                        <div className="flex justify-between items-end">
-                          <p className="text-gray-500 text-xs uppercase font-bold">Inversión Ads Mensual</p>
-                          <p className="text-3xl font-bold text-white">4.500€</p>
-                        </div>
-                        <div className="flex justify-between items-end">
-                          <p className="text-gray-500 text-xs uppercase font-bold">CPL (Costo por Lead)</p>
-                          <p className="text-3xl font-bold text-cyan-400">16,33€</p>
-                        </div>
-                        <div className="flex justify-between items-end">
-                          <p className="text-gray-500 text-xs uppercase font-bold">CAC (Costo por Venta)</p>
-                          <p className="text-3xl font-bold text-emerald-400">321,42€</p>
-                        </div>
-                        <div className="mt-8 pt-8 border-t border-white/5">
-                           <div className="bg-slate-900 p-6 rounded-2xl">
-                              <p className="text-xs text-gray-500 uppercase mb-2">Pipeline de Venta Est. (Mensual)</p>
-                              <p className="text-4xl font-black text-white">$1.400.000<span className="text-sm font-normal text-gray-500 ml-2">USD</span></p>
-                              <p className="text-[10px] text-emerald-500 mt-2 font-bold tracking-widest">AHORRO PUBLICITARIO: ~95% VS MÉTODOS TRADICIONALES</p>
-                           </div>
-                        </div>
+                  {/* Unit Economics & Resumen */}
+                  <div className="space-y-6">
+                      <div className="bg-slate-950 p-8 rounded-3xl border border-white/10 flex flex-col justify-center h-full">
+                          <h3 className="text-2xl font-bold text-white mb-8 border-b border-white/5 pb-4 flex items-center gap-2">
+                             <DollarSign className="text-emerald-400"/> Eficiencia Financiera
+                          </h3>
+                          <div className="space-y-8">
+                            <div className="flex justify-between items-end">
+                              <p className="text-gray-500 text-xs uppercase font-bold">Inversión Ads Mensual</p>
+                              <p className="text-3xl font-bold text-white">4.500€</p>
+                            </div>
+                            
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="bg-slate-900 p-4 rounded-xl border border-white/5">
+                                    <p className="text-gray-500 text-[10px] uppercase font-bold mb-1">CPL (Costo Lead)</p>
+                                    <p className="text-2xl font-bold text-cyan-400">16,33€</p>
+                                    <p className="text-[9px] text-gray-600 mt-1">Antes: ~35€</p>
+                                </div>
+                                <div className="bg-emerald-900/10 p-4 rounded-xl border border-emerald-500/20">
+                                    <p className="text-emerald-500 text-[10px] uppercase font-bold mb-1">CAC (Costo Venta)</p>
+                                    <p className="text-2xl font-bold text-emerald-400">160,71€</p>
+                                    <p className="text-[9px] text-emerald-600 mt-1">Eficiencia: Extrema</p>
+                                </div>
+                            </div>
+
+                            <div className="mt-8 pt-8 border-t border-white/5 bg-gradient-to-br from-slate-900 to-slate-800 p-6 rounded-2xl border border-white/5">
+                               <p className="text-xs text-gray-400 uppercase mb-2 font-bold tracking-widest">Pipeline Mensual Proyectado</p>
+                               <div className="flex items-baseline gap-2">
+                                   <p className="text-5xl font-black text-white">$4.2M</p>
+                                   <span className="text-xl font-medium text-emerald-500">USD</span>
+                               </div>
+                               <p className="text-[10px] text-gray-500 mt-3 italic border-t border-white/5 pt-2">
+                                 *Basado en ticket promedio conservador de $150k USD x 28 unidades.
+                               </p>
+                            </div>
+                          </div>
                       </div>
                   </div>
                </div>
@@ -306,7 +389,7 @@ const EstrategiaConstructoras = () => {
                       <ul className="text-sm text-gray-300 space-y-2">
                         <li className="flex items-center gap-2"><Zap size={14} className="text-blue-500"/> Lanzamiento de Campañas Hiper-segmentadas (Anglo vs Diáspora).</li>
                         <li className="flex items-center gap-2"><Zap size={14} className="text-blue-500"/> Implementación de Asistentes de IA de Venta.</li>
-                        <li className="flex items-center gap-2"><Zap size={14} className="text-blue-500"/> Activación de Nodos de Autoridad en Buscadores.</li>
+                        <li className="flex items-center gap-2"><Zap size={14} className="text-blue-500"/> Activación de Nodos de Autoridad en Google.</li>
                       </ul>
                     </div>
                   </div>
@@ -319,7 +402,7 @@ const EstrategiaConstructoras = () => {
                       <h3 className="font-bold text-white text-lg mb-2">Fase 3: Optimización y Transferencia</h3>
                       <p className="text-sm text-gray-400 italic mb-4">Mes 5 - 12</p>
                       <ul className="text-sm text-gray-300 space-y-2">
-                        <li className="flex items-center gap-2"><TrendingUp size={14} className="text-emerald-500"/> Escalado de inversión según ROI (14 ventas/mes).</li>
+                        <li className="flex items-center gap-2"><TrendingUp size={14} className="text-emerald-500"/> Escalado de inversión según ROI (28 ventas/mes).</li>
                         <li className="flex items-center gap-2"><TrendingUp size={14} className="text-emerald-500"/> Formación al equipo de ventas internacional.</li>
                         <li className="flex items-center gap-2"><TrendingUp size={14} className="text-emerald-500"/> Entrega de Autonomía de Gestión.</li>
                       </ul>
@@ -346,7 +429,7 @@ const EstrategiaConstructoras = () => {
                     <h4 className="text-cyan-400 font-bold uppercase tracking-widest text-xs mb-6 flex items-center gap-2"><CheckCircle size={16}/> Mis Compromisos</h4>
                     <ul className="space-y-4 text-sm text-gray-300">
                       <li>• Producción ILIMITADA de Nodos de Autoridad (Landing, Micrositios).</li>
-                      <li>• Obsesión por el objetivo de 14 ventas mensuales.</li>
+                      <li>• Obsesión por el objetivo de 28 ventas mensuales.</li>
                       <li>• Configuración técnica del ecosistema AIO para validación por IA.</li>
                       <li>• Reportes de Pipeline en tiempo real.</li>
                     </ul>
