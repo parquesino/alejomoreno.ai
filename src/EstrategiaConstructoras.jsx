@@ -1,5 +1,5 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { Search, BrainCircuit, MessageSquare, ArrowRight, Target, Zap, BarChart3, Globe, TrendingUp, Map, DollarSign, Shield, ArrowDown, CheckCircle, Rocket, Handshake, Users, AlertTriangle, MousePointerClick, ShoppingCart, Banknote, Layout, Settings, Info } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Search, ArrowRight, Zap, Globe, TrendingUp, Shield, CheckCircle, Handshake, AlertTriangle, Coffee, Home, Landmark, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const EstrategiaConstructoras = () => {
@@ -48,7 +48,7 @@ const EstrategiaConstructoras = () => {
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Hegemonía Digital y AIO</span>
         </h1>
         <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
-          Estrategia para capturar la demanda internacional de Real Estate (500k búsquedas/mes) mediante Nodos de Autoridad y Validación por IA.
+          Estrategia para capturar la demanda internacional de Real Estate (500k búsquedas/mes) mediante 5 Nodos de Autoridad y Validación por IA.
         </p>
       </div>
 
@@ -85,6 +85,7 @@ const EstrategiaConstructoras = () => {
                 <Globe className="text-cyan-400" /> El Mercado "Invisible"
               </h2>
               
+              {/* KPIs Globales */}
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 <div className="bg-slate-950 p-6 rounded-2xl border border-white/5">
                   <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Búsquedas Mundiales</p>
@@ -103,56 +104,114 @@ const EstrategiaConstructoras = () => {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-slate-950 p-8 rounded-2xl border border-white/10">
-                  <h3 className="text-xl font-bold text-white mb-6">Segmentación por Idioma (Exterior)</h3>
-                  <div className="space-y-6">
-                    <div>
-                      <div className="flex justify-between text-sm mb-2">
-                        <span className="text-gray-400 font-bold">Inglés (Anglo/Expat)</span>
-                        <span className="text-cyan-400 font-bold">177.000 búsquedas</span>
-                      </div>
-                      <div className="w-full bg-slate-900 h-3 rounded-full overflow-hidden">
-                        <div className="bg-cyan-500 h-full w-[62%]"></div>
-                      </div>
+              {/* SECCIÓN NUEVA: 5 NODOS REGIONALES */}
+              <div className="mb-12">
+                <h3 className="text-xl font-bold text-white mb-6">Los 5 Nodos de Autoridad Regionales</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                  
+                  {/* Nodo Andino */}
+                  <div className="bg-slate-950 p-5 rounded-xl border border-white/10 relative group hover:border-blue-500/30 transition-all">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-2 bg-blue-900/20 rounded-lg text-blue-400"><Shield size={20}/></div>
+                      <span className="text-2xl font-bold text-white">58k</span>
                     </div>
-                    <div>
-                      <div className="flex justify-between text-sm mb-2">
-                        <span className="text-gray-400 font-bold">Español (Diáspora)</span>
-                        <span className="text-blue-400 font-bold">110.000 búsquedas</span>
-                      </div>
-                      <div className="w-full bg-slate-900 h-3 rounded-full overflow-hidden">
-                        <div className="bg-blue-500 h-full w-[38%]"></div>
-                      </div>
+                    <h4 className="font-bold text-white mb-1">Nodo Andino</h4>
+                    <p className="text-xs text-gray-500 mb-2">Bogotá, Sabana, Anapoima</p>
+                    <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                       <div className="bg-blue-500 h-full w-[85%]"></div>
                     </div>
                   </div>
-                  <div className="mt-8 p-4 bg-cyan-900/10 border border-cyan-500/20 rounded-xl">
-                    <p className="text-sm text-cyan-200 leading-relaxed italic">
-                      "El comprador anglo es el segmento más desatendido por las constructoras locales, representando la mayor oportunidad de arbitraje digital."
-                    </p>
-                  </div>
-                </div>
 
-                <div className="bg-slate-950 p-8 rounded-2xl border border-white/10">
-                  <h3 className="text-xl font-bold text-white mb-6">Top Mercados Prioritarios</h3>
-                  <div className="space-y-4">
-                    {[
-                      { country: 'EEUU', searches: '150.000', detail: '100k Inglés / 50k Español' },
-                      { country: 'España', searches: '20.000', detail: 'Diáspora / Plan Retorno' },
-                      { country: 'Canadá', searches: '15.000', detail: 'Perfil Inversor / Clima' },
-                      { country: 'Colombia (Expats)', searches: '24.000', detail: 'Búsquedas Inglés desde origen' }
-                    ].map((m, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 bg-slate-900/50 rounded-lg border border-white/5">
-                        <div>
-                          <p className="font-bold text-white">{m.country}</p>
-                          <p className="text-[10px] text-gray-500 uppercase">{m.detail}</p>
-                        </div>
-                        <p className="text-cyan-400 font-mono font-bold">{m.searches}</p>
-                      </div>
-                    ))}
+                  {/* Nodo Paisa */}
+                  <div className="bg-slate-950 p-5 rounded-xl border border-white/10 relative group hover:border-purple-500/30 transition-all">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-2 bg-purple-900/20 rounded-lg text-purple-400"><Zap size={20}/></div>
+                      <span className="text-2xl font-bold text-white">55k</span>
+                    </div>
+                    <h4 className="font-bold text-white mb-1">Nodo Paisa</h4>
+                    <p className="text-xs text-gray-500 mb-2">Medellín, Poblado, Oriente</p>
+                    <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                       <div className="bg-purple-500 h-full w-[80%]"></div>
+                    </div>
                   </div>
+
+                   {/* NUEVO: Nodo Valle */}
+                   <div className="bg-slate-950 p-5 rounded-xl border border-white/10 relative group hover:border-orange-500/30 transition-all">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-2 bg-orange-900/20 rounded-lg text-orange-400"><Home size={20}/></div>
+                      <span className="text-2xl font-bold text-white">30k</span>
+                    </div>
+                    <h4 className="font-bold text-white mb-1">Nodo Valle</h4>
+                    <p className="text-xs text-gray-500 mb-2">Cali, Ciudad Jardín, Pance</p>
+                    <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                       <div className="bg-orange-500 h-full w-[45%]"></div>
+                    </div>
+                    <div className="absolute top-2 right-2 px-2 py-0.5 bg-orange-500/20 text-orange-400 text-[9px] font-bold uppercase rounded-full border border-orange-500/30">
+                      Remesas
+                    </div>
+                  </div>
+
+                  {/* Nodo Caribe */}
+                  <div className="bg-slate-950 p-5 rounded-xl border border-white/10 relative group hover:border-cyan-500/30 transition-all">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-2 bg-cyan-900/20 rounded-lg text-cyan-400"><Globe size={20}/></div>
+                      <span className="text-2xl font-bold text-white">24k</span>
+                    </div>
+                    <h4 className="font-bold text-white mb-1">Nodo Caribe</h4>
+                    <p className="text-xs text-gray-500 mb-2">Cartagena, Santa Marta</p>
+                    <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                       <div className="bg-cyan-500 h-full w-[35%]"></div>
+                    </div>
+                  </div>
+
+                  {/* NUEVO: Nodo Cafetero */}
+                  <div className="bg-slate-950 p-5 rounded-xl border border-white/10 relative group hover:border-emerald-500/30 transition-all">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-2 bg-emerald-900/20 rounded-lg text-emerald-400"><Coffee size={20}/></div>
+                      <span className="text-2xl font-bold text-white">18k</span>
+                    </div>
+                    <h4 className="font-bold text-white mb-1">Nodo Cafetero</h4>
+                    <p className="text-xs text-gray-500 mb-2">Pereira, Manizales, Cerritos</p>
+                    <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                       <div className="bg-emerald-500 h-full w-[25%]"></div>
+                    </div>
+                    <div className="absolute top-2 right-2 px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-[9px] font-bold uppercase rounded-full border border-emerald-500/30">
+                      Wellness
+                    </div>
+                  </div>
+
                 </div>
               </div>
+
+              {/* Traducción Semántica */}
+              <div className="bg-slate-950 p-8 rounded-2xl border border-white/10 mb-8">
+                  <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                    <BookOpen className="text-cyan-400" /> La Traducción del Dinero
+                  </h3>
+                  <p className="text-gray-400 text-sm mb-6">
+                    El 60% de la venta internacional se pierde por usar las palabras incorrectas. El inversor anglo no busca lo que vendes; busca lo que entiende.
+                  </p>
+                  
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="relative">
+                      <p className="text-xs font-bold text-red-400 uppercase mb-2">Lo que dice la constructora (Error)</p>
+                      <div className="space-y-3">
+                         <div className="bg-red-900/10 border border-red-500/20 p-3 rounded-lg text-gray-400 text-sm line-through decoration-red-500/50">"Apartamentos en venta"</div>
+                         <div className="bg-red-900/10 border border-red-500/20 p-3 rounded-lg text-gray-400 text-sm line-through decoration-red-500/50">"Proyectos de vivienda"</div>
+                         <div className="bg-red-900/10 border border-red-500/20 p-3 rounded-lg text-gray-400 text-sm line-through decoration-red-500/50">"Zonas comunes"</div>
+                      </div>
+                    </div>
+                    <div className="relative">
+                      <p className="text-xs font-bold text-emerald-400 uppercase mb-2">Lo que busca el capital (AIO)</p>
+                      <div className="space-y-3">
+                         <div className="bg-emerald-900/10 border border-emerald-500/20 p-3 rounded-lg text-white font-bold text-sm shadow-[0_0_10px_rgba(16,185,129,0.1)]">"Luxury Condos & Penthouses"</div>
+                         <div className="bg-emerald-900/10 border border-emerald-500/20 p-3 rounded-lg text-white font-bold text-sm shadow-[0_0_10px_rgba(16,185,129,0.1)]">"High-Yield Investment Assets"</div>
+                         <div className="bg-emerald-900/10 border border-emerald-500/20 p-3 rounded-lg text-white font-bold text-sm shadow-[0_0_10px_rgba(16,185,129,0.1)]">"Resort-style Amenities"</div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
             </div>
           )}
 
@@ -231,8 +290,8 @@ const EstrategiaConstructoras = () => {
                       <p className="text-sm text-gray-400 italic mb-4">Mes 1 - 2</p>
                       <ul className="text-sm text-gray-300 space-y-2">
                         <li className="flex items-center gap-2"><CheckCircle size={14} className="text-cyan-500"/> Definición de Proyectos y ROI por Mercado.</li>
-                        <li className="flex items-center gap-2"><CheckCircle size={14} className="text-cyan-500"/> Despliegue de Nodos Satélites (Inglés/Español).</li>
-                        <li className="flex items-center gap-2"><CheckCircle size={14} className="text-cyan-500"/> Estructuración Semántica para IA (GEO).</li>
+                        <li className="flex items-center gap-2"><CheckCircle size={14} className="text-cyan-500"/> Despliegue de los 5 Nodos Satélites.</li>
+                        <li className="flex items-center gap-2"><CheckCircle size={14} className="text-cyan-500"/> Estructuración Semántica (Schema) para Google & IA.</li>
                       </ul>
                     </div>
                   </div>
@@ -245,9 +304,9 @@ const EstrategiaConstructoras = () => {
                       <h3 className="font-bold text-white text-lg mb-2">Fase 2: Activación y Captación</h3>
                       <p className="text-sm text-gray-400 italic mb-4">Mes 3 - 4</p>
                       <ul className="text-sm text-gray-300 space-y-2">
-                        <li className="flex items-center gap-2"><Zap size={14} className="text-blue-500"/> Lanzamiento de Campañas Hiper-segmentadas.</li>
+                        <li className="flex items-center gap-2"><Zap size={14} className="text-blue-500"/> Lanzamiento de Campañas Hiper-segmentadas (Anglo vs Diáspora).</li>
                         <li className="flex items-center gap-2"><Zap size={14} className="text-blue-500"/> Implementación de Asistentes de IA de Venta.</li>
-                        <li className="flex items-center gap-2"><Zap size={14} className="text-blue-500"/> Activación de Nodos de Autoridad en Google.</li>
+                        <li className="flex items-center gap-2"><Zap size={14} className="text-blue-500"/> Activación de Nodos de Autoridad en Buscadores.</li>
                       </ul>
                     </div>
                   </div>
