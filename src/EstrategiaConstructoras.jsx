@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ArrowRight, Zap, Globe, TrendingUp, Shield, CheckCircle, Handshake, AlertTriangle, Coffee, Home, Landmark, BookOpen, ArrowDown, Users, DollarSign, Calculator, BarChart3, PieChart, Banknote } from 'lucide-react';
+import { Search, ArrowRight, Zap, Globe, TrendingUp, Shield, CheckCircle, Handshake, AlertTriangle, Coffee, Home, Landmark, BookOpen, ArrowDown, Users, DollarSign, Calculator, BarChart3, PieChart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const EstrategiaConstructoras = () => {
@@ -215,15 +215,15 @@ const EstrategiaConstructoras = () => {
             </div>
           )}
 
-          {/* TAB 2: FUNNEL & ROI & PROJECTION */}
+          {/* TAB 2: FUNNEL & ROI */}
           {activeTab === 'funnel' && (
             <div className="animate-fade-in-up">
                <h2 className="text-3xl font-bold mb-4 text-white">Embudo de Conversión Optimizado</h2>
                <p className="text-gray-400 mb-12">Proyección actualizada con doble flujo (Inglés/Español) y pre-calificación financiera.</p>
 
-               <div className="grid lg:grid-cols-2 gap-12 mb-16">
+               <div className="grid lg:grid-cols-1 gap-12 mb-16">
                   {/* Embudo Visual Detallado */}
-                  <div className="space-y-4">
+                  <div className="space-y-4 max-w-4xl mx-auto w-full">
                      
                      {/* 1. Impresiones */}
                      <div className="relative">
@@ -314,45 +314,6 @@ const EstrategiaConstructoras = () => {
                         </div>
                      </div>
                   </div>
-
-                  {/* Unit Economics & Resumen */}
-                  <div className="space-y-6">
-                      <div className="bg-slate-950 p-8 rounded-3xl border border-white/10 flex flex-col justify-center">
-                          <h3 className="text-2xl font-bold text-white mb-8 border-b border-white/5 pb-4 flex items-center gap-2">
-                             <DollarSign className="text-emerald-400"/> Eficiencia Financiera
-                          </h3>
-                          <div className="space-y-8">
-                            <div className="flex justify-between items-end">
-                              <p className="text-gray-500 text-xs uppercase font-bold">Inversión Ads Mensual</p>
-                              <p className="text-3xl font-bold text-white">4.500€</p>
-                            </div>
-                            
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="bg-slate-900 p-4 rounded-xl border border-white/5">
-                                    <p className="text-gray-500 text-[10px] uppercase font-bold mb-1">CPL (Costo Lead)</p>
-                                    <p className="text-2xl font-bold text-cyan-400">16,33€</p>
-                                    <p className="text-[9px] text-gray-600 mt-1">Antes: ~35€</p>
-                                </div>
-                                <div className="bg-emerald-900/10 p-4 rounded-xl border border-emerald-500/20">
-                                    <p className="text-emerald-500 text-[10px] uppercase font-bold mb-1">CAC (Costo Venta)</p>
-                                    <p className="text-2xl font-bold text-emerald-400">160,71€</p>
-                                    <p className="text-[9px] text-emerald-600 mt-1">Eficiencia: Extrema</p>
-                                </div>
-                            </div>
-
-                            <div className="mt-8 pt-8 border-t border-white/5 bg-gradient-to-br from-slate-900 to-slate-800 p-6 rounded-2xl border border-white/5">
-                               <p className="text-xs text-gray-400 uppercase mb-2 font-bold tracking-widest">Pipeline Mensual Proyectado</p>
-                               <div className="flex items-baseline gap-2">
-                                   <p className="text-5xl font-black text-white">$4.2M</p>
-                                   <span className="text-xl font-medium text-emerald-500">USD</span>
-                               </div>
-                               <p className="text-[10px] text-gray-500 mt-3 italic border-t border-white/5 pt-2">
-                                 *Basado en ticket promedio conservador de $150k USD x 28 unidades.
-                               </p>
-                            </div>
-                          </div>
-                      </div>
-                  </div>
                </div>
 
                {/* EVOLUCIÓN TRÁFICO (GRÁFICA 24 MESES) */}
@@ -413,83 +374,6 @@ const EstrategiaConstructoras = () => {
                   <div className="flex items-center gap-2"><div className="w-3 h-3 bg-cyan-600 rounded-full shadow-[0_0_5px_rgba(8,145,178,0.8)]"></div>Orgánico (SEO)</div>
                   <div className="flex items-center gap-2"><div className="w-3 h-3 bg-purple-600 rounded-full shadow-[0_0_5px_rgba(147,51,234,0.8)]"></div>Tráfico IA (AIO)</div>
                 </div>
-              </div>
-
-               {/* SECCIÓN FINANCIERA SEM */}
-              <div className="bg-slate-950 text-white p-8 rounded-2xl shadow-xl border border-white/10">
-                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                  <Banknote size={24} className="text-emerald-400" />
-                  Eficiencia Financiera SEM
-                </h3>
-                
-                {/* Cards Comparativa CPC */}
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <div className="bg-slate-900 p-6 rounded-xl border border-white/5">
-                    <p className="text-gray-500 text-xs uppercase font-bold mb-2">Coste de Mercado (Media)</p>
-                    <div className="flex items-end gap-2">
-                      <span className="text-4xl font-bold text-red-400">1,72€</span>
-                      <span className="text-sm text-gray-500 mb-1">/clic</span>
-                    </div>
-                    <p className="text-xs text-gray-500 mt-2">Lo que paga tu competencia por ineficiencia.</p>
-                  </div>
-                  <div className="bg-emerald-900/10 p-6 rounded-xl border border-emerald-500/30 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 bg-emerald-500 text-slate-950 text-[10px] font-bold px-2 py-1 rounded-bl-lg">AHORRO 76%</div>
-                    <p className="text-emerald-400 text-xs uppercase font-bold mb-2">Coste Optimizado (Alejo)</p>
-                    <div className="flex items-end gap-2">
-                      <span className="text-4xl font-bold text-emerald-400">0,40€</span>
-                      <span className="text-sm text-emerald-400/70 mb-1">/clic</span>
-                    </div>
-                    <p className="text-xs text-emerald-400/60 mt-2">Optimización experta de Quality Score.</p>
-                  </div>
-                </div>
-
-                {/* Presupuesto Necesario Chart */}
-                <div>
-                  <p className="text-sm font-bold text-gray-300 mb-4">Presupuesto Mensual Necesario (Para mantener el volumen de visitas)</p>
-                  <div className="space-y-4">
-                    
-                    {/* Mes 1 */}
-                    <div className="flex items-center gap-4 group">
-                      <div className="w-16 text-xs text-gray-500 font-bold">Mes 1</div>
-                      <div className="flex-1 bg-slate-900 h-8 rounded-full overflow-hidden relative border border-white/5">
-                        <div className="bg-gradient-to-r from-red-500/80 to-red-600/80 h-full w-[100%]"></div>
-                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-white drop-shadow-md">5.888€</span>
-                      </div>
-                    </div>
-
-                    {/* Mes 6 */}
-                    <div className="flex items-center gap-4 group">
-                      <div className="w-16 text-xs text-gray-500 font-bold">Mes 6</div>
-                      <div className="flex-1 bg-slate-900 h-8 rounded-full overflow-hidden relative border border-white/5">
-                        <div className="bg-gradient-to-r from-orange-500/80 to-orange-600/80 h-full w-[90%]"></div>
-                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-white drop-shadow-md">5.299€</span>
-                      </div>
-                    </div>
-
-                    {/* Mes 12 */}
-                    <div className="flex items-center gap-4 group">
-                      <div className="w-16 text-xs text-gray-500 font-bold">Mes 12</div>
-                      <div className="flex-1 bg-slate-900 h-8 rounded-full overflow-hidden relative border border-white/5">
-                        <div className="bg-gradient-to-r from-yellow-500/80 to-yellow-600/80 h-full w-[60%]"></div>
-                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-white drop-shadow-md">3.532€</span>
-                      </div>
-                    </div>
-
-                    {/* Mes 24 */}
-                    <div className="flex items-center gap-4 group">
-                      <div className="w-16 text-xs text-gray-500 font-bold">Mes 24</div>
-                      <div className="flex-1 bg-slate-900 h-8 rounded-full overflow-hidden relative border border-white/5">
-                        <div className="bg-gradient-to-r from-emerald-500/80 to-emerald-600/80 h-full w-[30%]"></div>
-                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-xs font-bold text-white drop-shadow-md">1.766€</span>
-                      </div>
-                    </div>
-
-                  </div>
-                  <p className="text-xs text-gray-500 mt-4 text-center">
-                    *Gracias al crecimiento orgánico, reducimos la inversión publicitaria un <strong className="text-white">70% en 2 años</strong> manteniendo el mismo volumen de ventas.
-                  </p>
-                </div>
-
               </div>
             </div>
           )}
