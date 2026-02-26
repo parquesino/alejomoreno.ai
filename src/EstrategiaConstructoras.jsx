@@ -1,9 +1,9 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Search, ArrowRight, Zap, Globe, TrendingUp, Shield, CheckCircle, Handshake, AlertTriangle, Coffee, Home, BookOpen, ArrowDown, Users, DollarSign, Calculator, BarChart3, Banknote, Filter, Map, BrainCircuit } from 'lucide-react';
+import { Search, ArrowRight, Zap, Globe, TrendingUp, Shield, CheckCircle, Handshake, AlertTriangle, Coffee, Home, BookOpen, ArrowDown, Users, DollarSign, Calculator, BarChart3, Banknote, Filter, Map, BrainCircuit, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const EstrategiaConstructoras = () => {
-  // Iniciamos en la nueva pestaña 'opportunity'
+  // Iniciamos en la nueva pestaña 'opportunity' (Contexto / PPT)
   const [activeTab, setActiveTab] = useState('opportunity');
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('Todas');
@@ -86,7 +86,7 @@ const EstrategiaConstructoras = () => {
     { keyword: "venta de fincas baratas en colombia", volume: 110, lang: "Español", region: "Nacional" }
   ];
 
-  // Logic for filtering
+  // Lógica para filtrar tabla
   const filteredData = useMemo(() => {
     let data = rawData.filter(item => 
       (activeCategory === 'Todas' || 
@@ -176,7 +176,9 @@ const EstrategiaConstructoras = () => {
       <div className="container mx-auto px-6 pb-24">
         <div className="bg-slate-900/50 border border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-sm shadow-2xl relative overflow-hidden">
           
-          {/* TAB 0: OPORTUNIDAD DE MERCADO (PPT INTEGRADA) */}
+          {/* =========================================
+              TAB 0: OPORTUNIDAD DE MERCADO (Contexto)
+             ========================================= */}
           {activeTab === 'opportunity' && (
             <div className="animate-fade-in-up">
               <div className="text-center mb-16">
@@ -297,7 +299,7 @@ const EstrategiaConstructoras = () => {
                               <Search className="text-gray-400"/> Quién se lleva el tráfico hoy
                            </h4>
                            <div className="aspect-[4/3] bg-slate-900 rounded-xl border border-white/5 flex flex-col items-center justify-center relative overflow-hidden">
-                               {/* Hint para reemplazar con imagen */}
+                               {/* Hint para reemplazar con imagen real */}
                                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-950/90 z-10"></div>
                                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070')] bg-cover bg-center opacity-10 grayscale group-hover:opacity-30 transition-opacity"></div>
                                <div className="z-20 text-center p-6">
@@ -307,21 +309,21 @@ const EstrategiaConstructoras = () => {
                                       <div className="w-12 h-12 bg-white rounded-lg"></div>
                                   </div>
                                   <p className="text-red-300 font-bold uppercase tracking-widest text-xs mb-2">Espacio para Capturas</p>
-                                  <p className="text-gray-400 text-sm">FazWaz | AsiaVillas | RealEstate.com.au</p>
+                                  <p className="text-gray-400 text-sm">Zillow | FazWaz | Point2</p>
                                </div>
                            </div>
                       </div>
                       <div className="bg-slate-950 p-6 rounded-2xl border border-white/10 group">
                            <h4 className="font-bold text-white mb-4 flex items-center gap-2 text-lg">
-                              <BrainCircuit className="text-purple-400"/> El Nuevo Vendedor: ChatGPT y Gemini
+                              <BrainCircuit className="text-purple-400"/> El Nuevo Vendedor: IA
                            </h4>
                            <div className="aspect-[4/3] bg-slate-900 rounded-xl border border-purple-500/20 flex flex-col items-center justify-center relative overflow-hidden shadow-[0_0_30px_rgba(168,85,247,0.05)] group-hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-all">
-                               {/* Hint para reemplazar con imagen */}
+                               {/* Hint para reemplazar con imagen de ChatGPT */}
                                <div className="absolute inset-0 bg-gradient-to-b from-purple-900/10 to-slate-950/90 z-10"></div>
                                <div className="z-20 text-center p-6">
                                   <MessageSquare size={48} className="mx-auto text-purple-500/30 mb-4" />
                                   <p className="text-purple-400 font-bold uppercase tracking-widest text-xs mb-2">Espacio para Captura IA</p>
-                                  <p className="text-gray-400 text-sm leading-relaxed">Muestra cómo la IA recomienda proyectos específicos basados en autoridad y data, no en pauta pagada.</p>
+                                  <p className="text-gray-400 text-sm leading-relaxed">Muestra cómo ChatGPT recomienda proyectos específicos basados en autoridad y data, no en pauta pagada.</p>
                                </div>
                            </div>
                       </div>
@@ -366,10 +368,108 @@ const EstrategiaConstructoras = () => {
             </div>
           )}
 
-          {/* TAB 1: DEMANDA GLOBAL + MARKET EXPLORER */}
+          {/* =========================================
+              TAB 1: ANÁLISIS DE DEMANDA (Mercado)
+             ========================================= */}
           {activeTab === 'market' && (
             <div className="animate-fade-in-up">
               
+              {/* KPIs Globales */}
+              <div className="grid md:grid-cols-3 gap-6 mb-12">
+                <div className="bg-slate-950 p-6 rounded-2xl border border-white/5">
+                  <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Búsquedas Mundiales</p>
+                  <p className="text-4xl font-extrabold text-white">500.000</p>
+                  <p className="text-xs text-cyan-400 mt-2">Mes / Inmuebles en Colombia</p>
+                </div>
+                <div className="bg-cyan-900/20 p-6 rounded-2xl border border-cyan-500/20">
+                  <p className="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2">Mercado Exterior</p>
+                  <p className="text-4xl font-extrabold text-white">250.000</p>
+                  <p className="text-xs text-cyan-200 mt-2">50% de la demanda es internacional</p>
+                </div>
+                <div className="bg-slate-950 p-6 rounded-2xl border border-white/5">
+                  <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Foco EEUU</p>
+                  <p className="text-4xl font-extrabold text-white">150.000</p>
+                  <p className="text-xs text-gray-400 mt-2">27% del total generado en EEUU</p>
+                </div>
+              </div>
+
+              {/* SECCIÓN: 5 NODOS REGIONALES */}
+              <div className="mb-12">
+                <h3 className="text-xl font-bold text-white mb-6">Los 5 Nodos de Autoridad Regionales</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                  {/* Nodo Andino */}
+                  <div className="bg-slate-950 p-5 rounded-xl border border-white/10 relative group hover:border-blue-500/30 transition-all">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-2 bg-blue-900/20 rounded-lg text-blue-400"><Shield size={20}/></div>
+                      <span className="text-2xl font-bold text-white">58k</span>
+                    </div>
+                    <h4 className="font-bold text-white mb-1">Nodo Andino</h4>
+                    <p className="text-xs text-gray-500 mb-2">Bogotá, Sabana, Anapoima</p>
+                    <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                       <div className="bg-blue-500 h-full w-[85%]"></div>
+                    </div>
+                  </div>
+
+                  {/* Nodo Paisa */}
+                  <div className="bg-slate-950 p-5 rounded-xl border border-white/10 relative group hover:border-purple-500/30 transition-all">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-2 bg-purple-900/20 rounded-lg text-purple-400"><Zap size={20}/></div>
+                      <span className="text-2xl font-bold text-white">55k</span>
+                    </div>
+                    <h4 className="font-bold text-white mb-1">Nodo Paisa</h4>
+                    <p className="text-xs text-gray-500 mb-2">Medellín, Poblado, Oriente</p>
+                    <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                       <div className="bg-purple-500 h-full w-[80%]"></div>
+                    </div>
+                  </div>
+
+                   {/* Nodo Valle */}
+                   <div className="bg-slate-950 p-5 rounded-xl border border-white/10 relative group hover:border-orange-500/30 transition-all">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-2 bg-orange-900/20 rounded-lg text-orange-400"><Home size={20}/></div>
+                      <span className="text-2xl font-bold text-white">30k</span>
+                    </div>
+                    <h4 className="font-bold text-white mb-1">Nodo Valle</h4>
+                    <p className="text-xs text-gray-500 mb-2">Cali, Ciudad Jardín, Pance</p>
+                    <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                       <div className="bg-orange-500 h-full w-[45%]"></div>
+                    </div>
+                    <div className="absolute top-2 right-2 px-2 py-0.5 bg-orange-500/20 text-orange-400 text-[9px] font-bold uppercase rounded-full border border-orange-500/30">
+                      Remesas
+                    </div>
+                  </div>
+
+                  {/* Nodo Caribe */}
+                  <div className="bg-slate-950 p-5 rounded-xl border border-white/10 relative group hover:border-cyan-500/30 transition-all">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-2 bg-cyan-900/20 rounded-lg text-cyan-400"><Globe size={20}/></div>
+                      <span className="text-2xl font-bold text-white">24k</span>
+                    </div>
+                    <h4 className="font-bold text-white mb-1">Nodo Caribe</h4>
+                    <p className="text-xs text-gray-500 mb-2">Cartagena, Santa Marta</p>
+                    <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                       <div className="bg-cyan-500 h-full w-[35%]"></div>
+                    </div>
+                  </div>
+
+                  {/* Nodo Cafetero */}
+                  <div className="bg-slate-950 p-5 rounded-xl border border-white/10 relative group hover:border-emerald-500/30 transition-all">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-2 bg-emerald-900/20 rounded-lg text-emerald-400"><Coffee size={20}/></div>
+                      <span className="text-2xl font-bold text-white">18k</span>
+                    </div>
+                    <h4 className="font-bold text-white mb-1">Nodo Cafetero</h4>
+                    <p className="text-xs text-gray-500 mb-2">Pereira, Manizales, Cerritos</p>
+                    <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
+                       <div className="bg-emerald-500 h-full w-[25%]"></div>
+                    </div>
+                    <div className="absolute top-2 right-2 px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-[9px] font-bold uppercase rounded-full border border-emerald-500/30">
+                      Wellness
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* --- EXPLORADOR DE MERCADO --- */}
               <div className="bg-slate-950 p-8 rounded-2xl border border-white/10 mb-8">
                   <div className="flex flex-col md:flex-row justify-between items-end mb-8 border-b border-white/10 pb-6">
@@ -377,7 +477,7 @@ const EstrategiaConstructoras = () => {
                       <h3 className="text-2xl font-bold mb-2 text-white flex items-center gap-2">
                         <Search className="text-cyan-400" /> Explorador de Mercado Real
                       </h3>
-                      <p className="text-gray-400 text-sm">Datos de búsqueda reales (>100/mes) que validan la demanda.</p>
+                      <p className="text-gray-400 text-sm">Datos de búsqueda reales (+100/mes) que validan la demanda.</p>
                     </div>
                     <div className="mt-4 md:mt-0 text-right">
                       <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Volumen Muestra</p>
@@ -460,7 +560,9 @@ const EstrategiaConstructoras = () => {
             </div>
           )}
 
-          {/* TAB 2: FUNNEL & ROI */}
+          {/* =========================================
+              TAB 2: FUNNEL & ROI
+             ========================================= */}
           {activeTab === 'funnel' && (
             <div className="animate-fade-in-up">
                <h2 className="text-3xl font-bold mb-4 text-white">Embudo de Conversión Optimizado</h2>
@@ -500,7 +602,7 @@ const EstrategiaConstructoras = () => {
                      </div>
                      <div className="flex justify-center"><ArrowDown className="text-gray-800" size={16} /></div>
 
-                     {/* 3. Visitas Reales (NUEVO) */}
+                     {/* 3. Visitas Reales */}
                      <div className="relative w-[85%] mx-auto">
                         <div className="bg-blue-900/20 p-4 rounded-xl border border-blue-400/30 flex justify-between items-center shadow-[0_0_15px_rgba(59,130,246,0.1)]">
                             <div className="flex items-center gap-3">
@@ -530,7 +632,7 @@ const EstrategiaConstructoras = () => {
                      </div>
                      <div className="flex justify-center"><ArrowDown className="text-gray-800" size={16} /></div>
 
-                     {/* 5. Cálculo Financiación (NUEVO) */}
+                     {/* 5. Cálculo Financiación */}
                      <div className="relative w-[65%] mx-auto">
                         <div className="bg-purple-900/20 p-4 rounded-xl border border-purple-500/30 flex justify-between items-center shadow-[0_0_15px_rgba(168,85,247,0.15)]">
                             <div className="flex items-center gap-3">
@@ -675,7 +777,9 @@ const EstrategiaConstructoras = () => {
             </div>
           )}
 
-          {/* TAB 3: EXECUTION */}
+          {/* =========================================
+              TAB 3: EXECUTION (Plan 12 Meses)
+             ========================================= */}
           {activeTab === 'execution' && (
             <div className="animate-fade-in-up">
                 <h2 className="text-3xl font-bold mb-12 text-center text-white">Hoja de Ruta 2026: Dominio del Mercado</h2>
@@ -731,7 +835,9 @@ const EstrategiaConstructoras = () => {
             </div>
           )}
 
-          {/* TAB 4: PROPOSAL */}
+          {/* =========================================
+              TAB 4: PROPOSAL (Propuesta y Manifiesto)
+             ========================================= */}
           {activeTab === 'proposal' && (
             <div className="animate-fade-in-up">
               <h2 className="text-3xl font-bold mb-12 text-center text-white">Propuesta de Valor y Compromiso</h2>
