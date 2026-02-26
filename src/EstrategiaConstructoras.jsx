@@ -294,36 +294,62 @@ const EstrategiaConstructoras = () => {
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-8">
+                      {/* CARTA 1: GOOGLE */}
                       <div className="bg-slate-950 p-6 rounded-2xl border border-white/10 group">
                            <h4 className="font-bold text-white mb-4 flex items-center gap-2 text-lg">
                               <Search className="text-gray-400"/> Quién se lleva el tráfico hoy
                            </h4>
-                           <div className="aspect-[4/3] bg-slate-900 rounded-xl border border-white/5 flex flex-col items-center justify-center relative overflow-hidden">
-                               {/* Hint para reemplazar con imagen real */}
-                               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-950/90 z-10"></div>
-                               <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070')] bg-cover bg-center opacity-10 grayscale group-hover:opacity-30 transition-opacity"></div>
-                               <div className="z-20 text-center p-6">
-                                  <div className="inline-flex gap-4 mb-4 opacity-50">
+                           <div className="w-full bg-slate-900 rounded-xl border border-white/5 relative overflow-hidden shadow-inner h-64 md:h-80 transition-all duration-500 group-hover:border-cyan-500/30">
+                               {/* Imagen Real de Google */}
+                               <img 
+                                 src="/oferta-google.png" 
+                                 alt="Indexadores en Google" 
+                                 className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105"
+                                 onError={(e) => { e.target.style.display = 'none'; }}
+                               />
+                               {/* Fallback si no hay imagen */}
+                               <div className="absolute inset-0 flex flex-col items-center justify-center -z-10 opacity-50">
+                                  <div className="inline-flex gap-4 mb-4">
                                       <div className="w-12 h-12 bg-white rounded-lg"></div>
                                       <div className="w-12 h-12 bg-white rounded-lg"></div>
                                       <div className="w-12 h-12 bg-white rounded-lg"></div>
                                   </div>
-                                  <p className="text-red-300 font-bold uppercase tracking-widest text-xs mb-2">Espacio para Capturas</p>
-                                  <p className="text-gray-400 text-sm">Zillow | FazWaz | Point2</p>
+                                  <p className="text-red-300 font-bold uppercase tracking-widest text-xs">Sube 'oferta-google.png'</p>
+                               </div>
+                               {/* Overlay decorativo en la base */}
+                               <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-slate-950 to-transparent z-10"></div>
+                               <div className="absolute bottom-4 left-4 right-4 text-center z-20">
+                                  <p className="text-gray-300 font-bold text-sm bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg inline-block border border-white/10 shadow-lg">
+                                    Zillow | FazWaz | Point2
+                                  </p>
                                </div>
                            </div>
                       </div>
+
+                      {/* CARTA 2: CHATGPT */}
                       <div className="bg-slate-950 p-6 rounded-2xl border border-white/10 group">
                            <h4 className="font-bold text-white mb-4 flex items-center gap-2 text-lg">
                               <BrainCircuit className="text-purple-400"/> El Nuevo Vendedor: IA
                            </h4>
-                           <div className="aspect-[4/3] bg-slate-900 rounded-xl border border-purple-500/20 flex flex-col items-center justify-center relative overflow-hidden shadow-[0_0_30px_rgba(168,85,247,0.05)] group-hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-all">
-                               {/* Hint para reemplazar con imagen de ChatGPT */}
-                               <div className="absolute inset-0 bg-gradient-to-b from-purple-900/10 to-slate-950/90 z-10"></div>
-                               <div className="z-20 text-center p-6">
+                           <div className="w-full bg-slate-900 rounded-xl border border-purple-500/20 relative overflow-hidden shadow-[0_0_30px_rgba(168,85,247,0.05)] h-64 md:h-80 transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(168,85,247,0.2)] group-hover:border-purple-500/50">
+                               {/* Imagen Real de ChatGPT */}
+                               <img 
+                                 src="/oferta-chatgpt.png" 
+                                 alt="Respuesta de ChatGPT" 
+                                 className="w-full h-full object-cover object-left-top opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105"
+                                 onError={(e) => { e.target.style.display = 'none'; }}
+                               />
+                               {/* Fallback si no hay imagen */}
+                               <div className="absolute inset-0 flex flex-col items-center justify-center -z-10">
                                   <MessageSquare size={48} className="mx-auto text-purple-500/30 mb-4" />
-                                  <p className="text-purple-400 font-bold uppercase tracking-widest text-xs mb-2">Espacio para Captura IA</p>
-                                  <p className="text-gray-400 text-sm leading-relaxed">Muestra cómo ChatGPT recomienda proyectos específicos basados en autoridad y data, no en pauta pagada.</p>
+                                  <p className="text-purple-400 font-bold uppercase tracking-widest text-xs">Sube 'oferta-chatgpt.png'</p>
+                               </div>
+                               {/* Overlay decorativo en la base */}
+                               <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-slate-950 to-transparent z-10"></div>
+                               <div className="absolute bottom-4 left-4 right-4 text-center z-20">
+                                  <p className="text-purple-200 font-bold text-sm bg-purple-900/80 backdrop-blur-md px-3 py-1.5 rounded-lg inline-block border border-purple-500/30 shadow-lg">
+                                    Recomendación por Autoridad (AIO)
+                                  </p>
                                </div>
                            </div>
                       </div>
@@ -477,7 +503,7 @@ const EstrategiaConstructoras = () => {
                       <h3 className="text-2xl font-bold mb-2 text-white flex items-center gap-2">
                         <Search className="text-cyan-400" /> Explorador de Mercado Real
                       </h3>
-                      <p className="text-gray-400 text-sm">Datos de búsqueda reales (+100/mes) que validan la demanda.</p>
+                      <p className="text-gray-400 text-sm">Datos de búsqueda reales (>100/mes) que validan la demanda.</p>
                     </div>
                     <div className="mt-4 md:mt-0 text-right">
                       <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Volumen Muestra</p>
@@ -722,7 +748,7 @@ const EstrategiaConstructoras = () => {
                   <div className="flex items-center gap-2"><div className="w-3 h-3 bg-purple-600 rounded-full shadow-[0_0_5px_rgba(147,51,234,0.8)]"></div>Tráfico IA (AIO)</div>
                 </div>
 
-                {/* --- IMPACTO FINANCIERO A 24 MESES (INJECTED) --- */}
+                {/* --- IMPACTO FINANCIERO A 24 MESES --- */}
                 <div className="mt-10 pt-8 border-t border-white/5">
                   <h4 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
                     <DollarSign className="text-emerald-400" size={20} />
