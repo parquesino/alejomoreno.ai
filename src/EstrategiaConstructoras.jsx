@@ -279,7 +279,7 @@ const EstrategiaConstructoras = () => {
                 </div>
               </div>
 
-              {/* --- EXPLORADOR DE MERCADO (Reemplazo de Traducción del Dinero) --- */}
+              {/* --- EXPLORADOR DE MERCADO --- */}
               <div className="bg-slate-950 p-8 rounded-2xl border border-white/10 mb-8">
                   <div className="flex flex-col md:flex-row justify-between items-end mb-8 border-b border-white/10 pb-6">
                     <div>
@@ -528,6 +528,58 @@ const EstrategiaConstructoras = () => {
                   <div className="flex items-center gap-2"><div className="w-3 h-3 bg-cyan-600 rounded-full shadow-[0_0_5px_rgba(8,145,178,0.8)]"></div>Orgánico (SEO)</div>
                   <div className="flex items-center gap-2"><div className="w-3 h-3 bg-purple-600 rounded-full shadow-[0_0_5px_rgba(147,51,234,0.8)]"></div>Tráfico IA (AIO)</div>
                 </div>
+
+                {/* --- IMPACTO FINANCIERO A 24 MESES (INJECTED) --- */}
+                <div className="mt-10 pt-8 border-t border-white/5">
+                  <h4 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                    <DollarSign className="text-emerald-400" size={20} />
+                    Impacto Financiero Proyectado (Costo SEM vs Ventas)
+                  </h4>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                      <thead>
+                        <tr className="border-b border-white/10 text-gray-500 text-xs uppercase tracking-wider">
+                          <th className="pb-3 font-bold">Mes</th>
+                          <th className="pb-3 font-bold text-right">Inversión SEM</th>
+                          <th className="pb-3 font-bold text-right">Visitas Totales</th>
+                          <th className="pb-3 font-bold text-right text-emerald-400">Ventas Est.</th>
+                          <th className="pb-3 font-bold text-right">CAC SEM</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-white/5 text-sm">
+                        <tr className="hover:bg-white/5 transition-colors">
+                          <td className="py-4 font-bold text-white">Mes 1</td>
+                          <td className="py-4 text-right text-red-400 font-mono">4.500€</td>
+                          <td className="py-4 text-right text-gray-300 font-mono">9.184</td>
+                          <td className="py-4 text-right font-bold text-emerald-400 font-mono">27</td>
+                          <td className="py-4 text-right text-gray-400 font-mono">163,33€</td>
+                        </tr>
+                        <tr className="hover:bg-white/5 transition-colors">
+                          <td className="py-4 font-bold text-white">Mes 6</td>
+                          <td className="py-4 text-right text-orange-400 font-mono">4.050€</td>
+                          <td className="py-4 text-right text-gray-300 font-mono">9.643</td>
+                          <td className="py-4 text-right font-bold text-emerald-400 font-mono">28</td>
+                          <td className="py-4 text-right text-gray-400 font-mono">140,00€</td>
+                        </tr>
+                        <tr className="hover:bg-white/5 transition-colors">
+                          <td className="py-4 font-bold text-white">Mes 12</td>
+                          <td className="py-4 text-right text-yellow-400 font-mono">2.700€</td>
+                          <td className="py-4 text-right text-gray-300 font-mono">12.168</td>
+                          <td className="py-4 text-right font-bold text-emerald-400 font-mono">36</td>
+                          <td className="py-4 text-right text-gray-400 font-mono">73,97€</td>
+                        </tr>
+                        <tr className="hover:bg-white/5 transition-colors">
+                          <td className="py-4 font-bold text-white">Mes 24</td>
+                          <td className="py-4 text-right text-green-400 font-mono">1.350€</td>
+                          <td className="py-4 text-right text-gray-300 font-mono">15.153</td>
+                          <td className="py-4 text-right font-bold text-emerald-400 font-mono text-lg">45</td>
+                          <td className="py-4 text-right text-white font-mono font-bold text-lg">29,70€</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
               </div>
             </div>
           )}
@@ -563,6 +615,7 @@ const EstrategiaConstructoras = () => {
                       <p className="text-sm text-gray-400 italic mb-4">Mes 3 - 4</p>
                       <ul className="text-sm text-gray-300 space-y-2">
                         <li className="flex items-center gap-2"><Zap size={14} className="text-blue-500"/> Lanzamiento de Campañas Hiper-segmentadas (Anglo vs Diáspora).</li>
+                        <li className="flex items-center gap-2"><Zap size={14} className="text-blue-500"/> Implementación de Asistentes de IA de Venta.</li>
                         <li className="flex items-center gap-2"><Zap size={14} className="text-blue-500"/> Activación de Nodos de Autoridad en Google.</li>
                       </ul>
                     </div>
