@@ -563,7 +563,6 @@ const EstrategiaConstructoras = () => {
                       <p className="text-sm text-gray-400 italic mb-4">Mes 3 - 4</p>
                       <ul className="text-sm text-gray-300 space-y-2">
                         <li className="flex items-center gap-2"><Zap size={14} className="text-blue-500"/> Lanzamiento de Campañas Hiper-segmentadas (Anglo vs Diáspora).</li>
-                        <li className="flex items-center gap-2"><Zap size={14} className="text-blue-500"/> Implementación de Asistentes de IA de Venta.</li>
                         <li className="flex items-center gap-2"><Zap size={14} className="text-blue-500"/> Activación de Nodos de Autoridad en Google.</li>
                       </ul>
                     </div>
